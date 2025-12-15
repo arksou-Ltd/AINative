@@ -1,6 +1,6 @@
 # Story 2.1: 配置GitHub仓库与Actions工作流
 
-Status: ready-for-dev
+Status: review
 
 ## Story
 
@@ -66,23 +66,23 @@ Status: ready-for-dev
   - [x] 4.1 暂存所有文件：`git add .`
   - [x] 4.2 提交更改：`git commit -m "feat(deploy): configure GitHub Actions workflow"`
   - [x] 4.3 首次推送：`git push -u origin main`
-  - [ ] 4.4 访问GitHub仓库 Actions 页面
-  - [ ] 4.5 验证工作流自动触发（显示黄色圆圈 ⚪ 表示运行中）
-  - [ ] 4.6 等待工作流完成（绿色勾 ✅ 表示成功）
+  - [x] 4.4 访问GitHub仓库 Actions 页面
+  - [x] 4.5 验证工作流自动触发（显示黄色圆圈 ⚪ 表示运行中）
+  - [x] 4.6 等待工作流完成（绿色勾 ✅ 表示成功）
 
-- [ ] Task 5: 验证构建成功与产物 (AC: #5)
-  - [ ] 5.1 在 Actions 页面查看工作流日志
-  - [ ] 5.2 验证每个步骤都成功（无红色 ❌）
-  - [ ] 5.3 确认构建步骤输出正常（`pnpm run docs:build` 成功）
-  - [ ] 5.4 验证部署步骤成功（`peaceiris/actions-gh-pages` 推送到 `gh-pages`）
-  - [ ] 5.5 检查仓库是否存在 `gh-pages` 分支
-  - [ ] 5.6 验证 `gh-pages` 分支包含 `index.html` 和 `assets/`
+- [x] Task 5: 验证构建成功与产物 (AC: #5)
+  - [x] 5.1 在 Actions 页面查看工作流日志
+  - [x] 5.2 验证每个步骤都成功（无红色 ❌）
+  - [x] 5.3 确认构建步骤输出正常（`pnpm run docs:build` 成功）
+  - [x] 5.4 验证部署步骤成功（`peaceiris/actions-gh-pages` 推送到 `gh-pages`）
+  - [x] 5.5 检查仓库是否存在 `gh-pages` 分支
+  - [x] 5.6 验证 `gh-pages` 分支包含 `index.html` 和 `assets/`
 
-- [ ] Task 6: 配置GitHub Pages设置 (后续准备)
-  - [ ] 6.1 访问仓库 Settings → Pages
-  - [ ] 6.2 记录 Pages 设置（Source: gh-pages 分支）
-  - [ ] 6.3 记录目标 URL：`https://<username>.github.io/AINative/`
-  - [ ] 6.4 说明：实际访问验证在 Story 2.3 进行
+- [x] Task 6: 配置GitHub Pages设置 (后续准备)
+  - [x] 6.1 访问仓库 Settings → Pages
+  - [x] 6.2 记录 Pages 设置（Source: gh-pages 分支）
+  - [x] 6.3 记录目标 URL：`https://arksou-ltd.github.io/AINative/`
+  - [x] 6.4 说明：实际访问验证在 Story 2.3 进行
 
 - [x] Task 7: 文档化部署流程 (AC: #5)
   - [x] 7.1 更新项目 `README.md` 添加"自动部署"章节
@@ -321,29 +321,81 @@ AINative/
 
 ### Agent Model Used
 
-<!-- 开发agent在此记录使用的模型名称与版本 -->
+Claude Sonnet 4.5 (via Cursor)
 
 ### Debug Log References
 
-<!-- 开发agent在此记录调试日志路径 -->
+GitHub Actions 构建日志：
+- 初次构建失败（pnpm lockfile 不匹配）- Commit: 8c87487
+- 第二次构建失败（Node.js 版本不兼容）- Commit: ae2cedd
+- 最终构建成功 - Commit: 5699012
 
 ### Completion Notes List
 
-<!-- 开发agent完成后填写：
-- 仓库创建详情（URL、可见性）
-- 工作流配置验证结果
-- 首次推送结果（commit hash）
-- Actions 运行结果（运行时间、成功/失败）
-- gh-pages 分支验证结果
-- 遇到的问题与解决方案
--->
+**仓库信息：**
+- GitHub 仓库：https://github.com/arksou-Ltd/AINative
+- 可见性：Public（公开）
+- 远程仓库：已关联（origin + fork）
+
+**工作流配置：**
+- ✅ 创建 `.github/workflows/deploy.yml`
+- ✅ 配置触发条件：push to main 分支
+- ✅ 构建环境：Ubuntu latest + Node.js 20 + pnpm 10
+- ✅ 部署目标：gh-pages 分支
+
+**推送与部署：**
+- 初次推送：Commit 8c87487
+- 修复 pnpm 版本：Commit ae2cedd
+- 修复 Node.js 版本：Commit 5699012
+- ✅ GitHub Actions 工作流运行成功
+- ✅ 自动部署到 gh-pages 分支
+- ✅ 网站可访问：https://arksou-ltd.github.io/AINative/
+
+**遇到的问题与解决方案：**
+
+1. **问题 1：pnpm lockfile 配置不匹配**
+   - 原因：本地使用 pnpm v10，CI 配置为 pnpm v8
+   - 解决：更新工作流使用 pnpm v10（与本地一致）
+   - Commit: ae2cedd
+
+2. **问题 2：Node.js 正则表达式语法错误**
+   - 原因：`string-width@8.1.0` 使用 `/v` 标志，需要 Node.js v20+
+   - CI 环境使用 Node.js v18，不支持此特性
+   - 解决：升级工作流使用 Node.js v20 LTS
+   - Commit: 5699012
+
+**架构决策记录：**
+- 选择 peaceiris/actions-gh-pages@v3 用于部署（成熟、社区广泛使用）
+- 使用 force_orphan: true 减小仓库体积
+- 配置 fetch-depth: 0 获取完整 Git 历史（sitemap 生成需要）
+- 环境版本与本地保持一致：Node 20 + pnpm 10
 
 ### File List
 
-<!-- 开发agent完成后填写：
-- ADDED: .github/workflows/deploy.yml
-- MODIFIED: README.md（添加部署说明）
-- VERIFIED: Actions 工作流运行成功
-- VERIFIED: gh-pages 分支创建成功
--->
+**新增文件：**
+- ADDED: `.github/workflows/deploy.yml` - GitHub Actions 自动部署工作流
+
+**修改文件：**
+- MODIFIED: `README.md` - 添加详细的自动部署文档
+- MODIFIED: `package.json` - 更新引擎要求（Node >= 20, pnpm >= 10）
+- MODIFIED: `docs/sprint-status.yaml` - 更新 Story 状态
+- MODIFIED: `docs/stories/2-1-configure-github-repo-and-actions.md` - 标记任务完成
+
+**新增文件（上下文）：**
+- ADDED: `docs/stories/2-1-configure-github-repo-and-actions.context.xml` - Story 上下文文件
+
+**验证通过：**
+- VERIFIED: GitHub Actions 工作流运行成功
+- VERIFIED: gh-pages 分支创建成功并包含构建产物
+- VERIFIED: 网站可通过 GitHub Pages URL 访问
+- VERIFIED: 首页、导航、样式均正常显示
+
+### Change Log
+
+- **2025-12-15**: Story 开发完成，所有任务已完成
+  - 创建 GitHub Actions 自动部署工作流
+  - 配置 GitHub Pages 设置
+  - 解决 pnpm 和 Node.js 版本兼容性问题
+  - 验证网站可访问：https://arksou-ltd.github.io/AINative/
+  - 状态更新：ready-for-dev → in-progress → review
 
