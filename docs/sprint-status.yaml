@@ -42,12 +42,12 @@ development_status:
   1-2-initialize-project-structure: done
   1-3-configure-dev-environment-and-preview: done
   1-4-create-responsive-layout-framework: done
-  1-5-configure-build-process: drafted
+  1-5-configure-build-process: done
   epic-1-retrospective: optional
 
   # Epic 2: 部署验证与Hello World
   epic-2: backlog
-  2-1-configure-github-repo-and-actions: backlog
+  2-1-configure-github-repo-and-actions: drafted
   2-2-create-hello-world-page: backlog
   2-3-verify-deployment-and-access: backlog
   2-4-document-deployment-process: backlog

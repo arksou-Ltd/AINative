@@ -50,6 +50,24 @@ pnpm run docs:build
 
 构建产物将生成在 `docs/.vuepress/dist` 目录。
 
+#### 本地预览（带 `/AINative/` 基础路径）
+
+```bash
+# 如首次预览，创建符号链接以匹配 base 路径
+cd docs/.vuepress/dist && ln -s . AINative
+
+# 启动本地静态服务器
+python3 -m http.server 3000
+```
+
+访问 `http://localhost:3000/AINative/` 验证页面、导航与资源加载。
+
+#### 常见故障排查
+
+- **rimraf 未找到**：执行 `pnpm install` 安装依赖后重试。
+- **pnpm 存储路径不一致**：运行 `pnpm config set store-dir /Users/apple/Develop/code/gitee/AINative/.pnpm-store/v10 --global` 再执行安装。
+- **资源 404**：确认已创建 `docs/.vuepress/dist/AINative` 符号链接，并通过 `/AINative/` 路径访问。
+
 ### 清理缓存
 
 ```bash

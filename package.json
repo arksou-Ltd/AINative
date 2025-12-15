@@ -26,11 +26,24 @@
     "docs:clean": "rimraf docs/.vuepress/dist docs/.vuepress/.cache docs/.vuepress/.temp"
   },
   "devDependencies": {
+    "@vuepress/helper": "2.0.0-rc.26",
     "@vuepress/bundler-vite": "2.0.0-rc.26",
     "@vuepress/theme-default": "2.0.0-rc.26",
+    "rimraf": "^6.1.2",
+    "vue": "^3.3.0",
     "vuepress": "2.0.0-rc.26",
-    "vuepress-plugin-md-enhance": "2.0.0-rc.99",
-    "vue": "^3.3.0"
+    "vuepress-plugin-md-enhance": "2.0.0-rc.99"
+  },
+  "pnpm": {
+    "overrides": {
+      "@vuepress/helper": "2.0.0-rc.26",
+      "@vuepress/plugin-back-to-top": "2.0.0-rc.26",
+      "@vuepress/plugin-copy-code": "2.0.0-rc.26",
+      "@vuepress/plugin-git": "2.0.0-rc.0",
+      "@vuepress/plugin-prismjs": "2.0.0-rc.0",
+      "@vuepress/highlighter-helper": "2.0.0-rc.0",
+      "@vuepress/plugin-seo": "link:./vendor/plugin-seo-stub",
+      "@vuepress/plugin-sitemap": "link:./vendor/plugin-sitemap-stub"
+    }
   }
 }
-

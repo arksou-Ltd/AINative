@@ -1,0 +1,327 @@
+<story-context id="bmad/bmm/workflows/4-implementation/story-context/template" v="1.0">
+  <metadata>
+    <epicId>1</epicId>
+    <storyId>1.5</storyId>
+    <title>配置构建流程</title>
+    <status>drafted</status>
+    <generatedAt>2025-12-15</generatedAt>
+    <generator>BMAD Story Context Workflow</generator>
+    <sourceStoryPath>docs/stories/1-5-configure-build-process.md</sourceStoryPath>
+  </metadata>
+
+  <story>
+    <asA>开发者</asA>
+    <iWant>配置生产环境构建流程</iWant>
+    <soThat>可以生成可部署的静态文件</soThat>
+    <tasks>
+      <task id="1" ac="2">
+        <description>配置构建输出路径</description>
+        <subtasks>
+          <subtask id="1.1">确认 `docs/.vuepress/config.ts` 中的 `dest` 配置（默认 `dist/`）</subtask>
+          <subtask id="1.2">验证输出目录路径正确（相对于 `docs/` 目录）</subtask>
+          <subtask id="1.3">确保 `.gitignore` 包含 `dist/` 目录</subtask>
+          <subtask id="1.4">清理旧的构建产物（如有）</subtask>
+        </subtasks>
+      </task>
+      <task id="2" ac="5">
+        <description>配置生产环境 base 路径</description>
+        <subtasks>
+          <subtask id="2.1">在 `config.ts` 中设置 `base: '/AINative/'`</subtask>
+          <subtask id="2.2">验证所有资源路径使用相对路径或带 base 前缀</subtask>
+          <subtask id="2.3">测试本地预览时 base 路径生效</subtask>
+          <subtask id="2.4">文档化 base 路径配置（为 GitHub Pages 准备）</subtask>
+        </subtasks>
+      </task>
+      <task id="3" ac="1,3">
+        <description>执行生产构建</description>
+        <subtasks>
+          <subtask id="3.1">运行 `pnpm run docs:build`</subtask>
+          <subtask id="3.2">验证构建过程无错误或警告</subtask>
+          <subtask id="3.3">检查构建时间（合理范围：&lt; 30秒）</subtask>
+          <subtask id="3.4">验证 `dist/` 目录生成完整</subtask>
+        </subtasks>
+      </task>
+      <task id="4" ac="3,4">
+        <description>验证构建产物完整性</description>
+        <subtasks>
+          <subtask id="4.1">检查 `dist/index.html` 存在且内容正确</subtask>
+          <subtask id="4.2">检查 `dist/assets/` 包含 CSS、JS、图片文件</subtask>
+          <subtask id="4.3">验证所有 Markdown 页面已转换为 HTML</subtask>
+          <subtask id="4.4">确认无服务端依赖（纯静态文件）</subtask>
+          <subtask id="4.5">检查资源路径包含 `/AINative/` 前缀</subtask>
+        </subtasks>
+      </task>
+      <task id="5" ac="5">
+        <description>本地验证部署预览</description>
+        <subtasks>
+          <subtask id="5.1">安装 `serve`：`npm install -g serve`（或使用 npx）</subtask>
+          <subtask id="5.2">启动本地服务器：`npx serve docs/.vuepress/dist`</subtask>
+          <subtask id="5.3">浏览器访问 `http://localhost:3000/AINative/`</subtask>
+          <subtask id="5.4">验证首页正确显示</subtask>
+          <subtask id="5.5">测试页面导航、样式、图片加载</subtask>
+          <subtask id="5.6">验证热重载已禁用（静态文件）</subtask>
+        </subtasks>
+      </task>
+      <task id="6" ac="4">
+        <description>构建产物优化检查</description>
+        <subtasks>
+          <subtask id="6.1">检查 CSS/JS 文件是否已压缩（minified）</subtask>
+          <subtask id="6.2">验证资源文件是否有 hash 指纹（缓存优化）</subtask>
+          <subtask id="6.3">检查图片资源是否正确复制到 `dist/`</subtask>
+          <subtask id="6.4">测试不同浏览器访问（Chrome、Firefox、Safari）</subtask>
+        </subtasks>
+      </task>
+      <task id="7" ac="1">
+        <description>文档化构建流程</description>
+        <subtasks>
+          <subtask id="7.1">更新项目 `README.md` 添加构建说明</subtask>
+          <subtask id="7.2">记录构建命令：`pnpm run docs:build`</subtask>
+          <subtask id="7.3">说明输出目录：`docs/.vuepress/dist/`</subtask>
+          <subtask id="7.4">提供本地预览命令：`npx serve docs/.vuepress/dist`</subtask>
+          <subtask id="7.5">添加故障排查指南（常见构建错误）</subtask>
+        </subtasks>
+      </task>
+    </tasks>
+  </story>
+
+  <acceptanceCriteria>
+    <criterion id="1">构建成功，无报错</criterion>
+    <criterion id="2">生成 `docs/.vuepress/dist/` 目录（或对应输出目录）</criterion>
+    <criterion id="3">`dist/` 包含 `index.html`（首页）、`assets/`（CSS/JS/图片）、所有页面的静态HTML文件</criterion>
+    <criterion id="4">构建产物是纯静态文件（无服务端依赖）</criterion>
+    <criterion id="5">验证产物可通过HTTP服务器访问（如 `npx serve dist`）</criterion>
+  </acceptanceCriteria>
+
+  <artifacts>
+    <docs>
+      <doc path="docs/architecture.md" sections="Decision Summary - Deployment, Deployment Architecture, Performance Considerations">
+        构建系统架构规格：
+        - 框架：VuePress 2.0.0-rc.26 + Vite bundler
+        - 构建工具：Vite（快速构建，ES modules优化）
+        - 输出目录：`docs/.vuepress/dist/`
+        - Base 路径：`/AINative/`（GitHub Pages部署需求）
+        - 构建产物：纯静态 HTML/CSS/JS，无服务端依赖
+        - 构建优化：Vite 自动压缩 CSS/JS，自动添加资源文件 hash 指纹，代码分割（按页面）
+        - 性能目标：首屏 &lt;2s（3G网络），Lighthouse >90分
+        - 部署管线：push main → Actions（pnpm install/build）→ gh-pages → Pages
+      </doc>
+      <doc path="docs/epics.md" sections="Epic 1 - Story 1.5">
+        验收标准原文：
+        - 构建成功，无报错
+        - 生成 `docs/.vuepress/dist/` 目录
+        - `dist/` 包含 `index.html`, `assets/`, 所有页面静态HTML
+        - 构建产物是纯静态文件（无服务端依赖）
+        - 验证产物可通过 HTTP 服务器访问（如 `npx serve dist`）
+        - Prerequisites: Story 1.4完成（响应式样式框架）
+        - Technical Notes: 配置 `base` 路径为 `/AINative/`（GitHub Pages），验证所有资源路径正确，压缩CSS/JS
+      </doc>
+      <doc path="docs/PRD.md" sections="FR-5.2: 构建系统, NFR-1: 性能">
+        构建系统要求：
+        - 技术选型：VuePress 2（推荐）/ Docusaurus / 自定义（Vite + Vue 3）
+        - 构建输出：纯静态文件（HTML/CSS/JS），无服务端依赖
+        - 内容管理：Markdown文件 + 静态图片资源
+        - 性能要求：首页加载 &lt; 2秒（纯静态，天然快速），PPT模式流畅切换，移动端响应式适配，图片优化（压缩，lazy load），SEO友好
+      </doc>
+      <doc path="docs/stories/1-4-create-responsive-layout-framework.md" sections="Completion Notes">
+        前序故事（Story 1.4）已完成的基础：
+        - `docs/.vuepress/styles/index.css` 创建完成（700+ 行）
+        - 40+ CSS 变量系统定义完成（主题配色、字体、断点、间距等）
+        - 5 层响应式断点实现（Mobile, Tablet, Tablet Landscape, Desktop, XL Desktop）
+        - 移动优先（Mobile First）设计原则落地
+        - 实用工具类提供（文本、颜色、间距、显示/隐藏）
+        - 开发服务器验证通过（337ms启动时间，Vite 7.1.12）
+        - 热重载功能正常（&lt;2s响应）
+        - 样式自动加载机制验证通过
+        
+        构建相关验证（本Story职责）：
+        - 生产构建未验证：需确认 `pnpm run docs:build` 成功
+        - 样式文件是否正确打包：需验证 `dist/assets/` 包含自定义样式
+        - 响应式布局是否在构建后生效：需通过 `serve` 预览验证
+        - CSS 变量是否正确注入：需在构建产物中检查
+      </doc>
+    </docs>
+    <code>
+      <existing>
+        <file path="docs/.vuepress/config.ts">
+          VuePress 配置文件（基础配置已完成）:
+          - base: '/AINative/'（需确认）
+          - lang: 'zh-CN'
+          - title: 'AINative'
+          - theme: defaultTheme({ navbar: [], sidebar: {} })
+          - bundler: viteBundler（Vite构建器）
+          - dest: 'docs/.vuepress/dist'（默认值，需确认）
+        </file>
+        <file path="package.json">
+          包含构建脚本:
+          - "docs:dev": "vuepress dev docs"
+          - "docs:build": "vuepress build docs"（本Story重点）
+          - devDependencies: vuepress@2.0.0-rc.26, vue@3.4.21
+        </file>
+        <file path="docs/.vuepress/styles/index.css">
+          响应式样式框架（Story 1.4创建，700+行）:
+          - 40+ CSS 变量定义
+          - 5 层响应式断点
+          - 移动优先设计
+          - 需验证构建后正确打包到 dist/assets/
+        </file>
+        <file path="docs/README.md">
+          首页Markdown文件（VuePress默认主题渲染）
+        </file>
+        <file path="docs/dev-setup.md">
+          开发环境文档（Story 1.3创建）
+        </file>
+        <file path=".gitignore">
+          Git忽略配置（需确认包含 `dist/` 目录）
+        </file>
+        <file path="README.md">
+          项目README（需添加构建说明）
+        </file>
+      </existing>
+      <toCreate>
+        <directory path="docs/.vuepress/dist/">
+          构建输出目录（本Story生成）:
+          - index.html（首页）
+          - 404.html（404页面）
+          - assets/（CSS/JS/图片，带hash指纹）
+          - 所有Markdown页面转换的HTML
+        </directory>
+      </toCreate>
+    </code>
+    <dependencies>
+      <runtime>
+        <dep name="vuepress" version="2.0.0-rc.26">VuePress 核心（已安装）</dep>
+        <dep name="vue" version="3.4.21">Vue 3 运行时（已安装）</dep>
+        <dep name="@vuepress/bundler-vite" version="2.0.0-rc.26">Vite 打包器（已安装）</dep>
+      </runtime>
+      <dev>
+        <dep name="serve" version="latest">本地预览HTTP服务器（通过 npx 使用）</dep>
+      </dev>
+      <system>
+        <requirement name="Node.js" version="18.17.0">已验证</requirement>
+        <requirement name="pnpm" version="8.15.0">已验证</requirement>
+      </system>
+    </dependencies>
+  </artifacts>
+
+  <constraints>
+    <constraint type="architecture">VuePress 2 + Vite bundler + TypeScript 技术栈</constraint>
+    <constraint type="architecture">构建命令：pnpm run docs:build（等效于 vuepress build docs）</constraint>
+    <constraint type="architecture">输出目录：docs/.vuepress/dist/（相对于 docs/ 目录）</constraint>
+    <constraint type="architecture">Base 路径：/AINative/（GitHub Pages部署需求）</constraint>
+    <constraint type="architecture">构建产物：纯静态 HTML/CSS/JS，无服务端依赖</constraint>
+    <constraint type="performance">构建时间 &lt; 30秒（首次构建）</constraint>
+    <constraint type="performance">增量构建 &lt; 10秒（Vite缓存机制）</constraint>
+    <constraint type="performance">首页加载 &lt; 2秒（3G网络）</constraint>
+    <constraint type="performance">Lighthouse Performance > 90分</constraint>
+    <constraint type="performance">资源压缩率 > 60%（gzip）</constraint>
+    <constraint type="deployment">所有资源路径必须包含 /AINative/ 前缀</constraint>
+    <constraint type="deployment">本地预览必须访问 http://localhost:3000/AINative/（带base前缀）</constraint>
+    <constraint type="build">Vite 自动压缩 CSS/JS（生产模式）</constraint>
+    <constraint type="build">自动添加资源文件 hash 指纹（app.{hash}.js）</constraint>
+    <constraint type="build">代码分割：按页面自动分割</constraint>
+    <constraint type="naming">.gitignore 必须包含 dist/ 目录</constraint>
+  </constraints>
+
+  <interfaces>
+    <files>
+      <config path="docs/.vuepress/config.ts">
+        VuePress 配置文件，关键配置项：
+        - base: '/AINative/'（必须设置）
+        - dest: 'docs/.vuepress/dist'（输出目录）
+        - bundler: viteBundler（Vite构建器配置）
+      </config>
+      <output path="docs/.vuepress/dist/">
+        构建产物目录，结构：
+        - index.html（首页）
+        - 404.html（404页面）
+        - assets/app.{hash}.js（应用主逻辑，带hash）
+        - assets/app.{hash}.css（应用样式，带hash）
+        - assets/chunk-{hash}.js（代码分割chunk）
+        - ai-native-intro/index.html, core-hook.html, ...
+        - case-studies/, transformation/, images/, slides/
+        所有Markdown文件转换为HTML，资源文件添加hash指纹，目录结构与源文件一致
+      </output>
+      <gitignore path=".gitignore">
+        必须包含 dist/ 目录，避免提交构建产物
+      </gitignore>
+      <readme path="README.md">
+        需添加构建说明：
+        - 构建命令：pnpm run docs:build
+        - 输出目录：docs/.vuepress/dist/
+        - 本地预览：npx serve docs/.vuepress/dist
+        - 访问地址：http://localhost:3000/AINative/
+      </readme>
+    </files>
+    <commands>
+      <build>
+        命令：pnpm run docs:build
+        等效于：npx vuepress build docs
+        功能：编译 Markdown → HTML，打包 CSS/JS/图片，输出到 dist/
+        预期时间：&lt; 30秒（首次），&lt; 10秒（增量）
+      </build>
+      <preview>
+        命令：npx serve docs/.vuepress/dist
+        功能：启动本地HTTP服务器，预览构建产物
+        访问地址：http://localhost:3000/AINative/（必须带 /AINative/ 前缀）
+        备选方案：cd docs/.vuepress/dist &amp;&amp; python3 -m http.server 3000
+      </preview>
+    </commands>
+  </interfaces>
+
+  <tests>
+    <standards>
+      本Story为构建流程配置，测试策略包括：
+      
+      1. 构建成功验证：
+         - 执行 pnpm run docs:build
+         - 验证构建过程无错误或警告
+         - 检查构建时间（&lt; 30秒）
+         - 确认 dist/ 目录生成
+         
+      2. 构建产物完整性检查：
+         - 检查 dist/index.html 存在且内容正确
+         - 检查 dist/assets/ 包含 CSS、JS、图片文件
+         - 验证所有 Markdown 页面已转换为 HTML
+         - 确认无服务端依赖（纯静态文件）
+         - 检查资源路径包含 /AINative/ 前缀
+         
+      3. 样式框架打包验证（Story 1.4衔接）：
+         - 在 dist/assets/ 中找到包含自定义样式的CSS文件
+         - 验证 CSS 变量定义被正确打包
+         - 确认响应式断点定义存在
+         
+      4. 本地预览测试：
+         - 启动 npx serve docs/.vuepress/dist
+         - 浏览器访问 http://localhost:3000/AINative/
+         - 验证首页正确显示
+         - 测试页面导航、样式、图片加载
+         - 验证控制台无 404 错误
+         - 确认响应式布局正常（Story 1.4样式生效）
+         
+      5. 构建产物优化检查：
+         - 检查 CSS/JS 文件是否已压缩（minified）
+         - 验证资源文件是否有 hash 指纹（app.abc123.js）
+         - 检查图片资源是否正确复制到 dist/
+         - 测试不同浏览器访问（Chrome、Firefox、Safari）
+         
+      6. 性能验证（符合 PRD NFR-1）：
+         - 首页加载时间 &lt; 2秒（3G网络模拟）
+         - Lighthouse Performance > 90分
+         - 资源压缩率 > 60%（gzip）
+    </standards>
+    <locations>
+      无需创建独立测试文件。验证结果记录在：
+      - Story Completion Notes（记录构建时间、产物大小、预览结果）
+      - README.md（构建说明和故障排查指南）
+    </locations>
+    <ideas>
+      <idea>使用 du -sh 命令记录 dist/ 目录大小，建立性能基线</idea>
+      <idea>记录首次构建与增量构建的时间对比，验证 Vite 缓存效果</idea>
+      <idea>检查 dist/assets/ 中的文件命名，确认 hash 指纹格式</idea>
+      <idea>使用 Chrome DevTools Network 面板验证资源加载顺序和大小</idea>
+      <idea>测试 base 路径配置：访问 http://localhost:3000/（无前缀）应显示 404</idea>
+      <idea>验证热重载已禁用：修改源文件，确认 dist/ 不自动更新（预期行为）</idea>
+      <idea>为 Epic 2（部署验证）准备：确认 dist/ 目录结构与 GitHub Pages 兼容</idea>
+    </ideas>
+  </tests>
+</story-context>

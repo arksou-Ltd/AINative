@@ -36,8 +36,14 @@ export default defineUserConfig({
     editLink: false,
 
     // 页面元信息
-    lastUpdated: true,
+    lastUpdated: false,
     contributors: false,
+
+    // 主题内置插件开关
+    themePlugins: {
+      git: false,
+      seo: false,
+    },
 
     // 提示文本
     tip: '提示',
