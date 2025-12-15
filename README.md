@@ -1,5 +1,6 @@
 # AINative
 
+![Deploy Status](https://github.com/arksou-ltd/AINative/workflows/Deploy%20to%20GitHub%20Pages/badge.svg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Node Version](https://img.shields.io/badge/node-%3E%3D20.0.0-brightgreen)](https://nodejs.org/)
 [![pnpm Version](https://img.shields.io/badge/pnpm-%3E%3D8.0.0-blue)](https://pnpm.io/)
@@ -117,37 +118,74 @@ AINative/
 
 ## 🚀 部署
 
-本项目配置为自动部署到 GitHub Pages，推送到 `main` 分支后将自动触发 GitHub Actions 构建和部署。
+本项目使用GitHub Pages自动部署。
 
-### 自动部署工作流
+### 自动部署
 
-**触发条件**：
-- 推送代码到 `main` 分支时自动触发
+- **触发条件**: 推送到`main`分支
+- **构建流程**: GitHub Actions自动执行以下步骤:
+  1. 检出代码
+  2. 设置Node.js 20环境
+  3. 安装依赖 (`pnpm install --frozen-lockfile`)
+  4. 构建站点 (`pnpm run docs:build`)
+  5. 部署到`gh-pages`分支
+- **访问地址**: https://arksou-ltd.github.io/AINative/
+- **生效时间**: 推送后5-10分钟(CDN缓存刷新)
 
-**构建环境**：
-- **操作系统**: Ubuntu Latest
-- **Node.js**: 20.x LTS
-- **包管理器**: pnpm 10.x
+### 本地构建测试
 
-**部署流程**：
-1. Checkout 代码（包含完整 Git 历史）
-2. 安装 Node.js 20.x
-3. 安装 pnpm 10.x
-4. 安装项目依赖（`pnpm install --frozen-lockfile`）
-5. 执行构建（`pnpm run docs:build`）
-6. 部署到 `gh-pages` 分支（使用 `peaceiris/actions-gh-pages@v3`）
+在推送前,建议本地测试构建:
 
-**部署配置**：
-- **Base 路径**: `/AINative/`
-- **目标分支**: `gh-pages`（由 GitHub Actions 自动创建和更新）
-- **构建产物**: `docs/.vuepress/dist`
-- **访问地址**: `https://<username>.github.io/AINative/`
+```bash
+# 构建站点
+pnpm run docs:build
 
-**查看部署状态**：
-访问仓库的 Actions 页面查看工作流运行状态和日志。
+# 预览构建结果
+npx serve docs/.vuepress/dist
+```
 
-**工作流配置文件**：
-`.github/workflows/deploy.yml`
+构建成功后访问: http://localhost:3000
+
+**注意**: 本地预览时URL路径为根路径,与生产环境的`/AINative/`路径不同。
+
+### 常见问题
+
+#### 1. Actions运行成功但网站显示404
+
+**原因**: GitHub Pages设置未启用或base路径配置错误
+
+**解决方案**:
+- 检查 Settings → Pages → Source 是否选择`gh-pages`分支
+- 确认`docs/.vuepress/config.ts`中`base: '/AINative/'`配置正确
+- 验证gh-pages分支存在且有内容
+
+#### 2. 页面显示但样式/图片404
+
+**原因**: 资源路径错误(缺少base前缀)
+
+**解决方案**:
+- 打开浏览器DevTools → Network面板,查看404资源路径
+- 确认资源路径包含`/AINative/`前缀
+- 检查构建产物`docs/.vuepress/dist/`是否包含资源文件
+
+#### 3. 修改后页面不更新
+
+**原因**: CDN缓存(最常见)
+
+**解决方案**:
+- 强制刷新: Ctrl+Shift+R (Windows) / Cmd+Shift+R (Mac)
+- 使用浏览器隐私模式访问
+- 等待5-10分钟CDN缓存过期
+- 验证gh-pages分支是否已更新
+
+#### 4. HTTPS证书错误
+
+**原因**: GitHub Pages HTTPS未自动启用
+
+**解决方案**:
+- 检查 Settings → Pages → Enforce HTTPS 是否已勾选
+- 等待证书生成(首次可能需要24小时)
+- 对于`<username>.github.io`域名,HTTPS应自动启用
 
 ## 📖 文档
 
