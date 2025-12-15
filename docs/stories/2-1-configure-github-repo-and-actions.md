@@ -62,10 +62,10 @@ Status: ready-for-dev
   - [x] 3.3 确认 Node/pnpm 版本与本地一致
   - [x] 3.4 确认 `package.json` 中的 `docs:build` 脚本存在
 
-- [ ] Task 4: 首次推送并触发工作流 (AC: #4, #5)
-  - [ ] 4.1 暂存所有文件：`git add .`
-  - [ ] 4.2 提交更改：`git commit -m "feat(deploy): configure GitHub Actions workflow"`
-  - [ ] 4.3 首次推送：`git push -u origin main`
+- [x] Task 4: 首次推送并触发工作流 (AC: #4, #5)
+  - [x] 4.1 暂存所有文件：`git add .`
+  - [x] 4.2 提交更改：`git commit -m "feat(deploy): configure GitHub Actions workflow"`
+  - [x] 4.3 首次推送：`git push -u origin main`
   - [ ] 4.4 访问GitHub仓库 Actions 页面
   - [ ] 4.5 验证工作流自动触发（显示黄色圆圈 ⚪ 表示运行中）
   - [ ] 4.6 等待工作流完成（绿色勾 ✅ 表示成功）
