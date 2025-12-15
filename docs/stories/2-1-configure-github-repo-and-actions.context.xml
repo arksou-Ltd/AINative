@@ -1,0 +1,543 @@
+<story-context id="bmad/bmm/workflows/4-implementation/story-context/template" v="1.0">
+  <metadata>
+    <epicId>2</epicId>
+    <storyId>2.1</storyId>
+    <title>配置GitHub仓库与Actions工作流</title>
+    <status>drafted</status>
+    <generatedAt>2025-12-15</generatedAt>
+    <generator>BMAD Story Context Workflow</generator>
+    <sourceStoryPath>docs/stories/2-1-configure-github-repo-and-actions.md</sourceStoryPath>
+  </metadata>
+
+  <story>
+    <asA>开发者</asA>
+    <iWant>创建GitHub仓库并配置自动部署工作流</iWant>
+    <soThat>代码推送后自动部署到GitHub Pages</soThat>
+    <tasks>
+      <task id="1" ac="1,2">
+        <description>创建GitHub仓库并关联本地仓库</description>
+        <subtasks>
+          <subtask id="1.1">在GitHub创建新仓库（名称：`AINative`，公开，无README/gitignore/license）</subtask>
+          <subtask id="1.2">记录仓库URL：`https://github.com/&lt;username&gt;/AINative.git`</subtask>
+          <subtask id="1.3">本地关联远程仓库：`git remote add origin &lt;repo-url&gt;`</subtask>
+          <subtask id="1.4">验证远程仓库连接：`git remote -v`</subtask>
+          <subtask id="1.5">确认当前分支为 `main`（或重命名：`git branch -M main`）</subtask>
+        </subtasks>
+      </task>
+      <task id="2" ac="3">
+        <description>配置GitHub Actions工作流文件</description>
+        <subtasks>
+          <subtask id="2.1">创建目录：`.github/workflows/`</subtask>
+          <subtask id="2.2">创建文件：`.github/workflows/deploy.yml`</subtask>
+          <subtask id="2.3">配置触发条件：监听 `main` 分支 push 事件</subtask>
+          <subtask id="2.4">配置构建环境：Ubuntu latest, Node.js 18.x, pnpm 8.x</subtask>
+          <subtask id="2.5">配置构建步骤：Checkout、安装Node/pnpm、安装依赖、构建</subtask>
+          <subtask id="2.6">配置部署步骤：使用 `peaceiris/actions-gh-pages@v3`</subtask>
+        </subtasks>
+      </task>
+      <task id="3" ac="3">
+        <description>验证工作流配置正确性</description>
+        <subtasks>
+          <subtask id="3.1">本地验证 YAML 语法</subtask>
+          <subtask id="3.2">确认所有路径正确（`docs/.vuepress/dist`）</subtask>
+          <subtask id="3.3">确认 Node/pnpm 版本与本地一致</subtask>
+          <subtask id="3.4">确认 `package.json` 中的 `docs:build` 脚本存在</subtask>
+        </subtasks>
+      </task>
+      <task id="4" ac="4,5">
+        <description>首次推送并触发工作流</description>
+        <subtasks>
+          <subtask id="4.1">暂存所有文件：`git add .`</subtask>
+          <subtask id="4.2">提交更改：`git commit -m "feat(deploy): configure GitHub Actions workflow"`</subtask>
+          <subtask id="4.3">首次推送：`git push -u origin main`</subtask>
+          <subtask id="4.4">访问GitHub仓库 Actions 页面</subtask>
+          <subtask id="4.5">验证工作流自动触发（显示黄色圆圈）</subtask>
+          <subtask id="4.6">等待工作流完成（绿色勾表示成功）</subtask>
+        </subtasks>
+      </task>
+      <task id="5" ac="5">
+        <description>验证构建成功与产物</description>
+        <subtasks>
+          <subtask id="5.1">在 Actions 页面查看工作流日志</subtask>
+          <subtask id="5.2">验证每个步骤都成功（无红色 ❌）</subtask>
+          <subtask id="5.3">确认构建步骤输出正常（`pnpm run docs:build` 成功）</subtask>
+          <subtask id="5.4">验证部署步骤成功（推送到 `gh-pages`）</subtask>
+          <subtask id="5.5">检查仓库是否存在 `gh-pages` 分支</subtask>
+          <subtask id="5.6">验证 `gh-pages` 分支包含 `index.html` 和 `assets/`</subtask>
+        </subtasks>
+      </task>
+      <task id="6">
+        <description>配置GitHub Pages设置（后续准备）</description>
+        <subtasks>
+          <subtask id="6.1">访问仓库 Settings → Pages</subtask>
+          <subtask id="6.2">记录 Pages 设置（Source: gh-pages 分支）</subtask>
+          <subtask id="6.3">记录目标 URL：`https://&lt;username&gt;.github.io/AINative/`</subtask>
+          <subtask id="6.4">说明：实际访问验证在 Story 2.3 进行</subtask>
+        </subtasks>
+      </task>
+      <task id="7" ac="5">
+        <description>文档化部署流程</description>
+        <subtasks>
+          <subtask id="7.1">更新项目 `README.md` 添加"自动部署"章节</subtask>
+          <subtask id="7.2">说明工作流触发条件（push main 分支）</subtask>
+          <subtask id="7.3">说明构建环境（Node 18 + pnpm 8）</subtask>
+          <subtask id="7.4">说明部署目标（gh-pages 分支）</subtask>
+          <subtask id="7.5">添加 Actions badge（可选）</subtask>
+        </subtasks>
+      </task>
+    </tasks>
+  </story>
+
+  <acceptance-criteria>
+    <criterion id="1">
+      <description>在GitHub创建公开仓库`AINative`</description>
+      <given>本地项目已完成基础配置（Epic 1 完成）</given>
+      <when>我创建GitHub仓库并配置GitHub Actions</when>
+      <then>仓库创建成功，公开可访问</then>
+    </criterion>
+    <criterion id="2">
+      <description>本地关联远程仓库：`git remote add origin &lt;repo-url&gt;`</description>
+      <given>GitHub仓库已创建</given>
+      <when>执行 git remote add 命令</when>
+      <then>本地仓库成功关联到远程仓库</then>
+    </criterion>
+    <criterion id="3">
+      <description>创建`.github/workflows/deploy.yml`（完整配置）</description>
+      <given>本地仓库已关联远程</given>
+      <when>创建并配置工作流文件</when>
+      <then>工作流文件包含：监听 main 分支 push、Node.js 18、pnpm、构建命令、部署到 gh-pages</then>
+    </criterion>
+    <criterion id="4">
+      <description>推送代码到GitHub：`git push -u origin main`</description>
+      <given>工作流文件已配置</given>
+      <when>执行首次推送</when>
+      <then>代码成功推送到 GitHub main 分支</then>
+    </criterion>
+    <criterion id="5">
+      <description>GitHub Actions自动触发构建（Actions页面显示工作流运行）</description>
+      <given>代码已推送到 main 分支</given>
+      <when>GitHub检测到push事件</when>
+      <then>工作流自动触发，构建成功，部署到 gh-pages 分支</then>
+    </criterion>
+  </acceptance-criteria>
+
+  <documentation-artifacts>
+    <artifact id="arch-1">
+      <path>docs/architecture.md</path>
+      <section>Deployment Architecture</section>
+      <relevance>
+        GitHub Actions 工作流配置标准模板：
+        - 触发条件：push main 分支
+        - 权限：contents: write
+        - 环境：ubuntu-latest, Node 18, pnpm 8
+        - 构建步骤：checkout → setup-node → setup-pnpm → install → build
+        - 部署步骤：peaceiris/actions-gh-pages@v3
+        - 关键配置：publish_dir: docs/.vuepress/dist, publish_branch: gh-pages, force_orphan: true
+      </relevance>
+    </artifact>
+    <artifact id="arch-2">
+      <path>docs/architecture.md</path>
+      <section>Decision Summary - Deployment</section>
+      <relevance>
+        部署决策详情：
+        - GitHub Pages base路径：/AINative/
+        - CI环境：Node 18.x, pnpm 8.x
+        - 构建命令：pnpm install --frozen-lockfile → pnpm run docs:build
+        - 部署目标：docs/.vuepress/dist → gh-pages 分支
+      </relevance>
+    </artifact>
+    <artifact id="epics-1">
+      <path>docs/epics.md</path>
+      <section>Epic 2, Story 2.1: 配置GitHub仓库与Actions工作流</section>
+      <relevance>
+        验收标准（5个）：
+        1. 在GitHub创建公开仓库`ainative`
+        2. 本地关联远程仓库
+        3. 创建 .github/workflows/deploy.yml（完整YAML配置）
+        4. 推送代码到GitHub
+        5. GitHub Actions自动触发构建
+        
+        技术说明：
+        - 确保 package-lock.json 已提交（npm ci 需要）
+        - 配置GitHub仓库的Pages设置：Source选择 gh-pages 分支
+      </relevance>
+    </artifact>
+    <artifact id="prd-1">
+      <path>docs/PRD.md</path>
+      <section>FR-5.1: GitHub Pages部署</section>
+      <relevance>
+        GitHub Pages部署功能需求：
+        - Git push触发构建
+        - GitHub Actions自动构建静态文件
+        - 发布到 https://&lt;username&gt;.github.io/&lt;repo&gt;/
+        - HTTPS默认支持
+        - 自定义域名支持（可选配置）
+        - 验收标准：每次推送后5分钟内网站自动更新
+      </relevance>
+    </artifact>
+    <artifact id="story-1-5">
+      <path>docs/stories/1-5-configure-build-process.md</path>
+      <section>Completion Notes</section>
+      <relevance>
+        前序故事（Story 1.5）完成的构建流程验证：
+        - ✅ `pnpm run docs:build` 成功（2.21s，无报错）
+        - ✅ 产物输出至 `docs/.vuepress/dist/`
+        - ✅ 产物结构：index.html, assets/, 各章节HTML, images/
+        - ✅ base 路径 `/AINative/` 已在构建产物中生效
+        - ✅ 本地预览验证通过（http://localhost:3000/AINative/）
+        - ✅ 依赖配置已修复：固定 @vuepress/helper 版本，SEO/Sitemap 插件占位
+        - ✅ pnpm-lock.yaml 已更新并提交
+        
+        GitHub Actions 集成要点：
+        本 Story 将相同构建流程迁移到 GitHub Actions
+        关键：使用相同的 Node/pnpm 版本、相同的构建命令、相同的输出目录
+      </relevance>
+    </artifact>
+  </documentation-artifacts>
+
+  <code-artifacts>
+    <existing-code>
+      <file>
+        <path>package.json</path>
+        <purpose>npm scripts 配置，包含构建命令</purpose>
+        <key-elements>
+          - scripts.docs:build: "vuepress build docs"
+          - scripts.docs:dev: "vuepress dev docs"
+          - scripts.docs:clean: "rimraf docs/.vuepress/dist"
+          - dependencies: vuepress, @vuepress/bundler-vite, @vuepress/theme-default
+          - devDependencies: typescript, rimraf
+          - packageManager: pnpm@8.x
+        </key-elements>
+      </file>
+      <file>
+        <path>pnpm-lock.yaml</path>
+        <purpose>精确的依赖版本锁定文件</purpose>
+        <key-elements>
+          - 必须提交到Git（GitHub Actions需要）
+          - 已修复所有依赖版本（Story 1.5完成）
+          - 固定 @vuepress/helper 版本
+          - 包含 SEO/Sitemap 插件占位覆盖
+        </key-elements>
+      </file>
+      <file>
+        <path>docs/.vuepress/config.ts</path>
+        <purpose>VuePress 配置文件</purpose>
+        <key-elements>
+          - base: '/AINative/' （GitHub Pages路径）
+          - bundler: viteBundler
+          - theme: defaultTheme
+          - 样式和插件配置
+        </key-elements>
+      </file>
+      <file>
+        <path>docs/.vuepress/styles/index.css</path>
+        <purpose>全局样式文件（Story 1.4创建）</purpose>
+        <key-elements>
+          - 700+行CSS变量和响应式样式
+          - 5层响应式断点
+          - 实用工具类
+        </key-elements>
+      </file>
+      <file>
+        <path>README.md</path>
+        <purpose>项目级说明文档</purpose>
+        <key-elements>
+          - 项目简介
+          - 本地开发指南
+          - 构建说明（需在本Story中补充"自动部署"章节）
+        </key-elements>
+      </file>
+      <file>
+        <path>.gitignore</path>
+        <purpose>Git忽略文件配置</purpose>
+        <key-elements>
+          - node_modules/
+          - dist/ （构建产物）
+          - .DS_Store
+          - *.log
+        </key-elements>
+      </file>
+    </existing-code>
+    <to-be-created>
+      <file>
+        <path>.github/workflows/deploy.yml</path>
+        <purpose>GitHub Actions 自动部署工作流</purpose>
+        <key-elements>
+          - name: Deploy to GitHub Pages
+          - on: push, branches: [main]
+          - permissions: contents: write
+          - jobs.deploy.runs-on: ubuntu-latest
+          - steps:
+            1. actions/checkout@v4 (fetch-depth: 0)
+            2. actions/setup-node@v4 (node-version: '18')
+            3. pnpm/action-setup@v4 (version: 8)
+            4. pnpm install --frozen-lockfile
+            5. pnpm run docs:build
+            6. peaceiris/actions-gh-pages@v3 (github_token, publish_dir: docs/.vuepress/dist, publish_branch: gh-pages, force_orphan: true)
+        </key-elements>
+      </file>
+    </to-be-created>
+  </code-artifacts>
+
+  <dependencies>
+    <runtime-dependencies>
+      <dependency>
+        <name>GitHub Actions</name>
+        <version>N/A (GitHub平台服务)</version>
+        <purpose>CI/CD自动部署平台</purpose>
+      </dependency>
+      <dependency>
+        <name>actions/checkout</name>
+        <version>v4</version>
+        <purpose>Checkout 代码</purpose>
+      </dependency>
+      <dependency>
+        <name>actions/setup-node</name>
+        <version>v4</version>
+        <purpose>安装 Node.js</purpose>
+      </dependency>
+      <dependency>
+        <name>pnpm/action-setup</name>
+        <version>v4</version>
+        <purpose>安装 pnpm</purpose>
+      </dependency>
+      <dependency>
+        <name>peaceiris/actions-gh-pages</name>
+        <version>v3</version>
+        <purpose>部署到 GitHub Pages</purpose>
+      </dependency>
+      <dependency>
+        <name>Node.js</name>
+        <version>18.x LTS</version>
+        <purpose>JavaScript运行时（CI环境）</purpose>
+      </dependency>
+      <dependency>
+        <name>pnpm</name>
+        <version>8.x</version>
+        <purpose>包管理器（CI环境）</purpose>
+      </dependency>
+    </runtime-dependencies>
+    <build-dependencies>
+      <dependency>
+        <name>VuePress</name>
+        <version>2.0.0-rc.26</version>
+        <purpose>静态站点生成器</purpose>
+        <note>构建命令：vuepress build docs</note>
+      </dependency>
+      <dependency>
+        <name>Vite</name>
+        <version>bundled with VuePress</version>
+        <purpose>构建工具</purpose>
+      </dependency>
+    </build-dependencies>
+  </dependencies>
+
+  <interfaces>
+    <external-services>
+      <service>
+        <name>GitHub</name>
+        <type>Git托管平台</type>
+        <purpose>代码仓库托管、Actions CI/CD、Pages静态站点托管</purpose>
+        <authentication>
+          - GITHUB_TOKEN（自动提供，无需配置）
+          - 权限：contents: write（允许推送到 gh-pages 分支）
+        </authentication>
+        <endpoints>
+          - 仓库：https://github.com/&lt;username&gt;/AINative
+          - Actions：https://github.com/&lt;username&gt;/AINative/actions
+          - Pages：https://&lt;username&gt;.github.io/AINative/
+        </endpoints>
+      </service>
+    </external-services>
+    <git-workflow>
+      <branches>
+        <branch>
+          <name>main</name>
+          <purpose>主分支，包含源代码（Markdown、config、样式等）</purpose>
+          <protection>触发 GitHub Actions 工作流</protection>
+        </branch>
+        <branch>
+          <name>gh-pages</name>
+          <purpose>部署分支，包含构建产物（HTML、CSS、JS、图片）</purpose>
+          <managed-by>GitHub Actions（自动创建和更新）</managed-by>
+          <note>不需要本地创建或手动推送</note>
+        </branch>
+      </branches>
+      <commit-conventions>
+        <format>feat(deploy): 简短描述</format>
+        <example>feat(deploy): configure GitHub Actions workflow</example>
+      </commit-conventions>
+    </git-workflow>
+  </interfaces>
+
+  <constraints>
+    <architectural>
+      <constraint id="1">
+        <description>工作流文件必须放在 .github/workflows/ 目录</description>
+        <rationale>GitHub Actions 约定路径</rationale>
+        <impact>文件路径错误会导致工作流不触发</impact>
+      </constraint>
+      <constraint id="2">
+        <description>Node.js 和 pnpm 版本必须与本地一致</description>
+        <rationale>确保构建环境一致性，避免版本差异导致的构建失败</rationale>
+        <versions>Node 18.x, pnpm 8.x</versions>
+      </constraint>
+      <constraint id="3">
+        <description>构建输出目录必须是 docs/.vuepress/dist</description>
+        <rationale>与本地构建一致（Story 1.5验证）</rationale>
+        <impact>路径错误会导致部署失败或 404</impact>
+      </constraint>
+      <constraint id="4">
+        <description>必须设置 permissions: contents: write</description>
+        <rationale>允许工作流推送到 gh-pages 分支</rationale>
+        <impact>缺少权限会导致部署步骤失败</impact>
+      </constraint>
+      <constraint id="5">
+        <description>pnpm-lock.yaml 必须提交到 Git</description>
+        <rationale>GitHub Actions 需要 lockfile 来精确安装依赖</rationale>
+        <impact>缺少 lockfile 会导致依赖安装失败或版本不一致</impact>
+      </constraint>
+    </architectural>
+    <performance>
+      <constraint id="1">
+        <description>工作流运行时间应 &lt; 5分钟</description>
+        <rationale>快速反馈，提高开发效率</rationale>
+        <optimization>使用 pnpm（比 npm 快），考虑添加缓存</optimization>
+      </constraint>
+      <constraint id="2">
+        <description>构建时间应 &lt; 30秒</description>
+        <rationale>与本地构建一致（Story 1.5验证为 2.21s）</rationale>
+      </constraint>
+    </performance>
+  </constraints>
+
+  <testing-guidance>
+    <unit-tests>
+      <note>静态网站项目，无需单元测试</note>
+    </unit-tests>
+    <integration-tests>
+      <test id="1">
+        <description>验证工作流配置正确性</description>
+        <steps>
+          1. 本地验证 YAML 语法（yamllint 或在线工具）
+          2. 确认所有路径正确（docs/.vuepress/dist）
+          3. 确认 Node/pnpm 版本与本地一致
+          4. 确认 package.json 中的 docs:build 脚本存在
+        </steps>
+        <expected>配置无误，路径和版本正确</expected>
+      </test>
+      <test id="2">
+        <description>验证首次推送触发工作流</description>
+        <steps>
+          1. 执行 git push -u origin main
+          2. 访问 GitHub Actions 页面
+          3. 观察工作流运行状态
+        </steps>
+        <expected>工作流自动触发，显示黄色圆圈（运行中）</expected>
+      </test>
+      <test id="3">
+        <description>验证构建成功</description>
+        <steps>
+          1. 等待工作流完成
+          2. 查看工作流日志
+          3. 确认每个步骤都成功（无红色 ❌）
+        </steps>
+        <expected>所有步骤成功，构建时间 &lt; 5分钟</expected>
+      </test>
+      <test id="4">
+        <description>验证部署成功</description>
+        <steps>
+          1. 检查仓库是否存在 gh-pages 分支
+          2. 切换到 gh-pages 分支查看内容
+          3. 确认包含 index.html 和 assets/
+        </steps>
+        <expected>gh-pages 分支存在，包含完整构建产物</expected>
+      </test>
+    </integration-tests>
+    <e2e-tests>
+      <test id="1">
+        <description>端到端部署验证（在 Story 2.3 进行）</description>
+        <steps>
+          1. 配置 GitHub Pages 设置
+          2. 等待 Pages 生效（5-10分钟）
+          3. 访问 https://&lt;username&gt;.github.io/AINative/
+        </steps>
+        <expected>网站可访问，首页正确显示</expected>
+        <note>本 Story 仅验证工作流运行成功和 gh-pages 分支创建，实际访问验证在 Story 2.3</note>
+      </test>
+    </e2e-tests>
+  </testing-guidance>
+
+  <related-stories>
+    <predecessor>
+      <storyId>1.5</storyId>
+      <storyKey>1-5-configure-build-process</storyKey>
+      <title>配置构建流程</title>
+      <status>done</status>
+      <relationship>
+        Story 1.5 验证了本地构建流程（pnpm run docs:build → docs/.vuepress/dist/）
+        本 Story 将相同构建流程集成到 GitHub Actions CI/CD
+        关键衔接点：
+        - 使用相同的 Node 18 和 pnpm 8 版本
+        - 使用相同的构建命令（pnpm run docs:build）
+        - 使用相同的输出目录（docs/.vuepress/dist）
+        - pnpm-lock.yaml 已修复并提交（Story 1.5完成）
+      </relationship>
+    </predecessor>
+    <successor>
+      <storyId>2.2</storyId>
+      <storyKey>2-2-create-hello-world-page</storyKey>
+      <title>创建Hello World验证页面</title>
+      <status>backlog</status>
+      <relationship>
+        本 Story 配置好自动部署后，Story 2.2 将创建简单的 Hello World 页面来验证部署流程端到端工作
+      </relationship>
+    </successor>
+    <successor>
+      <storyId>2.3</storyId>
+      <storyKey>2-3-verify-deployment-and-access</storyKey>
+      <title>验证部署流程与访问</title>
+      <status>backlog</status>
+      <relationship>
+        本 Story 完成 GitHub Actions 配置后，Story 2.3 将验证网站可通过 GitHub Pages URL 正常访问
+      </relationship>
+    </successor>
+  </related-stories>
+
+  <dev-notes>
+    <note priority="high">
+      关键决策：使用 peaceiris/actions-gh-pages@v3 而非 actions/deploy-pages
+      理由：
+      - peaceiris/actions-gh-pages 更成熟，社区广泛使用
+      - 支持 force_orphan: true（减小仓库体积）
+      - 配置简单，无需额外配置 GitHub Pages 设置
+    </note>
+    <note priority="high">
+      确保 pnpm-lock.yaml 已提交到 Git
+      原因：GitHub Actions 需要 lockfile 来精确安装依赖
+      验证：执行 git status 确认 pnpm-lock.yaml 已提交
+    </note>
+    <note priority="medium">
+      工作流触发条件：push main 分支
+      说明：
+      - 每次推送到 main 分支都会触发自动部署
+      - 避免频繁推送导致过多构建（建议本地验证后再推送）
+      - 可选优化：添加 paths 过滤，仅当 docs/ 目录变更时触发
+    </note>
+    <note priority="medium">
+      首次推送后验证清单：
+      1. GitHub Actions 页面显示工作流运行（黄色圆圈）
+      2. 等待工作流完成（绿色勾）
+      3. 检查工作流日志，确认每个步骤都成功
+      4. 验证 gh-pages 分支已创建
+      5. 验证 gh-pages 分支包含 index.html 和 assets/
+      6. 记录任何错误或警告，用于 Story 2.3 故障排查
+    </note>
+    <note priority="low">
+      可选优化（Post-MVP）：
+      - 添加缓存步骤（actions/cache@v4）加速依赖安装
+      - 添加构建状态 badge 到 README.md
+      - 配置部署通知（Slack/邮件）
+    </note>
+  </dev-notes>
+</story-context>

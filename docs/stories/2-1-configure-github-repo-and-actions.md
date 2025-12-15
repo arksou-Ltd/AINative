@@ -1,6 +1,6 @@
 # Story 2.1: 配置GitHub仓库与Actions工作流
 
-Status: drafted
+Status: ready-for-dev
 
 ## Story
 
@@ -29,38 +29,38 @@ Status: drafted
 
 ## Tasks / Subtasks
 
-- [ ] Task 1: 创建GitHub仓库并关联本地仓库 (AC: #1, #2)
-  - [ ] 1.1 在GitHub创建新仓库（名称：`AINative`，公开，无README/gitignore/license）
-  - [ ] 1.2 记录仓库URL：`https://github.com/<username>/AINative.git`
-  - [ ] 1.3 本地关联远程仓库：`git remote add origin <repo-url>`
-  - [ ] 1.4 验证远程仓库连接：`git remote -v`
-  - [ ] 1.5 确认当前分支为 `main`（或重命名：`git branch -M main`）
+- [x] Task 1: 创建GitHub仓库并关联本地仓库 (AC: #1, #2)
+  - [x] 1.1 在GitHub创建新仓库（名称：`AINative`，公开，无README/gitignore/license）
+  - [x] 1.2 记录仓库URL：`https://github.com/<username>/AINative.git`
+  - [x] 1.3 本地关联远程仓库：`git remote add origin <repo-url>`
+  - [x] 1.4 验证远程仓库连接：`git remote -v`
+  - [x] 1.5 确认当前分支为 `main`（或重命名：`git branch -M main`）
 
-- [ ] Task 2: 配置GitHub Actions工作流文件 (AC: #3)
-  - [ ] 2.1 创建目录：`.github/workflows/`
-  - [ ] 2.2 创建文件：`.github/workflows/deploy.yml`
-  - [ ] 2.3 配置触发条件：监听 `main` 分支 push 事件
-  - [ ] 2.4 配置构建环境：
+- [x] Task 2: 配置GitHub Actions工作流文件 (AC: #3)
+  - [x] 2.1 创建目录：`.github/workflows/`
+  - [x] 2.2 创建文件：`.github/workflows/deploy.yml`
+  - [x] 2.3 配置触发条件：监听 `main` 分支 push 事件
+  - [x] 2.4 配置构建环境：
     - Ubuntu latest
     - Node.js 18.x
     - pnpm 8.x（通过 `pnpm/action-setup@v4`）
-  - [ ] 2.5 配置构建步骤：
+  - [x] 2.5 配置构建步骤：
     - Checkout 代码（`actions/checkout@v4`）
     - 安装 Node.js（`actions/setup-node@v4`）
     - 安装 pnpm（`pnpm/action-setup@v4`）
     - 安装依赖（`pnpm install --frozen-lockfile`）
     - 执行构建（`pnpm run docs:build`）
-  - [ ] 2.6 配置部署步骤：
+  - [x] 2.6 配置部署步骤：
     - 使用 `peaceiris/actions-gh-pages@v3`
     - 部署目录：`docs/.vuepress/dist`
     - 目标分支：`gh-pages`
     - Token：`${{ secrets.GITHUB_TOKEN }}`
 
-- [ ] Task 3: 验证工作流配置正确性 (AC: #3)
-  - [ ] 3.1 本地验证 YAML 语法（使用 YAML linter 或在线工具）
-  - [ ] 3.2 确认所有路径正确（`docs/.vuepress/dist`）
-  - [ ] 3.3 确认 Node/pnpm 版本与本地一致
-  - [ ] 3.4 确认 `package.json` 中的 `docs:build` 脚本存在
+- [x] Task 3: 验证工作流配置正确性 (AC: #3)
+  - [x] 3.1 本地验证 YAML 语法（使用 YAML linter 或在线工具）
+  - [x] 3.2 确认所有路径正确（`docs/.vuepress/dist`）
+  - [x] 3.3 确认 Node/pnpm 版本与本地一致
+  - [x] 3.4 确认 `package.json` 中的 `docs:build` 脚本存在
 
 - [ ] Task 4: 首次推送并触发工作流 (AC: #4, #5)
   - [ ] 4.1 暂存所有文件：`git add .`
@@ -84,12 +84,12 @@ Status: drafted
   - [ ] 6.3 记录目标 URL：`https://<username>.github.io/AINative/`
   - [ ] 6.4 说明：实际访问验证在 Story 2.3 进行
 
-- [ ] Task 7: 文档化部署流程 (AC: #5)
-  - [ ] 7.1 更新项目 `README.md` 添加"自动部署"章节
-  - [ ] 7.2 说明工作流触发条件（push main 分支）
-  - [ ] 7.3 说明构建环境（Node 18 + pnpm 8）
-  - [ ] 7.4 说明部署目标（gh-pages 分支）
-  - [ ] 7.5 添加 Actions badge（可选）：`![Deploy](https://github.com/<username>/AINative/workflows/Deploy%20to%20GitHub%20Pages/badge.svg)`
+- [x] Task 7: 文档化部署流程 (AC: #5)
+  - [x] 7.1 更新项目 `README.md` 添加"自动部署"章节
+  - [x] 7.2 说明工作流触发条件（push main 分支）
+  - [x] 7.3 说明构建环境（Node 18 + pnpm 8）
+  - [x] 7.4 说明部署目标（gh-pages 分支）
+  - [x] 7.5 添加 Actions badge（可选）：`![Deploy](https://github.com/<username>/AINative/workflows/Deploy%20to%20GitHub%20Pages/badge.svg)`
 
 ## Dev Notes
 
@@ -317,7 +317,7 @@ AINative/
 
 ### Context Reference
 
-<!-- Path(s) to story context XML will be added here by context workflow -->
+- `docs/stories/2-1-configure-github-repo-and-actions.context.xml`
 
 ### Agent Model Used
 
