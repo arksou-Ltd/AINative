@@ -1,6 +1,6 @@
 # Story 3.2: 整理真实案例内容
 
-Status: ready-for-dev
+Status: in-progress
 
 ## Requirements & Context Summary
 
@@ -76,6 +76,8 @@ so that 读者能够基于可信证据理解AI Native的可行性并复制实践
 
 ### Debug Log References
 
+1. 2025-12-15T13:45:33Z: 准备进入开发，但案例数据/来源缺失（需真实数据支撑，AC 明确禁止臆造）；等待来源或确认是否接受占位骨架写作。
+
 ### Completion Notes List
 
 ### File List
@@ -83,3 +85,4 @@ so that 读者能够基于可信证据理解AI Native的可行性并复制实践
 ## Change Log
 
 - Drafted 3-2 故事骨架，补充要求/AC/任务/Dev Notes 与前序学习承接。
+- Marked in-progress pending真实案例数据/来源补充。
