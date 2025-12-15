@@ -39,7 +39,7 @@ development_status:
   # Epic 1: 项目基础设施与技术栈
   epic-1: backlog
   1-1-tech-stack-research-and-decision: done
-  1-2-initialize-project-structure: review
+  1-2-initialize-project-structure: done
   1-3-configure-dev-environment-and-preview: ready-for-dev
   1-4-create-responsive-layout-framework: backlog
   1-5-configure-build-process: backlog
@@ -92,4 +92,3 @@ development_status:
   6-6-write-documentation: backlog
   6-7-official-release: backlog
   epic-6-retrospective: optional
-
