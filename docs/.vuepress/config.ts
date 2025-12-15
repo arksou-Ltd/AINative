@@ -25,10 +25,24 @@ export default defineUserConfig({
         text: '首页',
         link: '/',
       },
+      {
+        text: 'AI Native 简述',
+        link: '/ai-native-intro/',
+      },
     ],
 
     // 侧边栏
-    sidebar: {},
+    sidebar: {
+      '/ai-native-intro/': [
+        { text: '导航', link: '/ai-native-intro/', children: [] },
+        { text: '核心 Hook', link: '/ai-native-intro/core-hook', children: [] },
+        { text: '第一性原理', link: '/ai-native-intro/first-principles', children: [] },
+        { text: '核心类比', link: '/ai-native-intro/core-analogy', children: [] },
+        { text: '60-80-100 模型', link: '/ai-native-intro/60-80-100-model', children: [] },
+        { text: 'Why Now', link: '/ai-native-intro/why-now', children: [] },
+      ],
+      '/': [],
+    },
 
     // 仓库配置
     repo: 'your-org/AINative',
@@ -54,4 +68,3 @@ export default defineUserConfig({
   // 构建配置
   bundler: viteBundler({}),
 })
-
