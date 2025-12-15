@@ -55,7 +55,7 @@ development_status:
 
   # Epic 3: 内容体系建设
   epic-3: backlog
-  3-1-write-ai-native-intro-content: review
+  3-1-write-ai-native-intro-content: done
   3-2-organize-real-case-studies: in-progress
   3-3-write-transformation-guide: backlog
   3-4-prepare-image-resources: backlog
