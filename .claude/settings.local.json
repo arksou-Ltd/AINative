@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls:*)",
+      "Bash(find:*)",
+      "Bash(mkdir:*)",
+      "WebFetch(domain:github.com)",
+      "SlashCommand(/bmad:bmm:workflows:research)",
+      "WebSearch",
+      "SlashCommand(/bmad:bmm:workflows:product-brief)",
+      "SlashCommand(/bmad:bmm:workflows:prd)"
+    ]
+  }
+}
