@@ -1,0 +1,268 @@
+<story-context id="bmad/bmm/workflows/4-implementation/story-context/template" v="1.0">
+  <metadata>
+    <epicId>1</epicId>
+    <storyId>1.2</storyId>
+    <title>初始化项目结构</title>
+    <status>drafted</status>
+    <generatedAt>2025-12-15</generatedAt>
+    <generator>BMAD Story Context Workflow</generator>
+    <sourceStoryPath>docs/stories/1-2-initialize-project-structure.md</sourceStoryPath>
+  </metadata>
+
+  <story>
+    <asA>开发者</asA>
+    <iWant>初始化项目的基础结构和依赖</iWant>
+    <soThat>可以开始本地开发</soThat>
+    <tasks>
+      <task id="1" ac="1">
+        <description>安装VuePress 2和核心依赖</description>
+        <subtasks>
+          <subtask id="1.1">创建package.json并配置项目基本信息</subtask>
+          <subtask id="1.2">安装VuePress 2.0.0-rc.26和Vite依赖</subtask>
+          <subtask id="1.3">安装vuepress-plugin-md-enhance 2.0.0-rc.99（PPT支持）</subtask>
+          <subtask id="1.4">配置package.json scripts（dev, build）</subtask>
+          <subtask id="1.5">使用pnpm生成lockfile</subtask>
+        </subtasks>
+      </task>
+      <task id="2" ac="2">
+        <description>创建基础目录结构</description>
+        <subtasks>
+          <subtask id="2.1">创建docs/目录</subtask>
+          <subtask id="2.2">创建docs/.vuepress/配置目录</subtask>
+          <subtask id="2.3">创建docs/.vuepress/config.ts配置文件</subtask>
+          <subtask id="2.4">创建docs/.vuepress/public/公共资源目录</subtask>
+          <subtask id="2.5">创建docs/.vuepress/public/images/图片目录</subtask>
+          <subtask id="2.6">创建docs/.vuepress/styles/样式目录</subtask>
+          <subtask id="2.7">创建docs/README.md首页文件</subtask>
+        </subtasks>
+      </task>
+      <task id="3" ac="3">
+        <description>配置.gitignore</description>
+        <subtasks>
+          <subtask id="3.1">创建.gitignore文件</subtask>
+          <subtask id="3.2">忽略node_modules/</subtask>
+          <subtask id="3.3">忽略docs/.vuepress/dist/构建产物</subtask>
+          <subtask id="3.4">忽略.DS_Store（macOS）</subtask>
+          <subtask id="3.5">忽略*.log日志文件</subtask>
+          <subtask id="3.6">忽略.cache/和temp/临时文件</subtask>
+        </subtasks>
+      </task>
+      <task id="4" ac="4">
+        <description>安装依赖并验证</description>
+        <subtasks>
+          <subtask id="4.1">执行pnpm install --frozen-lockfile</subtask>
+          <subtask id="4.2">验证所有依赖安装成功</subtask>
+          <subtask id="4.3">检查lockfile生成</subtask>
+          <subtask id="4.4">验证Node版本（18.x LTS）</subtask>
+          <subtask id="4.5">确认无安装错误或警告</subtask>
+        </subtasks>
+      </task>
+      <task id="5" ac="5">
+        <description>验证Git配置</description>
+        <subtasks>
+          <subtask id="5.1">确认项目已在Git仓库中</subtask>
+          <subtask id="5.2">验证.git/目录存在</subtask>
+          <subtask id="5.3">添加初始文件到staging</subtask>
+          <subtask id="5.4">执行首次commit: feat(backend:framework-kernel): initialize VuePress project structure</subtask>
+          <subtask id="5.5">验证commit历史</subtask>
+        </subtasks>
+      </task>
+    </tasks>
+  </story>
+
+  <acceptanceCriteria>
+    <criterion id="1">
+      <description>package.json（包含必要依赖）</description>
+      <source>docs/epics.md - Story 1.2</source>
+      <details>必须包含VuePress 2.0.0-rc.26, vuepress-plugin-md-enhance 2.0.0-rc.99, vue ^3.3.0, @vuepress/bundler-vite 2.0.0-rc.26</details>
+    </criterion>
+    <criterion id="2">
+      <description>基础目录结构（docs/, docs/.vuepress/, docs/.vuepress/config.ts, docs/.vuepress/public/, docs/README.md, .gitignore, package.json, README.md）</description>
+      <source>docs/epics.md - Story 1.2</source>
+      <details>按照architecture.md中定义的项目结构创建最小必要骨架</details>
+    </criterion>
+    <criterion id="3">
+      <description>.gitignore正确配置（忽略node_modules, dist, .DS_Store等）</description>
+      <source>docs/epics.md - Story 1.2</source>
+      <details>忽略node_modules/, docs/.vuepress/dist/, docs/.vuepress/.cache/, docs/.vuepress/.temp/, .DS_Store, *.log, IDE文件</details>
+    </criterion>
+    <criterion id="4">
+      <description>pnpm install成功安装所有依赖</description>
+      <source>docs/epics.md - Story 1.2</source>
+      <details>使用pnpm 8.x, Node 18.x LTS, 生成pnpm-lock.yaml, 无错误无警告</details>
+    </criterion>
+    <criterion id="5">
+      <description>Git仓库已初始化（项目已在git管理中）</description>
+      <source>docs/epics.md - Story 1.2</source>
+      <details>.git/目录存在, 执行首次commit, commit message遵循规范: feat(backend:framework-kernel): ...</details>
+    </criterion>
+  </acceptanceCriteria>
+
+  <artifacts>
+    <docs>
+      <doc>
+        <path>docs/architecture.md</path>
+        <title>Architecture</title>
+        <section>Project Structure</section>
+        <snippet>定义了完整的目标目录结构，包括docs/, docs/.vuepress/config.ts, docs/.vuepress/styles/, docs/.vuepress/public/images/, slides/, 以及package.json, pnpm-lock.yaml, .gitignore。初始化阶段创建最小必要结构。</snippet>
+      </doc>
+      <doc>
+        <path>docs/architecture.md</path>
+        <title>Architecture</title>
+        <section>Project Initialization</section>
+        <snippet>执行顺序：pnpm install --frozen-lockfile, pnpm run docs:dev预览, pnpm run docs:build构建。初始化可使用pnpm create vuepress@latest或手动创建。包管理器pnpm，Node 18 LTS。</snippet>
+      </doc>
+      <doc>
+        <path>docs/architecture.md</path>
+        <title>Architecture</title>
+        <section>Technology Stack Details - Core Technologies</section>
+        <snippet>VuePress 2.0.0-rc.26（Vue 3, Vite bundler, TS开启），vuepress-plugin-md-enhance 2.0.0-rc.99（presentation/reveal），Prism高亮，ESLint + Prettier（建议），GitHub Actions + Pages部署。</snippet>
+      </doc>
+      <doc>
+        <path>docs/architecture.md</path>
+        <title>Architecture</title>
+        <section>Technology Stack Details - SEO/Meta Example</section>
+        <snippet>config.ts示例配置：base: '/AINative/', head meta标签（description, og:title, og:description, og:image, robots），plugins: sitemap, md-enhance（presentation: true）。</snippet>
+      </doc>
+      <doc>
+        <path>docs/architecture.md</path>
+        <title>Architecture</title>
+        <section>Consistency Rules - Naming Conventions</section>
+        <snippet>目录/文件：kebab-case（ai-native-intro），图片：kebab-case（core-hook.png），组件：PascalCase，日期：ISO 8601（UTC）。用户可见错误：中文简洁说明+行动指引。</snippet>
+      </doc>
+      <doc>
+        <path>docs/epics.md</path>
+        <title>AINative - Epic与Story分解</title>
+        <section>Epic 1, Story 1.2: 初始化项目结构</section>
+        <snippet>作为开发者初始化项目结构。验收标准：package.json，目录结构（docs/, .vuepress/, config.js, public/, README.md），.gitignore配置，npm install成功，git init。前置条件：Story 1.1技术选型完成。</snippet>
+      </doc>
+      <doc>
+        <path>docs/PRD.md</path>
+        <title>AINative - Product Requirements Document</title>
+        <section>FR-5.2: 构建系统</section>
+        <snippet>技术选型：VuePress/Docusaurus/自定义（Vite + Vue 3）。构建输出：纯静态文件（HTML/CSS/JS），无服务端依赖。验收标准：构建成功，所有页面可访问，资源加载正常。</snippet>
+      </doc>
+      <doc>
+        <path>docs/stories/1-1-tech-stack-research-and-decision.md</path>
+        <title>Story 1.1: 技术选型调研与决策</title>
+        <section>Completion Notes List</section>
+        <snippet>技术方案决策：VuePress 2 + Vite + TypeScript。核心理由：reveal.js原生支持、开发效率高、技术栈匹配。关键交付物：docs/tech-stack-decision.md（约900行）。后续实施建议：Story 1.2初始化VuePress项目结构。</snippet>
+      </doc>
+    </docs>
+    <code>
+      <!-- 项目尚未初始化，无现有代码 -->
+    </code>
+    <dependencies>
+      <!-- 待创建的依赖（来自Story要求和架构文档） -->
+      <expected>
+        <node>
+          <vuepress>2.0.0-rc.26</vuepress>
+          <vuepress-plugin-md-enhance>2.0.0-rc.99</vuepress-plugin-md-enhance>
+          <vue>^3.3.0</vue>
+          <vuepress-bundler-vite>2.0.0-rc.26</vuepress-bundler-vite>
+        </node>
+      </expected>
+    </dependencies>
+  </artifacts>
+
+  <constraints>
+    <constraint type="architecture">
+      <description>必须使用VuePress 2 + Vite + TypeScript技术栈（Story 1.1已确定）</description>
+      <source>docs/architecture.md, docs/stories/1-1-tech-stack-research-and-decision.md</source>
+    </constraint>
+    <constraint type="versions">
+      <description>严格使用指定版本：VuePress 2.0.0-rc.26, vuepress-plugin-md-enhance 2.0.0-rc.99, Node 18.x LTS, pnpm 8.x</description>
+      <source>docs/architecture.md - Technology Stack Details</source>
+    </constraint>
+    <constraint type="structure">
+      <description>项目结构：docs/为内容根目录，docs/.vuepress/为配置目录，docs/.vuepress/public/为公共资源</description>
+      <source>docs/architecture.md - Project Structure</source>
+    </constraint>
+    <constraint type="naming">
+      <description>文件/目录/图片统一使用kebab-case命名（如ai-native-intro, core-hook.png）</description>
+      <source>docs/architecture.md - Consistency Rules</source>
+    </constraint>
+    <constraint type="config">
+      <description>config.ts必须配置：base: '/AINative/', lang: 'zh-CN', title/description</description>
+      <source>docs/architecture.md - SEO/Meta Example</source>
+    </constraint>
+    <constraint type="package-manager">
+      <description>必须使用pnpm作为包管理器，生成pnpm-lock.yaml而非package-lock.json</description>
+      <source>docs/architecture.md - Project Initialization</source>
+    </constraint>
+    <constraint type="git-commit">
+      <description>首次commit格式：feat(backend:framework-kernel): initialize VuePress project structure</description>
+      <source>docs/epics.md - Story 1.2 Technical Notes</source>
+    </constraint>
+    <constraint type="minimal-structure">
+      <description>本Story只创建最小必要结构（骨架），内容目录（ai-native-intro等）在后续Story中创建</description>
+      <source>docs/stories/1-2-initialize-project-structure.md - Project Structure Notes</source>
+    </constraint>
+  </constraints>
+
+  <interfaces>
+    <interface>
+      <name>package.json</name>
+      <kind>NPM Configuration</kind>
+      <signature>包含name, version, description, type: "module", scripts: {docs:dev, docs:build}, devDependencies</signature>
+      <path>package.json</path>
+      <note>需要创建，包含VuePress 2及相关依赖的完整配置</note>
+    </interface>
+    <interface>
+      <name>docs/.vuepress/config.ts</name>
+      <kind>VuePress Configuration</kind>
+      <signature>export default defineUserConfig({base, lang, title, description, head, theme: defaultTheme({navbar, sidebar})})</signature>
+      <path>docs/.vuepress/config.ts</path>
+      <note>需要创建，初始化基本配置，插件和主题在后续Story中完善</note>
+    </interface>
+    <interface>
+      <name>.gitignore</name>
+      <kind>Git Configuration</kind>
+      <signature>忽略node_modules/, docs/.vuepress/dist/, .cache/, .temp/, .DS_Store, *.log, IDE文件</signature>
+      <path>.gitignore</path>
+      <note>需要创建，确保构建产物和依赖不被追踪</note>
+    </interface>
+    <interface>
+      <name>pnpm-lock.yaml</name>
+      <kind>Lock File</kind>
+      <signature>pnpm自动生成的依赖锁定文件</signature>
+      <path>pnpm-lock.yaml</path>
+      <note>执行pnpm install后自动生成</note>
+    </interface>
+  </interfaces>
+
+  <tests>
+    <standards>
+      <para>项目初始化阶段的验证标准：</para>
+      <para>1. 结构验证：检查所有必需目录和文件是否创建，验证目录权限正确</para>
+      <para>2. 依赖验证：执行pnpm install无错误，检查node_modules/包含vuepress相关包，验证lockfile生成</para>
+      <para>3. 配置验证：config.ts语法正确（TypeScript编译通过），.gitignore规则生效（node_modules不被追踪）</para>
+      <para>4. Git验证：首次commit成功，.git/目录存在，无未追踪的重要文件</para>
+      <para>5. 无需自动化测试，使用手动验证和命令行检查</para>
+    </standards>
+    <locations>
+      <!-- 项目初始化阶段无正式测试代码 -->
+      <location>手动验证：文件结构检查、pnpm install执行、git status检查</location>
+    </locations>
+    <ideas>
+      <idea ac="1">
+        <description>验证package.json内容正确：检查所有必需依赖版本、scripts配置、type: "module"</description>
+      </idea>
+      <idea ac="2">
+        <description>验证目录结构：使用tree命令或手动检查所有目录是否创建，特别是docs/.vuepress/config.ts, public/, styles/</description>
+      </idea>
+      <idea ac="3">
+        <description>验证.gitignore生效：执行git status确认node_modules/和dist/不在未追踪文件中</description>
+      </idea>
+      <idea ac="4">
+        <description>验证依赖安装：执行pnpm install，检查node_modules/vuepress目录存在，pnpm-lock.yaml生成，无错误输出</description>
+      </idea>
+      <idea ac="5">
+        <description>验证Git配置：执行git log查看首次commit，确认commit message格式正确，.git/目录存在</description>
+      </idea>
+      <idea ac="all">
+        <description>综合验证：尝试执行pnpm run docs:dev（虽然可能失败因为缺少内容，但不应有配置错误）</description>
+      </idea>
+    </ideas>
+  </tests>
+</story-context>

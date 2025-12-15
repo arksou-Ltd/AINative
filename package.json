@@ -1,0 +1,35 @@
+{
+  "name": "ainative",
+  "version": "0.1.0",
+  "description": "AI Native知识分享平台 - 双模式静态文档网站",
+  "type": "module",
+  "keywords": [
+    "ai-native",
+    "documentation",
+    "vuepress",
+    "knowledge-sharing"
+  ],
+  "author": "AINative Team",
+  "license": "MIT",
+  "homepage": "https://github.com/your-org/AINative",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/AINative.git"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  },
+  "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs",
+    "docs:clean": "rimraf docs/.vuepress/dist docs/.vuepress/.cache docs/.vuepress/.temp"
+  },
+  "devDependencies": {
+    "@vuepress/bundler-vite": "2.0.0-rc.26",
+    "vuepress": "2.0.0-rc.26",
+    "vuepress-plugin-md-enhance": "2.0.0-rc.99",
+    "vue": "^3.3.0"
+  }
+}
+
