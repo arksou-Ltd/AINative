@@ -1,0 +1,95 @@
+# generated: 2025-12-15
+# project: AINative
+# project_key: AINative
+# tracking_system: file-system
+# story_location: {project-root}/docs/stories
+
+# STATUS DEFINITIONS:
+# ==================
+# Epic Status:
+#   - backlog: Epic exists in epic file but not contexted
+#   - contexted: Epic tech context created (required before drafting stories)
+#
+# Story Status:
+#   - backlog: Story only exists in epic file
+#   - drafted: Story file created in stories folder
+#   - ready-for-dev: Draft approved and story context created
+#   - in-progress: Developer actively working on implementation
+#   - review: Under SM review (via code-review workflow)
+#   - done: Story completed
+#
+# Retrospective Status:
+#   - optional: Can be completed but not required
+#   - completed: Retrospective has been done
+#
+# WORKFLOW NOTES:
+# ===============
+# - Epics should be 'contexted' before stories can be 'drafted'
+# - Stories can be worked in parallel if team capacity allows
+# - SM typically drafts next story after previous one is 'done' to incorporate learnings
+# - Dev moves story to 'review', SM reviews, then Dev moves to 'done'
+
+generated: 2025-12-15
+project: AINative
+project_key: AINative
+tracking_system: file-system
+story_location: "{project-root}/docs/stories"
+
+development_status:
+  # Epic 1: 项目基础设施与技术栈
+  epic-1: backlog
+  1-1-tech-stack-research-and-decision: backlog
+  1-2-initialize-project-structure: backlog
+  1-3-configure-dev-environment-and-preview: backlog
+  1-4-create-responsive-layout-framework: backlog
+  1-5-configure-build-process: backlog
+  epic-1-retrospective: optional
+
+  # Epic 2: 部署验证与Hello World
+  epic-2: backlog
+  2-1-configure-github-repo-and-actions: backlog
+  2-2-create-hello-world-page: backlog
+  2-3-verify-deployment-and-access: backlog
+  2-4-document-deployment-process: backlog
+  epic-2-retrospective: optional
+
+  # Epic 3: 内容体系建设
+  epic-3: backlog
+  3-1-write-ai-native-intro-content: backlog
+  3-2-organize-real-case-studies: backlog
+  3-3-write-transformation-guide: backlog
+  3-4-prepare-image-resources: backlog
+  3-5-organize-markdown-structure-and-navigation: backlog
+  epic-3-retrospective: optional
+
+  # Epic 4: PPT演示模式
+  epic-4: backlog
+  4-1-integrate-revealjs-framework: backlog
+  4-2-write-ppt-intro-content: backlog
+  4-3-write-ppt-case-studies: backlog
+  4-4-write-ppt-transformation: backlog
+  4-5-implement-navigation-controls: backlog
+  4-6-style-customization-and-responsive: backlog
+  epic-4-retrospective: optional
+
+  # Epic 5: Document文档模式
+  epic-5: backlog
+  5-1-implement-sidebar-navigation: backlog
+  5-2-configure-markdown-renderer: backlog
+  5-3-implement-navigation-interaction: backlog
+  5-4-integrate-content: backlog
+  5-5-implement-mobile-responsive: backlog
+  5-6-implement-mode-switching: backlog
+  epic-5-retrospective: optional
+
+  # Epic 6: 页面完善与发布
+  epic-6: backlog
+  6-1-implement-homepage: backlog
+  6-2-implement-contact-page: backlog
+  6-3-seo-optimization: backlog
+  6-4-performance-optimization: backlog
+  6-5-accessibility-testing-and-fixes: backlog
+  6-6-write-documentation: backlog
+  6-7-official-release: backlog
+  epic-6-retrospective: optional
+
