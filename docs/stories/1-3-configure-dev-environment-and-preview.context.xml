@@ -1,0 +1,272 @@
+<story-context id="bmad/bmm/workflows/4-implementation/story-context/template" v="1.0">
+  <metadata>
+    <epicId>1</epicId>
+    <storyId>1.3</storyId>
+    <title>配置开发环境与本地预览</title>
+    <status>drafted</status>
+    <generatedAt>2025-12-15</generatedAt>
+    <generator>BMAD Story Context Workflow</generator>
+    <sourceStoryPath>docs/stories/1-3-configure-dev-environment-and-preview.md</sourceStoryPath>
+  </metadata>
+
+  <story>
+    <asA>开发者</asA>
+    <iWant>配置本地开发服务器并验证实时预览功能</iWant>
+    <soThat>可以高效地进行开发和调试</soThat>
+    <tasks>
+      <task id="1" ac="1,4">
+        <description>验证 VuePress 开发服务器启动</description>
+        <subtasks>
+          <subtask id="1.1">执行 `pnpm run docs:dev` 命令</subtask>
+          <subtask id="1.2">验证服务器在 `localhost:8080` 启动</subtask>
+          <subtask id="1.3">检查终端输出无错误</subtask>
+          <subtask id="1.4">验证 Vite 开发服务器正常运行</subtask>
+          <subtask id="1.5">确认端口占用检测机制（端口冲突时自动切换）</subtask>
+        </subtasks>
+      </task>
+      <task id="2" ac="2,4">
+        <description>验证浏览器自动打开与页面渲染</description>
+        <subtasks>
+          <subtask id="2.1">确认浏览器自动打开（若未自动打开则手动访问）</subtask>
+          <subtask id="2.2">验证首页 `README.md` 正确渲染</subtask>
+          <subtask id="2.3">检查页面标题显示为 "AINative"</subtask>
+          <subtask id="2.4">验证 VuePress 默认主题正确加载</subtask>
+          <subtask id="2.5">检查浏览器控制台无 JavaScript 错误</subtask>
+        </subtasks>
+      </task>
+      <task id="3" ac="3">
+        <description>验证热重载功能</description>
+        <subtasks>
+          <subtask id="3.1">修改 `docs/README.md` 内容（添加测试文本）</subtask>
+          <subtask id="3.2">保存文件并验证页面自动刷新</subtask>
+          <subtask id="3.3">验证修改内容立即显示（&lt;2s 延迟）</subtask>
+          <subtask id="3.4">修改 `config.ts` 配置并验证服务器自动重启</subtask>
+          <subtask id="3.5">验证 CSS 热更新（修改样式文件）</subtask>
+        </subtasks>
+      </task>
+      <task id="4" ac="4">
+        <description>验证开发服务器配置</description>
+        <subtasks>
+          <subtask id="4.1">检查 `config.ts` 的 `base: '/AINative/'` 配置</subtask>
+          <subtask id="4.2">验证本地开发忽略 base 路径（直接 `/` 访问）</subtask>
+          <subtask id="4.3">测试响应式布局在不同视口（Mobile/Tablet/Desktop）</subtask>
+          <subtask id="4.4">验证 TypeScript 类型检查工作（config.ts）</subtask>
+          <subtask id="4.5">确认开发模式下 source map 生成</subtask>
+        </subtasks>
+      </task>
+      <task id="5" ac="5">
+        <description>创建开发环境文档</description>
+        <subtasks>
+          <subtask id="5.1">创建 `docs/dev-setup.md` 文档</subtask>
+          <subtask id="5.2">记录环境要求（Node 18.x, pnpm 8.x）</subtask>
+          <subtask id="5.3">记录启动命令和常见问题排查</subtask>
+          <subtask id="5.4">记录开发服务器配置说明</subtask>
+          <subtask id="5.5">添加常见错误处理指南（端口占用、依赖冲突等）</subtask>
+        </subtasks>
+      </task>
+      <task id="6" ac="4">
+        <description>性能与资源验证</description>
+        <subtasks>
+          <subtask id="6.1">检查开发服务器启动时间（&lt;10s）</subtask>
+          <subtask id="6.2">验证热重载响应时间（&lt;2s）</subtask>
+          <subtask id="6.3">监控开发服务器内存占用（&lt;500MB）</subtask>
+          <subtask id="6.4">验证文件监听范围正确（仅 docs/ 目录）</subtask>
+          <subtask id="6.5">确认 `.vuepress/.cache/` 和 `.temp/` 自动生成</subtask>
+        </subtasks>
+      </task>
+    </tasks>
+  </story>
+
+  <acceptanceCriteria>
+    <criterion id="1">本地开发服务器启动成功（默认 `http://localhost:8080`）</criterion>
+    <criterion id="2">浏览器自动打开并显示默认页面</criterion>
+    <criterion id="3">热重载（Hot Reload）工作正常（修改文件自动刷新）</criterion>
+    <criterion id="4">控制台无报错或警告</criterion>
+    <criterion id="5">开发环境配置文档化（`docs/dev-setup.md`）</criterion>
+  </acceptanceCriteria>
+
+  <artifacts>
+    <docs>
+      <doc path="docs/architecture.md" sections="Project Initialization (本地开发预览), Decision Summary (Framework/Build), Project Structure">
+        VuePress 2 + Vite 开发服务器配置：
+        - 启动命令: `pnpm run docs:dev`（别名 `vuepress dev docs`）
+        - 默认端口: 8080
+        - Vite 特性: 快速热重载（HMR）、按需编译、原生 ESM、自动 Source Map
+        - 开发环境要求: Node 18.x LTS, pnpm 8.x
+        - config.ts 配置: base='/AINative/', lang='zh-CN', title='AINative'
+        - 开发模式路径为 '/' （忽略 base），生产模式为 '/AINative/'
+      </doc>
+      <doc path="docs/epics.md" sections="Epic 1 - Story 1.3">
+        验收标准原文：
+        - 本地开发服务器启动成功（通常是 `http://localhost:8080`）
+        - 浏览器自动打开并显示默认页面
+        - 热重载（Hot Reload）工作正常（修改文件自动刷新）
+        - 控制台无报错
+        - Prerequisites: Story 1.2 完成（项目结构已初始化）
+      </doc>
+      <doc path="docs/PRD.md" sections="FR-5.2: 构建系统">
+        开发构建要求：
+        - 热重载支持（修改自动刷新）
+        - TypeScript 编译检查
+        - 开发服务器快速启动（&lt;10s）
+        - Source Map 生成用于调试
+      </doc>
+      <doc path="docs/stories/1-2-initialize-project-structure.md" sections="Completion Notes, Dev Notes">
+        前序故事（Story 1.2）已完成的基础结构：
+        - package.json 已创建，包含 docs:dev 和 docs:build 脚本
+        - docs/.vuepress/ 目录已创建
+        - config.ts 配置文件已创建（base='/AINative/', lang='zh-CN'）
+        - .gitignore 已配置（忽略 node_modules/, .cache/, .temp/）
+        - 依赖已安装: VuePress 2.0.0-rc.26, vuepress-plugin-md-enhance 2.0.0-rc.99
+        - 默认主题 defaultTheme 已启用
+        - 响应式 viewport meta 已配置
+        
+        待验证事项（本 Story 职责）：
+        - 开发服务器启动未验证
+        - 热重载未测试
+        - 配置正确性未验证（config.ts 是否可正常加载）
+        - 依赖完整性未验证
+      </doc>
+    </docs>
+    <code>
+      <existing>
+        <file path="package.json">
+          包含开发脚本:
+          - "docs:dev": "vuepress dev docs"
+          - "docs:build": "vuepress build docs"
+          
+          devDependencies:
+          - vuepress: 2.0.0-rc.26
+          - vuepress-plugin-md-enhance: 2.0.0-rc.99
+          - vue: ^3.3.0
+          - @vuepress/bundler-vite: 2.0.0-rc.26
+        </file>
+        <file path="docs/.vuepress/config.ts">
+          VuePress 配置文件（基础配置）:
+          - base: '/AINative/'
+          - lang: 'zh-CN'
+          - title: 'AINative'
+          - description: 'AI Native知识分享平台'
+          - theme: defaultTheme({ navbar: [], sidebar: {} })
+          - 可选开发配置: port, open, host
+        </file>
+        <file path="docs/README.md">
+          首页 Markdown 文件（待渲染验证）
+        </file>
+        <file path=".gitignore">
+          已配置忽略:
+          - node_modules/
+          - docs/.vuepress/dist/
+          - docs/.vuepress/.cache/
+          - docs/.vuepress/.temp/
+          - *.log, .DS_Store
+        </file>
+        <file path="pnpm-lock.yaml">
+          依赖锁文件已生成
+        </file>
+      </existing>
+      <toCreate>
+        <file path="docs/dev-setup.md">
+          开发环境文档（本 Story 创建）:
+          - 环境要求（Node 18.x, pnpm 8.x）
+          - 启动命令说明
+          - 常见问题排查指南
+          - 配置选项说明
+        </file>
+      </toCreate>
+    </code>
+    <dependencies>
+      <runtime>
+        <dep name="vuepress" version="2.0.0-rc.26">VuePress 核心</dep>
+        <dep name="vuepress-plugin-md-enhance" version="2.0.0-rc.99">Markdown 增强插件（PPT支持）</dep>
+        <dep name="vue" version="^3.3.0">Vue 3 运行时</dep>
+        <dep name="@vuepress/bundler-vite" version="2.0.0-rc.26">Vite 打包器</dep>
+      </runtime>
+      <system>
+        <requirement name="Node.js" version="18.x LTS">JavaScript 运行环境</requirement>
+        <requirement name="pnpm" version="8.x">包管理器</requirement>
+        <requirement name="Browser" version="latest">Chrome/Firefox/Edge 最新版</requirement>
+      </system>
+    </dependencies>
+  </artifacts>
+
+  <constraints>
+    <constraint type="architecture">VuePress 2 + Vite + TypeScript 技术栈（已确定）</constraint>
+    <constraint type="architecture">开发服务器默认端口 8080，可通过 PORT 环境变量修改</constraint>
+    <constraint type="architecture">开发模式忽略 base 路径，使用 '/' 而非 '/AINative/'</constraint>
+    <constraint type="performance">开发服务器启动时间 &lt; 10s</constraint>
+    <constraint type="performance">热重载响应时间 &lt; 2s</constraint>
+    <constraint type="performance">开发服务器内存占用 &lt; 500MB</constraint>
+    <constraint type="configuration">config.ts 必须是有效的 TypeScript，能通过类型检查</constraint>
+    <constraint type="configuration">所有开发依赖必须正确安装（node_modules/vuepress 存在）</constraint>
+    <constraint type="file-naming">文档文件使用 kebab-case: dev-setup.md</constraint>
+    <constraint type="file-naming">脚本命名使用冒号分隔: docs:dev, docs:build</constraint>
+  </constraints>
+
+  <interfaces>
+    <cli>
+      <command name="pnpm run docs:dev">启动开发服务器（别名 vuepress dev docs）</command>
+      <command name="PORT=8081 pnpm run docs:dev">使用自定义端口启动</command>
+      <command name="lsof -i :8080">查找端口占用进程</command>
+      <command name="kill -9 &lt;PID&gt;">终止占用进程</command>
+      <command name="node -v">检查 Node 版本（应为 18.x）</command>
+      <command name="pnpm -v">检查 pnpm 版本（应为 8.x）</command>
+      <command name="time pnpm run docs:dev">测量启动时间</command>
+    </cli>
+    <files>
+      <config path="docs/.vuepress/config.ts">
+        VuePress 配置文件，可添加开发选项：
+        - port: number (默认 8080)
+        - open: boolean (自动打开浏览器，默认 true)
+        - host: string (监听地址，默认 'localhost')
+      </config>
+      <output path="docs/.vuepress/.cache/">Vite 缓存目录（自动生成）</output>
+      <output path="docs/.vuepress/.temp/">临时文件目录（自动生成）</output>
+    </files>
+    <browser>
+      <endpoint url="http://localhost:8080">开发服务器默认地址</endpoint>
+      <devtools>Chrome DevTools 用于检查控制台错误和响应式布局</devtools>
+    </browser>
+  </interfaces>
+
+  <tests>
+    <standards>
+      本 Story 为验证型 Story（非开发），测试策略即为验证方法：
+      
+      1. 启动验证：
+         - 执行命令检查终端输出
+         - 验证进程正常运行
+         
+      2. 页面渲染验证：
+         - 访问 localhost:8080
+         - 检查首页显示
+         - 浏览器控制台无错误
+         
+      3. 热重载验证：
+         - 修改 Markdown 文件 → 保存 → 验证自动刷新
+         - 修改 config.ts → 保存 → 验证服务器重启
+         - 修改样式文件 → 保存 → 验证 CSS 热更新
+         
+      4. 响应式验证：
+         - Chrome DevTools 设备模式
+         - 测试 375px (Mobile), 768px (Tablet), 1440px (Desktop)
+         
+      5. 性能验证：
+         - time 命令测量启动时间
+         - 计时器测量热重载延迟
+         - Chrome 任务管理器监控内存
+    </standards>
+    <locations>
+      无需创建测试文件。验证结果记录在：
+      - docs/dev-setup.md（文档化验证结果和常见问题）
+      - Story Completion Notes（记录验证通过的证据）
+    </locations>
+    <ideas>
+      <idea>常见问题排查指南应包含实际遇到的错误信息</idea>
+      <idea>dev-setup.md 应包含截图或示例输出（可选）</idea>
+      <idea>记录实际启动时间和内存占用数据，作为后续性能基线</idea>
+      <idea>如果发现配置问题，应在本 Story 中修复（确保后续 Story 环境可用）</idea>
+      <idea>验证 TypeScript 类型错误是否正确显示（故意引入错误并测试）</idea>
+    </ideas>
+  </tests>
+</story-context>

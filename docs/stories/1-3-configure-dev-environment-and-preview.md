@@ -1,6 +1,6 @@
 # Story 1.3: 配置开发环境与本地预览
 
-Status: drafted
+Status: ready-for-dev
 
 ## Story
 
@@ -248,7 +248,7 @@ AINative/
 
 ### Context Reference
 
-<!-- Path(s) to story context XML will be added here by context workflow -->
+- `docs/stories/1-3-configure-dev-environment-and-preview.context.xml`
 
 ### Agent Model Used
 
