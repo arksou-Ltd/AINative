@@ -20,8 +20,8 @@ Status: review
 2. ✅ 本地关联远程仓库：`git remote add origin <repo-url>`
 3. ✅ 创建`.github/workflows/deploy.yml`：
    - 监听 `main` 分支的 push 事件
-   - 使用 Node.js 18
-   - 使用 pnpm 安装依赖
+   - 使用 Node.js 20
+   - 使用 pnpm 10 安装依赖
    - 执行 `pnpm run docs:build`
    - 使用 `peaceiris/actions-gh-pages@v3` 部署到 `gh-pages` 分支
 4. ✅ 推送代码到GitHub：`git push -u origin main`
@@ -42,8 +42,8 @@ Status: review
   - [x] 2.3 配置触发条件：监听 `main` 分支 push 事件
   - [x] 2.4 配置构建环境：
     - Ubuntu latest
-    - Node.js 18.x
-    - pnpm 8.x（通过 `pnpm/action-setup@v4`）
+    - Node.js 20.x
+    - pnpm 10.x（通过 `pnpm/action-setup@v4`）
   - [x] 2.5 配置构建步骤：
     - Checkout 代码（`actions/checkout@v4`）
     - 安装 Node.js（`actions/setup-node@v4`）
@@ -87,7 +87,7 @@ Status: review
 - [x] Task 7: 文档化部署流程 (AC: #5)
   - [x] 7.1 更新项目 `README.md` 添加"自动部署"章节
   - [x] 7.2 说明工作流触发条件（push main 分支）
-  - [x] 7.3 说明构建环境（Node 18 + pnpm 8）
+  - [x] 7.3 说明构建环境（Node 20 + pnpm 10）
   - [x] 7.4 说明部署目标（gh-pages 分支）
   - [x] 7.5 添加 Actions badge（可选）：`![Deploy](https://github.com/<username>/AINative/workflows/Deploy%20to%20GitHub%20Pages/badge.svg)`
 
@@ -120,12 +120,12 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
       
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 8
+          version: 10
       
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -148,12 +148,13 @@ jobs:
    - 允许工作流推送到 `gh-pages` 分支
    - GitHub 自动提供的 `GITHUB_TOKEN` 足够
 
-2. **Node.js 版本**：18.x
-   - 与本地开发环境一致（Story 1.3）
-   - LTS 版本，稳定性高
+2. **Node.js 版本**：20.x
+   - 升级到 Node.js 20 LTS 以支持现代依赖包特性
+   - 解决 string-width@8.1.0 正则表达式兼容性问题
 
-3. **pnpm 版本**：8.x
+3. **pnpm 版本**：10.x
    - 使用 `pnpm/action-setup@v4` 安装
+   - 与本地开发环境保持一致
    - `--frozen-lockfile` 确保依赖一致性
 
 4. **构建目录**：`docs/.vuepress/dist`
@@ -196,11 +197,11 @@ AINative/
    - `fetch-depth: 0`：获取完整Git历史（sitemap插件需要）
 
 2. **安装 Node.js**（`actions/setup-node@v4`）
-   - 安装 Node.js 18.x
+   - 安装 Node.js 20.x
    - 设置 npm registry（加速下载）
 
 3. **安装 pnpm**（`pnpm/action-setup@v4`）
-   - 安装 pnpm 8.x
+   - 安装 pnpm 10.x
    - 比 npm/yarn 更快，节省CI时间
 
 4. **安装依赖**（`pnpm install --frozen-lockfile`）

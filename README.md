@@ -131,8 +131,8 @@ AINative/
 
 **部署流程**：
 1. Checkout 代码（包含完整 Git 历史）
-2. 安装 Node.js 18.x
-3. 安装 pnpm 8.x
+2. 安装 Node.js 20.x
+3. 安装 pnpm 10.x
 4. 安装项目依赖（`pnpm install --frozen-lockfile`）
 5. 执行构建（`pnpm run docs:build`）
 6. 部署到 `gh-pages` 分支（使用 `peaceiris/actions-gh-pages@v3`）
