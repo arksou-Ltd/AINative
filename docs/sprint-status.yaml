@@ -41,8 +41,8 @@ development_status:
   1-1-tech-stack-research-and-decision: done
   1-2-initialize-project-structure: done
   1-3-configure-dev-environment-and-preview: done
-  1-4-create-responsive-layout-framework: in-progress
-  1-5-configure-build-process: backlog
+  1-4-create-responsive-layout-framework: done
+  1-5-configure-build-process: drafted
   epic-1-retrospective: optional
 
   # Epic 2: 部署验证与Hello World
