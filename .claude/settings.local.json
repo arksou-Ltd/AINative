@@ -9,7 +9,12 @@
       "WebSearch",
       "SlashCommand(/bmad:bmm:workflows:product-brief)",
       "SlashCommand(/bmad:bmm:workflows:prd)",
-      "SlashCommand(/bmad:bmm:workflows:create-epics-and-stories)"
+      "SlashCommand(/bmad:bmm:workflows:create-epics-and-stories)",
+      "Bash(pnpm run docs:dev:*)",
+      "Bash(pnpm run docs:clean:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)"
     ]
   }
 }

@@ -1,0 +1,280 @@
+<story-context id="bmad/bmm/workflows/4-implementation/story-context/template" v="1.0">
+  <metadata>
+    <epicId>2</epicId>
+    <storyId>2</storyId>
+    <title>创建Hello World验证页面</title>
+    <status>drafted</status>
+    <generatedAt>2025-12-15</generatedAt>
+    <generator>BMAD Story Context Workflow</generator>
+    <sourceStoryPath>docs/stories/2-2-create-hello-world-page.md</sourceStoryPath>
+  </metadata>
+
+  <story>
+    <asA>开发者</asA>
+    <iWant>创建一个简单的Hello World页面</iWant>
+    <soThat>验证部署流程端到端工作</soThat>
+    <tasks>- Task 1: 修改首页内容为Hello World (AC: #1)
+  - 1.1 打开 `docs/README.md` 文件
+  - 1.2 替换内容为Hello World验证模板：使用 VuePress frontmatter 格式、设置 `home: true`、设置 `heroText: AINative - Hello World 🎉`、添加欢迎语和部署验证信息
+  - 1.3 保持简洁，重点验证部署流程
+  - 1.4 可选：添加当前日期时间戳（验证更新生效）
+
+- Task 2: 本地预览验证 (AC: #1)
+  - 2.1 启动本地开发服务器：`pnpm run docs:dev`
+  - 2.2 访问 `http://localhost:8080/AINative/`
+  - 2.3 验证首页内容正确显示
+  - 2.4 验证样式正常加载
+  - 2.5 停止开发服务器
+
+- Task 3: 提交并推送更改 (AC: #2, #3)
+  - 3.1 暂存更改：`git add docs/README.md`
+  - 3.2 提交更改：`git commit -m "feat(deploy): add hello world page"`
+  - 3.3 推送到远程：`git push`
+  - 3.4 确认推送成功（无错误提示）
+
+- Task 4: 验证自动部署触发 (AC: #3)
+  - 4.1 访问GitHub仓库 Actions 页面
+  - 4.2 确认新的工作流运行已触发
+  - 4.3 观察工作流状态（等待完成）
+  - 4.4 验证工作流成功完成（绿色✅）
+  - 4.5 记录工作流运行时间（预期 <5分钟）
+
+- Task 5: 验证部署结果 (最终验证，详细验证在 Story 2.3)
+  - 5.1 等待部署完成（5-10分钟）
+  - 5.2 访问 GitHub Pages URL：`https://<username>.github.io/AINative/`
+  - 5.3 验证Hello World内容已更新
+  - 5.4 验证时间戳（如有）已更新（证明部署生效）
+  - 5.5 简单测试：刷新页面，确认内容稳定</tasks>
+  </story>
+
+  <acceptanceCriteria>**Given** GitHub Actions工作流已配置（Story 2.1 完成）
+
+**When** 我创建简单的Hello World内容
+
+**Then** 应该：
+
+1. ✅ 修改`docs/README.md`包含以下内容：
+   - 项目标题 "AINative - Hello World 🎉"
+   - 欢迎语：欢迎来到AI Native知识分享平台
+   - 部署验证成功提示
+   - 项目信息：部署平台、技术栈、自动部署状态
+   - 下一步说明：开始构建双模式文档系统
+2. ✅ 提交更改：`git commit -m "feat(deploy): add hello world page"`
+3. ✅ 推送到GitHub：`git push`触发自动部署</acceptanceCriteria>
+
+  <artifacts>
+    <docs>
+      <!-- Epic和故事定义 -->
+      <doc>
+        <path>docs/epics.md</path>
+        <title>Epic 2: 部署验证与Hello World</title>
+        <section>Story 2.2: 创建Hello World验证页面</section>
+        <snippet>验证GitHub Pages部署流程通畅。修改docs/README.md为Hello World内容,推送触发自动部署,验证更新生效。</snippet>
+      </doc>
+
+      <!-- PRD需求说明 -->
+      <doc>
+        <path>docs/PRD.md</path>
+        <title>产品需求文档</title>
+        <section>Project Classification - 静态文档网站</section>
+        <snippet>纯前端渲染静态站点,通过GitHub Pages托管,无后端/数据库/用户系统。内容全部来自Markdown文件。</snippet>
+      </doc>
+
+      <!-- 架构文档 -->
+      <doc>
+        <path>docs/architecture.md</path>
+        <title>架构文档</title>
+        <section>Project Structure - docs/README.md(首页)</section>
+        <snippet>VuePress Home页面使用frontmatter配置: home:true, heroText, tagline, actions等字段控制首页布局。</snippet>
+      </doc>
+
+      <doc>
+        <path>docs/architecture.md</path>
+        <title>架构文档</title>
+        <section>Deployment Architecture</section>
+        <snippet>GitHub Actions自动部署: push to main → 构建 → 部署到gh-pages分支 → GitHub Pages刷新(5-10分钟CDN缓存)</snippet>
+      </doc>
+
+      <!-- 前置故事学习 -->
+      <doc>
+        <path>docs/stories/2-1-configure-github-repo-and-actions.md</path>
+        <title>Story 2.1完成记录</title>
+        <section>Completion Notes - 部署管线已就绪</section>
+        <snippet>GitHub Actions工作流已配置完成(.github/workflows/deploy.yml),使用Node.js 20 + pnpm 10,自动部署到gh-pages分支。网站可访问: https://arksou-ltd.github.io/AINative/</snippet>
+      </doc>
+    </docs>
+    <code>
+      <!-- 当前首页文件(需要修改) -->
+      <artifact>
+        <path>docs/README.md</path>
+        <kind>markdown-content</kind>
+        <symbol>VuePress Home Page</symbol>
+        <lines>1-48</lines>
+        <reason>这是需要修改为Hello World内容的目标文件。当前是完整的首页配置,包含frontmatter和features。</reason>
+      </artifact>
+
+      <!-- VuePress配置文件 -->
+      <artifact>
+        <path>docs/.vuepress/config.ts</path>
+        <kind>config</kind>
+        <symbol>VuePress Configuration</symbol>
+        <lines>1-57</lines>
+        <reason>站点核心配置,包含base路径(/AINative/)、语言(zh-CN)、主题配置等。了解配置有助于正确设置首页。</reason>
+      </artifact>
+
+      <!-- GitHub Actions工作流 -->
+      <artifact>
+        <path>.github/workflows/deploy.yml</path>
+        <kind>ci-config</kind>
+        <symbol>GitHub Actions Deploy Workflow</symbol>
+        <lines>all</lines>
+        <reason>自动部署工作流配置,推送到main分支后自动触发构建和部署。使用Node.js 20 + pnpm 10。</reason>
+      </artifact>
+
+      <!-- 包配置文件 -->
+      <artifact>
+        <path>package.json</path>
+        <kind>config</kind>
+        <symbol>NPM Package Configuration</symbol>
+        <lines>23-26</lines>
+        <reason>定义了本地开发(docs:dev)和构建(docs:build)脚本。验证部署前需要确保这些命令可用。</reason>
+      </artifact>
+    </code>
+    <dependencies>
+      <node>
+        <vuepress>2.0.0-rc.26</vuepress>
+        <vue>^3.3.0</vue>
+        <@vuepress/bundler-vite>2.0.0-rc.26</@vuepress/bundler-vite>
+        <@vuepress/theme-default>2.0.0-rc.26</@vuepress/theme-default>
+        <vuepress-plugin-md-enhance>2.0.0-rc.99</vuepress-plugin-md-enhance>
+        <rimraf>^6.1.2</rimraf>
+      </node>
+      <runtime>
+        <node>>=20.0.0</node>
+        <pnpm>>=10.0.0</pnpm>
+      </runtime>
+    </dependencies>
+  </artifacts>
+
+  <constraints>
+    <constraint>
+      <type>VuePress Frontmatter格式</type>
+      <description>首页必须使用YAML frontmatter配置,包含home:true以启用首页布局。heroText和tagline控制标题和副标题显示。</description>
+    </constraint>
+    <constraint>
+      <type>Markdown语法</type>
+      <description>内容使用标准Markdown格式编写,VuePress自动渲染。支持VuePress扩展语法如:::tip提示块。</description>
+    </constraint>
+    <constraint>
+      <type>Git提交规范</type>
+      <description>提交消息必须遵循约定格式: feat(deploy): add hello world page。layer:module格式,描述业务目标。</description>
+    </constraint>
+    <constraint>
+      <type>部署流程</type>
+      <description>推送到main分支自动触发GitHub Actions工作流。构建成功后部署到gh-pages分支,GitHub Pages刷新需5-10分钟(CDN缓存)。</description>
+    </constraint>
+    <constraint>
+      <type>文件路径</type>
+      <description>首页文件位于docs/README.md。VuePress将其渲染为网站根路径/。base配置为/AINative/,实际URL为https://xxx.github.io/AINative/。</description>
+    </constraint>
+    <constraint>
+      <type>本地验证</type>
+      <description>推送前必须本地预览验证(pnpm run docs:dev)。确保内容正确显示且样式正常加载。</description>
+    </constraint>
+  </constraints>
+
+  <interfaces>
+    <interface>
+      <name>VuePress Frontmatter API</name>
+      <kind>markdown-frontmatter</kind>
+      <signature>
+---
+home: true
+heroText: string
+tagline: string
+actions?: Array&lt;{text: string, link: string, type?: 'primary'|'secondary'}&gt;
+features?: Array&lt;{title: string, details: string}&gt;
+footer?: string
+---
+      </signature>
+      <path>docs/README.md</path>
+    </interface>
+
+    <interface>
+      <name>GitHub Actions工作流触发</name>
+      <kind>ci-trigger</kind>
+      <signature>
+push到main分支 → 触发 .github/workflows/deploy.yml
+→ setup Node.js 20 + pnpm 10
+→ pnpm install --frozen-lockfile
+→ pnpm run docs:build
+→ 部署dist到gh-pages分支
+      </signature>
+      <path>.github/workflows/deploy.yml</path>
+    </interface>
+
+    <interface>
+      <name>本地开发服务器</name>
+      <kind>npm-script</kind>
+      <signature>
+pnpm run docs:dev
+→ 启动Vite开发服务器
+→ 访问 http://localhost:8080/AINative/
+→ 热重载(HMR)自动刷新
+      </signature>
+      <path>package.json</path>
+    </interface>
+  </interfaces>
+  <tests>
+    <standards>
+本项目为静态文档网站,主要测试方式为手动验证。测试标准包括:
+1. 本地开发验证 - 使用pnpm run docs:dev启动本地服务器,在http://localhost:8080/AINative/验证内容和样式
+2. 构建成功验证 - 确保pnpm run docs:build无错误完成,生成docs/.vuepress/dist目录
+3. GitHub Actions验证 - 推送后检查Actions页面工作流运行状态(绿色✅表示成功)
+4. 部署结果验证 - 访问GitHub Pages URL,确认内容更新生效(注意CDN缓存5-10分钟)
+5. 跨浏览器测试 - 在Chrome/Firefox/Safari验证页面显示一致性
+6. 响应式测试 - 验证移动端和桌面端显示正常
+    </standards>
+
+    <locations>
+无自动化测试。主要验证点:
+- 本地环境: http://localhost:8080/AINative/
+- GitHub Actions: 仓库的Actions标签页
+- 生产环境: https://arksou-ltd.github.io/AINative/
+- gh-pages分支: 检查部署内容和时间戳
+    </locations>
+
+    <ideas>
+      <test id="AC-1" description="验证Hello World内容正确显示">
+        <step>修改docs/README.md为Hello World模板内容</step>
+        <step>本地运行pnpm run docs:dev,访问http://localhost:8080/AINative/</step>
+        <step>验证首页显示"AINative - Hello World 🎉"标题</step>
+        <step>验证欢迎语和项目信息正确显示</step>
+        <step>验证样式正常加载(无布局错乱)</step>
+      </test>
+
+      <test id="AC-2" description="验证Git提交格式正确">
+        <step>暂存更改: git add docs/README.md</step>
+        <step>提交使用正确格式: git commit -m "feat(deploy): add hello world page"</step>
+        <step>验证提交消息符合约定(type:feat, scope:deploy, 描述业务目标)</step>
+      </test>
+
+      <test id="AC-3" description="验证自动部署流程">
+        <step>推送到远程: git push</step>
+        <step>访问GitHub仓库Actions页面,确认新工作流已触发</step>
+        <step>等待工作流完成,验证所有步骤显示绿色✅</step>
+        <step>检查gh-pages分支,确认内容已更新</step>
+        <step>等待5-10分钟CDN缓存刷新</step>
+        <step>访问https://arksou-ltd.github.io/AINative/,验证Hello World内容显示</step>
+        <step>可选:添加时间戳验证更新确实生效</step>
+      </test>
+
+      <test id="smoke-test" description="冒烟测试 - 端到端验证">
+        <step>在不同浏览器(Chrome/Firefox/Safari)访问部署URL</step>
+        <step>在移动设备或开发者工具移动视图验证响应式布局</step>
+        <step>刷新页面多次,确认内容稳定(无间歇性错误)</step>
+        <step>检查浏览器控制台,确认无JavaScript错误</step>
+      </test>
+    </ideas>
+  </tests>
+</story-context>

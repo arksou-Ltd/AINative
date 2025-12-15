@@ -48,7 +48,7 @@ development_status:
   # Epic 2: 部署验证与Hello World
   epic-2: backlog
   2-1-configure-github-repo-and-actions: done
-  2-2-create-hello-world-page: backlog
+  2-2-create-hello-world-page: done
   2-3-verify-deployment-and-access: backlog
   2-4-document-deployment-process: backlog
   epic-2-retrospective: optional
