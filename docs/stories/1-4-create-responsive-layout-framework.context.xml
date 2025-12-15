@@ -1,0 +1,276 @@
+<story-context id="bmad/bmm/workflows/4-implementation/story-context/template" v="1.0">
+  <metadata>
+    <epicId>1</epicId>
+    <storyId>1.4</storyId>
+    <title>创建基础响应式布局框架</title>
+    <status>drafted</status>
+    <generatedAt>2025-12-15</generatedAt>
+    <generator>BMAD Story Context Workflow</generator>
+    <sourceStoryPath>docs/stories/1-4-create-responsive-layout-framework.md</sourceStoryPath>
+  </metadata>
+
+  <story>
+    <asA>开发者</asA>
+    <iWant>建立基础的响应式布局CSS框架</iWant>
+    <soThat>后续页面都能适配不同设备</soThat>
+    <tasks>
+      <task id="1" ac="1">
+        <description>创建样式目录和文件</description>
+        <subtasks>
+          <subtask id="1.1">创建 `docs/.vuepress/styles/` 目录</subtask>
+          <subtask id="1.2">创建 `docs/.vuepress/styles/index.css` 文件（或 `.styl`）</subtask>
+          <subtask id="1.3">验证 VuePress 自动加载此文件（约定优于配置）</subtask>
+          <subtask id="1.4">确认样式注入到页面（浏览器 DevTools 检查）</subtask>
+        </subtasks>
+      </task>
+      <task id="2" ac="2">
+        <description>定义 CSS 变量</description>
+        <subtasks>
+          <subtask id="2.1">定义主色：`--primary-color: #1F6FEB`（来自 architecture.md）</subtask>
+          <subtask id="2.2">定义文字色：`--text-color: #2c3e50`（深灰色，可读性高）</subtask>
+          <subtask id="2.3">定义背景色：`--bg-color: #ffffff`（纯白背景）</subtask>
+          <subtask id="2.4">定义断点变量：`--breakpoint-mobile: 768px`, `--breakpoint-tablet: 1024px`</subtask>
+          <subtask id="2.5">定义字体系列：`--font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif`</subtask>
+          <subtask id="2.6">定义中文字体：`--font-family-zh: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif`</subtask>
+          <subtask id="2.7">定义辅助色（链接、警告、成功等）</subtask>
+        </subtasks>
+      </task>
+      <task id="3" ac="3">
+        <description>定义响应式断点</description>
+        <subtasks>
+          <subtask id="3.1">定义 Mobile 断点：`@media (max-width: 768px)`</subtask>
+          <subtask id="3.2">定义 Tablet 断点：`@media (min-width: 768px) and (max-width: 1024px)`</subtask>
+          <subtask id="3.3">定义 Desktop 断点：`@media (min-width: 1024px)`</subtask>
+          <subtask id="3.4">遵循移动优先（Mobile First）原则编写样式</subtask>
+          <subtask id="3.5">创建断点示例注释便于后续开发者使用</subtask>
+        </subtasks>
+      </task>
+      <task id="4" ac="4">
+        <description>测试响应式布局</description>
+        <subtasks>
+          <subtask id="4.1">Chrome DevTools 设备模式测试</subtask>
+          <subtask id="4.2">测试 Mobile 视口（375px - iPhone SE）</subtask>
+          <subtask id="4.3">测试 Tablet 视口（768px - iPad）</subtask>
+          <subtask id="4.4">测试 Desktop 视口（1440px - MacBook Pro）</subtask>
+          <subtask id="4.5">验证 CSS 变量在不同视口下正确应用</subtask>
+          <subtask id="4.6">测试横屏/竖屏切换</subtask>
+        </subtasks>
+      </task>
+      <task id="5" ac="5">
+        <description>验证样式加载</description>
+        <subtasks>
+          <subtask id="5.1">启动开发服务器 `pnpm run docs:dev`</subtask>
+          <subtask id="5.2">浏览器访问 `http://localhost:8080/AINative/`</subtask>
+          <subtask id="5.3">DevTools 检查 `&lt;style&gt;` 标签是否包含自定义样式</subtask>
+          <subtask id="5.4">验证 CSS 变量可通过 DevTools Console 读取</subtask>
+          <subtask id="5.5">修改 CSS 文件验证热重载生效</subtask>
+        </subtasks>
+      </task>
+      <task id="6" ac="5">
+        <description>文档化样式框架</description>
+        <subtasks>
+          <subtask id="6.1">在 `index.css` 顶部添加使用说明注释</subtask>
+          <subtask id="6.2">记录所有 CSS 变量及其用途</subtask>
+          <subtask id="6.3">提供响应式断点使用示例</subtask>
+          <subtask id="6.4">说明如何覆盖默认样式</subtask>
+        </subtasks>
+      </task>
+    </tasks>
+  </story>
+
+  <acceptanceCriteria>
+    <criterion id="1">创建 `docs/.vuepress/styles/index.styl` 或 `index.css`</criterion>
+    <criterion id="2">定义 CSS 变量（主色、文字色、背景色、响应式断点）</criterion>
+    <criterion id="3">定义响应式断点 media queries（mobile、tablet、desktop）</criterion>
+    <criterion id="4">测试页面在不同视口下正确渲染（DevTools 设备模式验证）</criterion>
+    <criterion id="5">样式文件被 VuePress 正确加载并应用</criterion>
+  </acceptanceCriteria>
+
+  <artifacts>
+    <docs>
+      <doc path="docs/architecture.md" sections="Decision Summary - Theme/Styles, Project Structure">
+        样式系统架构规格：
+        - 主题配色：主色 #1F6FEB（GitHub蓝），文字 #2c3e50（深灰），背景 #ffffff（纯白）
+        - 字体策略：英文 Inter，中文 Noto Sans SC / PingFang SC，系统字体栈备选
+        - 响应式断点：Mobile &lt;768px, Tablet 768-1024px, Desktop &gt;1024px
+        - 移动优先（Mobile First）设计原则
+        - VuePress 样式系统：docs/.vuepress/styles/index.css 自动加载，无需显式导入
+        - 样式优先级：VuePress默认主题 → index.css → 组件内联样式
+        - CSS变量系统：:root定义，命名规范kebab-case（--primary-color）
+      </doc>
+      <doc path="docs/epics.md" sections="Epic 1 - Story 1.4">
+        验收标准原文：
+        - 创建 docs/.vuepress/styles/index.styl（或.css）
+        - 定义CSS变量：主色、文字色、背景色、断点变量
+        - 定义响应式断点mixin：mobile/tablet/desktop
+        - 测试页面在不同视口下正确渲染
+        - Prerequisites: Story 1.3完成（开发环境已配置）
+        - Technical Notes: 使用CSS变量便于主题定制，遵循移动优先原则，保持CSS简洁
+      </doc>
+      <doc path="docs/PRD.md" sections="FR-5.1: 技术框架 - 响应式设计">
+        响应式设计要求：
+        - 移动端优化（375px最小宽度）
+        - 平板适配（768px断点）
+        - 桌面端体验（1024px+）
+        - 横屏/竖屏自适应
+        - 性能要求：CSS轻量级，避免过度设计
+      </doc>
+      <doc path="docs/stories/1-3-configure-dev-environment-and-preview.md" sections="Completion Notes">
+        前序故事（Story 1.3）已完成的基础：
+        - 开发服务器正常启动（324ms，支持热重载）
+        - VuePress 2.0.0-rc.26 + Vite + TypeScript 技术栈就绪
+        - config.ts 配置文件正确（base: '/AINative/'）
+        - 热重载支持CSS文件变更（&lt;2s响应时间）
+        - VuePress默认主题已加载
+        - .vuepress/styles/ 目录可用（约定优于配置）
+        - dev-setup.md 开发环境文档已创建
+        
+        待验证事项（本Story职责）：
+        - 自定义样式文件未创建
+        - CSS变量未定义
+        - 响应式断点未配置
+        - 样式加载未测试
+      </doc>
+    </docs>
+    <code>
+      <existing>
+        <file path="docs/.vuepress/config.ts">
+          VuePress 配置文件（基础配置已完成）:
+          - base: '/AINative/'
+          - lang: 'zh-CN'
+          - title: 'AINative'
+          - theme: defaultTheme({ navbar: [], sidebar: {} })
+          - 支持自定义样式自动加载
+        </file>
+        <file path="package.json">
+          包含开发脚本:
+          - "docs:dev": "vuepress dev docs"
+          - devDependencies: vuepress@2.0.0-rc.26, vue@3.4.21
+        </file>
+        <file path="docs/README.md">
+          首页Markdown文件（VuePress默认主题渲染）
+        </file>
+        <file path="docs/dev-setup.md">
+          开发环境文档（Story 1.3创建）
+        </file>
+      </existing>
+      <toCreate>
+        <directory path="docs/.vuepress/styles/">
+          样式目录（本Story创建）
+        </directory>
+        <file path="docs/.vuepress/styles/index.css">
+          全局样式文件（本Story创建）:
+          - :root CSS变量定义
+          - 主题配色系统
+          - 响应式断点media queries
+          - 移动优先基础样式
+          - 使用说明注释
+        </file>
+      </toCreate>
+    </code>
+    <dependencies>
+      <runtime>
+        <dep name="vuepress" version="2.0.0-rc.26">VuePress 核心（已安装）</dep>
+        <dep name="vue" version="3.4.21">Vue 3 运行时（已安装）</dep>
+        <dep name="@vuepress/bundler-vite" version="2.0.0-rc.26">Vite 打包器（已安装）</dep>
+      </runtime>
+      <system>
+        <requirement name="Node.js" version="18.17.0">已验证</requirement>
+        <requirement name="pnpm" version="8.15.0">已验证</requirement>
+        <requirement name="Browser" version="latest">Chrome/Firefox/Edge用于测试</requirement>
+      </system>
+    </dependencies>
+  </artifacts>
+
+  <constraints>
+    <constraint type="architecture">VuePress 2 + Vite + TypeScript 技术栈</constraint>
+    <constraint type="architecture">样式文件路径：docs/.vuepress/styles/index.css（VuePress约定）</constraint>
+    <constraint type="architecture">CSS变量定义在:root，kebab-case命名</constraint>
+    <constraint type="design">主色 #1F6FEB，文字色 #2c3e50，背景色 #ffffff</constraint>
+    <constraint type="design">响应式断点：Mobile &lt;768px, Tablet 768-1024px, Desktop &gt;1024px</constraint>
+    <constraint type="design">移动优先（Mobile First）设计原则：基础样式针对移动端，通过media query扩展</constraint>
+    <constraint type="design">字体策略：英文Inter（或系统字体栈），中文Noto Sans SC / PingFang SC</constraint>
+    <constraint type="performance">CSS轻量级，避免过度设计</constraint>
+    <constraint type="performance">热重载响应时间 &lt; 2s</constraint>
+    <constraint type="naming">文件命名kebab-case：index.css</constraint>
+    <constraint type="naming">CSS类命名BEM风格（后续Epic使用）：.block__element--modifier</constraint>
+    <constraint type="naming">CSS变量命名：--primary-color（双横线前缀，kebab-case）</constraint>
+  </constraints>
+
+  <interfaces>
+    <files>
+      <output path="docs/.vuepress/styles/index.css">
+        全局样式文件，VuePress自动加载。内容结构：
+        1. 文件头部注释（使用说明）
+        2. :root CSS变量定义（主题色、文字色、背景色、断点、字体、间距）
+        3. 响应式断点media queries（移动优先）
+        4. 示例注释（便于后续开发者使用）
+      </output>
+      <config path="docs/.vuepress/config.ts">
+        无需修改，VuePress约定优于配置，自动加载index.css
+      </config>
+    </files>
+    <browser>
+      <endpoint url="http://localhost:8080/AINative/">开发服务器本地地址</endpoint>
+      <endpoint url="http://172.20.10.235:8080/AINative/">开发服务器网络地址（真实设备测试）</endpoint>
+      <devtools>
+        Chrome DevTools用于：
+        - 检查样式注入（Elements面板）
+        - 验证CSS变量（Console执行 getComputedStyle(document.documentElement).getPropertyValue('--primary-color')）
+        - 测试响应式布局（Device Toolbar，Cmd+Shift+M）
+      </devtools>
+    </browser>
+  </interfaces>
+
+  <tests>
+    <standards>
+      本Story为样式基础建设，测试策略包括：
+      
+      1. 样式加载验证：
+         - 启动开发服务器
+         - 浏览器访问首页
+         - DevTools检查&lt;style&gt;标签包含自定义CSS
+         - 验证VuePress正确注入样式
+         
+      2. CSS变量验证：
+         - DevTools Console执行：
+           getComputedStyle(document.documentElement).getPropertyValue('--primary-color')
+         - 期望输出：" #1F6FEB"（注意前导空格是正常的）
+         - 验证所有定义的CSS变量可读取
+         
+      3. 响应式布局测试：
+         - Chrome DevTools Device Toolbar (Cmd+Shift+M)
+         - 测试预设设备：
+           * iPhone SE (375px宽度) - Mobile
+           * iPad (768px宽度) - Tablet
+           * Desktop (1440px宽度) - Desktop
+         - 验证断点切换时样式正确应用
+         - 测试横屏/竖屏切换
+         
+      4. 热重载验证：
+         - 修改index.css的主色（如改为#FF0000）
+         - 保存文件
+         - 验证浏览器自动刷新（&lt;2s）
+         - 验证颜色变化生效
+         - 改回正确值验证
+         
+      5. 真实设备测试（可选）：
+         - 使用网络地址 http://172.20.10.235:8080/AINative/
+         - 在手机/平板浏览器访问
+         - 验证响应式布局在真实设备上正常工作
+    </standards>
+    <locations>
+      无需创建独立测试文件。验证结果记录在：
+      - Story Completion Notes（记录测试通过证据）
+      - 可选：截图保存到docs/images/story-1-4-testing/（如需要）
+    </locations>
+    <ideas>
+      <idea>创建CSS变量速查表注释，方便后续Epic开发者快速引用</idea>
+      <idea>提供响应式断点使用示例（代码注释形式），降低学习成本</idea>
+      <idea>记录实际测试的设备和视口尺寸，建立基线参考</idea>
+      <idea>考虑添加CSS变量的备选值（fallback），提高浏览器兼容性</idea>
+      <idea>验证CSS变量在VuePress默认主题中的覆盖效果</idea>
+      <idea>测试不同浏览器（Chrome, Firefox, Safari）的CSS变量支持</idea>
+    </ideas>
+  </tests>
+</story-context>

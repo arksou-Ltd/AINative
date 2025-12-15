@@ -1,0 +1,546 @@
+/**
+ * AINative 全局样式文件
+ * =====================================================
+ * 
+ * 本文件定义了项目的基础样式框架，包括：
+ * - CSS 变量系统（主题配色、字体、断点、间距）
+ * - 响应式断点 Media Queries
+ * - 移动优先（Mobile First）基础样式
+ * 
+ * VuePress 约定：本文件会被自动注入到所有页面
+ * 无需在 config.ts 中显式导入
+ * 
+ * 热重载：修改本文件后，开发服务器会自动刷新页面（< 2s）
+ * 
+ * @author: AINative Development Team
+ * @created: 2025-12-15
+ * @version: 1.0.0
+ * 
+ * =====================================================
+ * 使用说明
+ * =====================================================
+ * 
+ * 1. CSS 变量引用：
+ *    color: var(--primary-color);
+ *    font-family: var(--font-family);
+ * 
+ * 2. 响应式断点：
+ *    基础样式针对移动端（< 768px）
+ *    使用 @media (min-width: 768px) 扩展到平板
+ *    使用 @media (min-width: 1024px) 扩展到桌面端
+ * 
+ * 3. 覆盖默认样式：
+ *    可以在此文件末尾或组件内联样式中覆盖
+ *    优先级：VuePress 默认主题 < index.css < 组件内联
+ * 
+ * 4. 后续扩展：
+ *    - Epic 4（PPT 模式）：添加 reveal.js 样式覆盖
+ *    - Epic 5（Document 模式）：添加导航栏、侧边栏样式
+ *    - Epic 6（页面完善）：添加首页、联系页样式
+ * 
+ * =====================================================
+ */
+
+/**
+ * =====================================================
+ * CSS 变量定义
+ * =====================================================
+ * 
+ * 所有颜色、尺寸、字体统一定义在 :root
+ * 便于全局主题定制和后续维护
+ */
+
+:root {
+  /* ===== 主题配色 ===== */
+  
+  /* 主色系（GitHub 蓝色风格） */
+  --primary-color: #1F6FEB;              /* 主色：按钮、链接、高亮 */
+  --primary-color-light: #58A6FF;        /* 主色浅色：悬停状态 */
+  --primary-color-dark: #0969DA;         /* 主色深色：活跃状态 */
+  --primary-color-alpha-10: rgba(31, 111, 235, 0.1);  /* 主色透明：背景高亮 */
+  
+  /* 文字色（深灰色，高可读性） */
+  --text-color: #2c3e50;                 /* 主要文字：正文、标题 */
+  --text-color-light: #6a737d;           /* 次要文字：说明、提示 */
+  --text-color-lighter: #8b949e;         /* 辅助文字：标签、日期 */
+  --text-color-white: #ffffff;           /* 白色文字：深色背景 */
+  
+  /* 背景色 */
+  --bg-color: #ffffff;                   /* 主背景：页面主体 */
+  --bg-color-secondary: #f6f8fa;         /* 次背景：卡片、区块 */
+  --bg-color-tertiary: #f0f3f6;          /* 三级背景：表格、代码块 */
+  --bg-color-dark: #0d1117;              /* 深色背景：页脚、暗色模式 */
+  
+  /* 边框色 */
+  --border-color: #e1e4e8;               /* 主边框：分割线、卡片边框 */
+  --border-color-light: #f0f3f6;         /* 浅边框：表格、输入框 */
+  --border-color-dark: #30363d;          /* 深边框：暗色模式 */
+  
+  /* 语义色（状态提示） */
+  --color-success: #28a745;              /* 成功：绿色 */
+  --color-warning: #ffc107;              /* 警告：黄色 */
+  --color-error: #dc3545;                /* 错误：红色 */
+  --color-info: #17a2b8;                 /* 信息：青色 */
+  
+  /* ===== 字体系统 ===== */
+  
+  /* 英文字体：Inter（现代无衬线） + 系统字体栈备选 */
+  --font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  
+  /* 中文字体：Noto Sans SC（优先） + 系统字体备选 */
+  --font-family-zh: "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", sans-serif;
+  
+  /* 等宽字体：代码块 */
+  --font-family-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  
+  /* 字体大小（移动优先，基础为 16px） */
+  --font-size-base: 16px;                /* 基础字号：正文 */
+  --font-size-small: 14px;               /* 小字号：说明、标签 */
+  --font-size-smaller: 12px;             /* 更小字号：辅助信息 */
+  --font-size-large: 18px;               /* 大字号：引言、摘要 */
+  --font-size-h1: 2rem;                  /* 一级标题：32px */
+  --font-size-h2: 1.75rem;               /* 二级标题：28px */
+  --font-size-h3: 1.5rem;                /* 三级标题：24px */
+  --font-size-h4: 1.25rem;               /* 四级标题：20px */
+  
+  /* 行高 */
+  --line-height-base: 1.6;               /* 基础行高：正文 */
+  --line-height-heading: 1.3;            /* 标题行高：紧凑 */
+  --line-height-loose: 1.8;              /* 宽松行高：长文本 */
+  
+  /* ===== 响应式断点 ===== */
+  
+  /* 断点变量（用于 CSS 计算，不能直接用于 @media） */
+  --breakpoint-mobile: 768px;            /* 移动端：< 768px */
+  --breakpoint-tablet: 1024px;           /* 平板：768px - 1024px */
+  --breakpoint-desktop: 1024px;          /* 桌面端：>= 1024px */
+  
+  /* ===== 间距系统 ===== */
+  
+  /* 基础间距单位：0.25rem = 4px */
+  --spacing-xs: 0.25rem;                 /* 超小间距：4px */
+  --spacing-sm: 0.5rem;                  /* 小间距：8px */
+  --spacing-md: 1rem;                    /* 中等间距：16px */
+  --spacing-lg: 1.5rem;                  /* 大间距：24px */
+  --spacing-xl: 2rem;                    /* 超大间距：32px */
+  --spacing-2xl: 3rem;                   /* 特大间距：48px */
+  
+  /* 页面内边距（响应式） */
+  --page-padding: 1rem;                  /* 移动端：16px */
+  
+  /* ===== 阴影 ===== */
+  
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);           /* 小阴影：卡片 */
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);            /* 中阴影：悬浮卡片 */
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.15);         /* 大阴影：弹窗 */
+  
+  /* ===== 圆角 ===== */
+  
+  --radius-sm: 4px;                      /* 小圆角：按钮 */
+  --radius-md: 8px;                      /* 中圆角：卡片 */
+  --radius-lg: 12px;                     /* 大圆角：容器 */
+  --radius-full: 9999px;                 /* 完全圆角：标签、徽章 */
+  
+  /* ===== 过渡动画 ===== */
+  
+  --transition-fast: 150ms ease;         /* 快速过渡：悬停 */
+  --transition-base: 300ms ease;         /* 基础过渡：展开/收起 */
+  --transition-slow: 500ms ease;         /* 慢速过渡：页面切换 */
+  
+  /* ===== Z-index 层级 ===== */
+  
+  --z-index-dropdown: 1000;              /* 下拉菜单 */
+  --z-index-sticky: 1020;                /* 粘性元素：导航栏 */
+  --z-index-fixed: 1030;                 /* 固定元素：返回顶部 */
+  --z-index-modal: 1040;                 /* 模态框 */
+  --z-index-tooltip: 1060;               /* 提示框 */
+}
+
+/**
+ * =====================================================
+ * 响应式断点 Media Queries
+ * =====================================================
+ * 
+ * 遵循移动优先（Mobile First）原则：
+ * - 基础样式针对移动端（< 768px）
+ * - 使用 min-width 逐步增强到更大屏幕
+ * 
+ * 断点说明：
+ * - Mobile:  < 768px   (iPhone SE, Galaxy S, 小屏手机)
+ * - Tablet:  768-1024px (iPad, Android 平板)
+ * - Desktop: >= 1024px  (MacBook, 台式机)
+ */
+
+/**
+ * ===== 基础样式（Mobile First，< 768px） =====
+ * 
+ * 这些样式默认应用于所有设备
+ * 针对小屏手机优化
+ */
+
+/* 全局基础样式 */
+html {
+  font-size: 16px;                       /* 移动端基础字号：16px */
+  font-family: var(--font-family), var(--font-family-zh);
+  line-height: var(--line-height-base);
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  -webkit-font-smoothing: antialiased;   /* 字体平滑渲染 */
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-width: 320px;                      /* 最小宽度：避免过窄 */
+  overflow-x: hidden;                    /* 隐藏横向滚动条 */
+}
+
+/* 页面容器（移动端） */
+.page-container {
+  padding: var(--page-padding);          /* 移动端：16px */
+  max-width: 100%;
+}
+
+/* 标题基础样式 */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: var(--line-height-heading);
+  color: var(--text-color);
+  margin-top: var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
+}
+
+h1 {
+  font-size: var(--font-size-h1);        /* 32px */
+}
+
+h2 {
+  font-size: var(--font-size-h2);        /* 28px */
+}
+
+h3 {
+  font-size: var(--font-size-h3);        /* 24px */
+}
+
+h4 {
+  font-size: var(--font-size-h4);        /* 20px */
+}
+
+/* 链接样式 */
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--primary-color-light);
+  text-decoration: underline;
+}
+
+/* 代码块样式 */
+code {
+  font-family: var(--font-family-mono);
+  font-size: 0.9em;
+  background-color: var(--bg-color-tertiary);
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  color: var(--text-color);
+}
+
+pre {
+  background-color: var(--bg-color-tertiary);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  overflow-x: auto;
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+}
+
+/**
+ * ===== 平板断点（Tablet: 768px - 1024px） =====
+ * 
+ * 适用于 iPad、Android 平板等中等屏幕设备
+ * 增强布局，提供更多空间
+ * 
+ * 使用方式：
+ * @media (min-width: 768px) {
+ *   / * Tablet 样式 * /
+ * }
+ */
+
+@media (min-width: 768px) {
+  /* 字体大小增加 */
+  html {
+    font-size: 18px;                     /* 平板基础字号：18px */
+  }
+  
+  /* 页面内边距增加 */
+  :root {
+    --page-padding: 1.5rem;              /* 平板：24px */
+  }
+  
+  .page-container {
+    padding: var(--page-padding);
+    max-width: 1200px;                   /* 平板最大宽度：1200px */
+    margin: 0 auto;                      /* 居中对齐 */
+  }
+  
+  /* 标题字号微调 */
+  h1 {
+    font-size: 2.25rem;                  /* 36px */
+  }
+  
+  h2 {
+    font-size: 2rem;                     /* 32px */
+  }
+  
+  h3 {
+    font-size: 1.75rem;                  /* 28px */
+  }
+}
+
+/**
+ * ===== 平板横屏断点（Tablet Landscape: 768px - 1024px, 横屏） =====
+ * 
+ * 适用于 iPad 横屏模式
+ * 利用更宽的屏幕空间
+ * 
+ * 使用方式：
+ * @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+ *   / * Tablet Landscape 样式 * /
+ * }
+ */
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  /* 横屏布局优化 */
+  .page-container {
+    max-width: 95%;                      /* 横屏：使用更多宽度 */
+  }
+}
+
+/**
+ * ===== 桌面端断点（Desktop: >= 1024px） =====
+ * 
+ * 适用于 MacBook、台式机等大屏设备
+ * 提供最佳阅读体验
+ * 
+ * 使用方式：
+ * @media (min-width: 1024px) {
+ *   / * Desktop 样式 * /
+ * }
+ */
+
+@media (min-width: 1024px) {
+  /* 保持字号不变（18px） */
+  
+  /* 页面内边距增加 */
+  :root {
+    --page-padding: 2rem;                /* 桌面端：32px */
+  }
+  
+  .page-container {
+    padding: var(--page-padding);
+    max-width: 1440px;                   /* 桌面端最大宽度：1440px */
+    margin: 0 auto;
+  }
+  
+  /* 标题字号增加 */
+  h1 {
+    font-size: 2.5rem;                   /* 40px */
+  }
+  
+  h2 {
+    font-size: 2.25rem;                  /* 36px */
+  }
+  
+  h3 {
+    font-size: 2rem;                     /* 32px */
+  }
+}
+
+/**
+ * ===== 超大屏幕断点（XL Desktop: >= 1440px） =====
+ * 
+ * 适用于 27 寸显示器、4K 屏幕等超大屏设备
+ * 进一步优化空间利用
+ * 
+ * 使用方式：
+ * @media (min-width: 1440px) {
+ *   / * XL Desktop 样式 * /
+ * }
+ */
+
+@media (min-width: 1440px) {
+  .page-container {
+    max-width: 1600px;                   /* 超大屏：1600px */
+  }
+}
+
+/**
+ * =====================================================
+ * 响应式断点使用示例
+ * =====================================================
+ * 
+ * 以下是常见响应式场景的代码示例
+ * 后续 Epic 开发时可参考使用
+ */
+
+/**
+ * 示例 1：响应式字体大小
+ * 
+ * .my-element {
+ *   font-size: 16px;                    // 移动端
+ * }
+ * 
+ * @media (min-width: 768px) {
+ *   .my-element {
+ *     font-size: 18px;                  // 平板
+ *   }
+ * }
+ * 
+ * @media (min-width: 1024px) {
+ *   .my-element {
+ *     font-size: 20px;                  // 桌面端
+ *   }
+ * }
+ */
+
+/**
+ * 示例 2：响应式布局（单栏 → 双栏 → 三栏）
+ * 
+ * .grid-container {
+ *   display: grid;
+ *   grid-template-columns: 1fr;         // 移动端：单栏
+ *   gap: var(--spacing-md);
+ * }
+ * 
+ * @media (min-width: 768px) {
+ *   .grid-container {
+ *     grid-template-columns: repeat(2, 1fr);  // 平板：双栏
+ *   }
+ * }
+ * 
+ * @media (min-width: 1024px) {
+ *   .grid-container {
+ *     grid-template-columns: repeat(3, 1fr);  // 桌面端：三栏
+ *   }
+ * }
+ */
+
+/**
+ * 示例 3：响应式导航栏（后续 Epic 5 实现）
+ * 
+ * .navbar {
+ *   display: flex;
+ *   flex-direction: column;             // 移动端：垂直堆叠
+ * }
+ * 
+ * @media (min-width: 768px) {
+ *   .navbar {
+ *     flex-direction: row;              // 平板/桌面端：水平排列
+ *   }
+ * }
+ */
+
+/**
+ * =====================================================
+ * 实用工具类（Utility Classes）
+ * =====================================================
+ * 
+ * 提供常用的工具类，便于快速应用样式
+ * 后续 Epic 可根据需要扩展
+ */
+
+/* 文本对齐 */
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+/* 文本颜色 */
+.text-primary {
+  color: var(--primary-color);
+}
+
+.text-muted {
+  color: var(--text-color-light);
+}
+
+.text-white {
+  color: var(--text-color-white);
+}
+
+/* 背景色 */
+.bg-primary {
+  background-color: var(--primary-color);
+}
+
+.bg-secondary {
+  background-color: var(--bg-color-secondary);
+}
+
+/* 间距工具类 */
+.mt-sm { margin-top: var(--spacing-sm); }
+.mt-md { margin-top: var(--spacing-md); }
+.mt-lg { margin-top: var(--spacing-lg); }
+.mt-xl { margin-top: var(--spacing-xl); }
+
+.mb-sm { margin-bottom: var(--spacing-sm); }
+.mb-md { margin-bottom: var(--spacing-md); }
+.mb-lg { margin-bottom: var(--spacing-lg); }
+.mb-xl { margin-bottom: var(--spacing-xl); }
+
+.pt-sm { padding-top: var(--spacing-sm); }
+.pt-md { padding-top: var(--spacing-md); }
+.pt-lg { padding-top: var(--spacing-lg); }
+.pt-xl { padding-top: var(--spacing-xl); }
+
+.pb-sm { padding-bottom: var(--spacing-sm); }
+.pb-md { padding-bottom: var(--spacing-md); }
+.pb-lg { padding-bottom: var(--spacing-lg); }
+.pb-xl { padding-bottom: var(--spacing-xl); }
+
+/* 显示/隐藏（响应式） */
+.hidden-mobile {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .hidden-mobile {
+    display: block;
+  }
+  
+  .hidden-desktop {
+    display: none;
+  }
+}
+
+/**
+ * =====================================================
+ * 结束
+ * =====================================================
+ * 
+ * 本文件定义了项目的基础样式框架
+ * 后续 Epic 将在此基础上扩展具体页面样式
+ * 
+ * 如有问题或建议，请联系开发团队
+ * 
+ * Epic 4（PPT 模式）：添加 reveal.js 样式覆盖
+ * Epic 5（Document 模式）：添加导航栏、侧边栏样式
+ * Epic 6（页面完善）：添加首页、联系页样式
+ * 
+ * =====================================================
+ */
+
