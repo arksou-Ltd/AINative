@@ -1,5 +1,6 @@
 import { defineUserConfig } from 'vuepress'
 import { defaultTheme } from '@vuepress/theme-default'
+import { viteBundler } from '@vuepress/bundler-vite'
 
 export default defineUserConfig({
   // 站点配置
@@ -45,6 +46,6 @@ export default defineUserConfig({
   }),
 
   // 构建配置
-  bundler: '@vuepress/bundler-vite',
+  bundler: viteBundler({}),
 })
 
