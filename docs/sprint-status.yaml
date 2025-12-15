@@ -38,7 +38,7 @@ story_location: "{project-root}/docs/stories"
 development_status:
   # Epic 1: 项目基础设施与技术栈
   epic-1: backlog
-  1-1-tech-stack-research-and-decision: backlog
+  1-1-tech-stack-research-and-decision: done
   1-2-initialize-project-structure: backlog
   1-3-configure-dev-environment-and-preview: backlog
   1-4-create-responsive-layout-framework: backlog
