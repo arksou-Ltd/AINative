@@ -1,0 +1,63 @@
+<story-context id="bmad/bmm/workflows/4-implementation/story-context/template" v="1.0">
+  <metadata>
+    <epicId>3</epicId>
+    <storyId>2</storyId>
+    <title>整理真实案例内容</title>
+    <status>drafted</status>
+    <generatedAt>2025-12-15T13:45:33Z</generatedAt>
+    <generator>BMAD Story Context Workflow</generator>
+    <sourceStoryPath>docs/stories/3-2-organize-real-case-studies.md</sourceStoryPath>
+  </metadata>
+
+  <story>
+    <asA>内容创作者</asA>
+    <iWant>整理8个真实案例与市场数据并形成统一结构的案例库</iWant>
+    <soThat>读者能够基于可信证据理解AI Native的可行性并复制实践</soThat>
+    <tasks>- 建立案例目录骨架 (AC: #1 #3)
+  - 创建 docs/case-studies/ 及 9 个 Markdown 文件空壳，按架构信息结构命名
+  - 在 README.md 写入目录介绍与文件清单，确认相对路径、Doc↔PPT 映射预留
+- 收集与校验数据 (AC: #2 #4)
+  - 汇总 8 个案例的背景、AI 应用、成果数据及来源；为缺失数据留引用占位符
+  - 汇总市场数据关键指标并标注时间/来源，确保与 PRD 成功标准对齐
+- 填写案例内容 (AC: #1 #2)
+  - 逐篇填充结构化内容（背景 → AI 应用 → 成果数据 → 启示），1000-1500 字范围
+  - 为每篇添加数据引用/脚注或占位符，标注更新时间
+- 图片与命名规范 (AC: #3)
+  - 为需要图表的段落添加占位符（kebab-case），路径使用 /images/... 相对引用
+- 质量检查 (AC: #2 #3 #4)
+  - 自检目录结构、链接与命名；确保中文主体+英文术语、无臆造数据
+  - 预检与 PRD 成功标准对齐的市场数据覆盖度，确认后续可由校验流程完善</tasks>
+  </story>
+
+  <acceptanceCriteria>1. 在 docs/case-studies/ 下创建 9 个文件：README.md、openai.md、cursor-ai.md、commonwealth-bank.md、bupa.md、amazon.md、moderna.md、bayer.md、nvidia.md 以及 market-data.md，目录存在且路径与架构信息结构一致。每篇 1000-1500 字，遵循统一大纲：背景 → AI 应用 → 成果数据 → 启示。
+2. 所有案例与市场数据引用真实来源并标注更新时间/来源路径，严禁臆造；数值需与 PRD/研究报告一致或保留占位符待填充，并在文内标明引用位置。
+3. 案例与市场数据内容使用中文表达、英文技术术语保留；图片占位符命名 kebab-case，引用路径兼容 VuePress base /AINative/，单图建议 &lt;200KB/WebP。
+4. 产出 market-data.md 汇总 PRD 成功指标（理解深度/实践落地/传播触达）所需的关键数据点，标注来源并为缺失数据留占位符。</acceptanceCriteria>
+
+  <artifacts>
+    <docs>- path: docs/epics.md; title: Epics; section: Story 3.2: 整理真实案例内容; snippet: 要求在 docs/case-studies/ 下创建 README + 8 篇案例 + market-data，每篇 1000-1500 字，结构为背景→AI 应用→成果数据→启示，数据需可追溯。
+- path: docs/PRD.md; title: PRD; section: Success Criteria; snippet: 核心成功指标强调理解深度、实践落地、传播触达，需标注真实来源并避免臆造，MVP 门槛含至少 10 个用户理解本质、5 个用户开始实践。
+- path: docs/architecture.md; title: Architecture; section: Project Structure; snippet: 目录结构规定 docs/case-studies/ 下的 README 与 openai/cursor-ai/commonwealth-bank/bupa/amazon/moderna/bayer/nvidia/market-data 文件，并与 slides/cases.html 映射，图片放 .vuepress/public/images (WebP/&lt;200KB, kebab-case)。
+- path: docs/architecture.md; title: Architecture; section: Performance Considerations; snippet: 资源要求 WebP 优先、单图 &lt;200KB、loading=\"lazy\"，首屏 &lt;2s，移除未用插件并保持路径相对 base /AINative/。
+- path: docs/stories/3-1-write-ai-native-intro-content.md; title: Story 3.1; section: Dev Notes / Project Structure Notes; snippet: 语言需中文主体+英文术语，图片占位符 kebab-case，内容路径遵循 docs/ai-native-intro/ 规范，可复用语言与命名规则避免冲突。</docs>
+    <code>None identified (content-focused story; no existing code modules directly applicable).</code>
+    <dependencies>- Node (engines): &gt;=20.0.0; pnpm: &gt;=10.0.0
+- VuePress stack (devDependencies): vuepress 2.0.0-rc.26, @vuepress/bundler-vite 2.0.0-rc.26, @vuepress/theme-default 2.0.0-rc.26, @vuepress/helper 2.0.0-rc.26, vue ^3.3.0, vuepress-plugin-md-enhance 2.0.0-rc.99
+- Tooling: rimraf ^6.1.2
+- Overrides: plugin-seo/plugin-sitemap stubs in vendor/; prismjs/git/back-to-top/copy-code pinned to rc builds</dependencies>
+  </artifacts>
+
+  <constraints>- 目录与命名：案例文件位于 docs/case-studies/，文件名/图片名使用 kebab-case；图片放 .vuepress/public/images，路径兼容 base /AINative/。
+- 内容真实性：所有案例数据需可追溯且标注来源/时间，严禁臆造；缺失数据需占位并注明待补充。
+- 结构一致性：每篇案例遵循背景→AI 应用→成果数据→启示，字数 1000-1500 字；market-data.md 汇总成功指标关键数据。
+- 性能与资源：图片 WebP 优先、单图 &lt;200KB、lazy load，避免未用资源；保持相对路径与文档/PPT共用资源。</constraints>
+  <interfaces>None identified for this content-focused story.</interfaces>
+  <tests>
+    <standards>未发现独立测试策略文档；按故事任务进行自检：校验目录/链接/命名，确保引用与数据来源标注齐全，图片占位符与路径符合架构性能约束。</standards>
+    <locations>docs/ (Markdown 内容); 未发现自动化测试目录。</locations>
+    <ideas>- AC1: 确认 docs/case-studies/ 下存在 README + 8 案例 + market-data，并含统一章节骨架。
+- AC2: 每篇包含来源/时间标注或占位符，无臆造数据。
+- AC3: 检查图片占位符命名 kebab-case，引用路径兼容 base /AINative/，描述尺寸/格式要求。
+- AC4: market-data.md 汇总理解/实践/传播等成功指标的关键数据点并注明来源。</ideas>
+  </tests>
+</story-context>
