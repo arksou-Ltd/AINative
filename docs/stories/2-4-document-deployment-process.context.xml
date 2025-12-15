@@ -1,0 +1,321 @@
+<story-context id="bmad/bmm/workflows/4-implementation/story-context/template" v="1.0">
+  <metadata>
+    <epicId>2</epicId>
+    <storyId>4</storyId>
+    <title>文档化部署流程</title>
+    <status>drafted</status>
+    <generatedAt>2025-12-15</generatedAt>
+    <generator>BMAD Story Context Workflow</generator>
+    <sourceStoryPath>docs/stories/2-4-document-deployment-process.md</sourceStoryPath>
+  </metadata>
+
+  <story>
+    <asA>开发者</asA>
+    <iWant>将部署流程文档化</iWant>
+    <soThat>团队成员和贡献者了解如何部署</soThat>
+    <tasks>
+      <task id="1" ac="1">
+        <title>更新README.md添加部署章节</title>
+        <subtasks>
+          <subtask>打开项目根目录的README.md文件</subtask>
+          <subtask>添加"## 部署"章节(如果不存在)</subtask>
+          <subtask>编写"自动部署"小节,包含触发条件、构建流程、访问URL、CDN刷新时间</subtask>
+          <subtask>编写"本地构建测试"小节,包含构建命令、预览命令、本地访问URL</subtask>
+          <subtask>保持语言为中文,技术术语使用英文</subtask>
+        </subtasks>
+      </task>
+      <task id="2" ac="2">
+        <title>添加故障排查指南</title>
+        <subtasks>
+          <subtask>在部署章节添加"### 常见问题"小节</subtask>
+          <subtask>文档化问题1: Actions运行成功但网站404 - 原因和解决方案</subtask>
+          <subtask>文档化问题2: 页面显示但样式/图片404 - 原因和解决方案</subtask>
+          <subtask>文档化问题3: 修改后页面不更新 - 原因和解决方案</subtask>
+          <subtask>文档化问题4: HTTPS证书错误 - 原因和解决方案</subtask>
+          <subtask>每个问题包含: 症状、原因、解决步骤</subtask>
+        </subtasks>
+      </task>
+      <task id="3" ac="1-extended">
+        <title>添加部署状态badge (可选)</title>
+        <subtasks>
+          <subtask>获取GitHub Actions badge URL</subtask>
+          <subtask>在README.md顶部添加badge Markdown</subtask>
+          <subtask>验证badge显示正确</subtask>
+        </subtasks>
+      </task>
+      <task id="4" ac="quality">
+        <title>验证文档准确性</title>
+        <subtasks>
+          <subtask>检查所有命令是否正确(拼写、参数)</subtask>
+          <subtask>验证所有URL是否正确</subtask>
+          <subtask>确认文档语言符合项目规范(中文为主,技术术语英文)</subtask>
+          <subtask>检查Markdown格式是否正确(标题层级、代码块、链接)</subtask>
+          <subtask>确保文档简洁易懂,避免冗余</subtask>
+        </subtasks>
+      </task>
+      <task id="5" ac="3">
+        <title>提交文档更新</title>
+        <subtasks>
+          <subtask>暂存更改: git add README.md</subtask>
+          <subtask>提交更改: git commit -m "docs(deploy): document deployment process and troubleshooting"</subtask>
+          <subtask>推送到远程: git push origin main</subtask>
+          <subtask>确认推送成功(无错误提示)</subtask>
+        </subtasks>
+      </task>
+      <task id="6" ac="final-verification">
+        <title>验证文档可用性</title>
+        <subtasks>
+          <subtask>访问GitHub仓库页面,查看README.md渲染效果</subtask>
+          <subtask>验证所有Markdown格式正确显示</subtask>
+          <subtask>验证代码块语法高亮正确</subtask>
+          <subtask>验证badge显示正确(如果添加)</subtask>
+          <subtask>让团队成员(或自己)按文档操作一遍,确认可行性</subtask>
+        </subtasks>
+      </task>
+    </tasks>
+  </story>
+
+  <acceptanceCriteria>
+    <criterion id="1">更新README.md,添加"部署"章节,包含自动部署说明、GitHub Actions构建流程、访问URL和预期时间、本地构建测试命令、本地访问URL</criterion>
+    <criterion id="2">文档包含故障排查指南,覆盖4个常见问题(Actions成功但404、资源404、页面不更新、HTTPS错误),每个问题包含症状、原因、解决步骤</criterion>
+    <criterion id="3">提交文档更新到仓库</criterion>
+  </acceptanceCriteria>
+
+  <artifacts>
+    <docs>
+      <doc>
+        <path>docs/epics.md</path>
+        <title>Epic 2: 部署验证与Hello World</title>
+        <section>Story 2.4: 文档化部署流程</section>
+        <snippet>将部署流程文档化,更新README.md添加部署章节和故障排查指南,使团队成员和贡献者了解如何部署。前提条件: Story 2.3完成。</snippet>
+      </doc>
+      <doc>
+        <path>docs/architecture.md</path>
+        <title>Deployment Architecture</title>
+        <section>GitHub Pages Configuration</section>
+        <snippet>部署配置关键点: base路径 /AINative/, 构建命令 pnpm run docs:build, 预览命令 npx serve docs/.vuepress/dist, 部署分支 gh-pages, Node版本 18 LTS。</snippet>
+      </doc>
+      <doc>
+        <path>docs/PRD.md</path>
+        <title>Documentation Requirements</title>
+        <section>Technical Documentation</section>
+        <snippet>文档要求: 使用中文编写,包含常见问题解答,简洁易懂面向开发者和贡献者,提供可操作的步骤和命令。</snippet>
+      </doc>
+      <doc>
+        <path>docs/stories/2-1-configure-github-repo-and-actions.md</path>
+        <title>Story 2.1: 配置GitHub仓库与Actions工作流</title>
+        <section>Deployment Pipeline</section>
+        <snippet>GitHub Actions工作流配置,触发条件push to main分支,构建环境Ubuntu + Node.js 20 + pnpm 10,peaceiris/actions-gh-pages@v3部署到gh-pages分支。完整的CI/CD管线。</snippet>
+      </doc>
+      <doc>
+        <path>docs/stories/2-3-verify-deployment-and-access.md</path>
+        <title>Story 2.3: 验证部署流程与访问</title>
+        <section>Deployment Verification and Troubleshooting</section>
+        <snippet>部署流程已全面验证,包含完整的部署管线流程图、关键配置参数、时间预期表、5类常见问题及详细解决方案(Actions成功但404、资源404、页面不更新、HTTPS错误、控制台报错)。可直接复用这些验证经验编写文档。</snippet>
+      </doc>
+      <doc>
+        <path>CLAUDE.md</path>
+        <title>Project Guidelines - Language Standards</title>
+        <section>Communication and Content Language</section>
+        <snippet>语言规范: 主要内容使用中文,技术术语保留英文(GitHub Pages, Actions, VuePress等),代码块/命令/配置使用英文,URL/路径使用英文。</snippet>
+      </doc>
+    </docs>
+    <code>
+      <file>
+        <path>README.md</path>
+        <kind>documentation</kind>
+        <symbol>Project Documentation</symbol>
+        <lines>all</lines>
+        <reason>本Story的主要修改文件,需要添加部署章节、自动部署说明、本地构建测试、故障排查指南。这是项目的主要文档入口。</reason>
+      </file>
+      <file>
+        <path>.github/workflows/deploy.yml</path>
+        <kind>workflow</kind>
+        <symbol>Deploy to GitHub Pages</symbol>
+        <lines>all</lines>
+        <reason>GitHub Actions工作流配置,文档中需要引用此工作流的触发条件和构建流程。需要理解其配置以准确描述自动部署流程。</reason>
+      </file>
+      <file>
+        <path>docs/.vuepress/config.ts</path>
+        <kind>config</kind>
+        <symbol>VuePress Configuration</symbol>
+        <lines>base配置</lines>
+        <reason>VuePress配置文件,包含关键的base路径配置,文档中需要引用此配置说明资源路径要求。base路径错误是常见问题之一。</reason>
+      </file>
+      <file>
+        <path>package.json</path>
+        <kind>manifest</kind>
+        <symbol>Build Scripts</symbol>
+        <lines>scripts section</lines>
+        <reason>包含构建脚本定义,文档中需要引用正确的构建命令和预览命令。确保文档中的命令与实际scripts一致。</reason>
+      </file>
+      <file>
+        <path>CLAUDE.md</path>
+        <kind>documentation</kind>
+        <symbol>Project Guidelines</symbol>
+        <lines>Language Rules</lines>
+        <reason>项目规范文档,定义了语言使用规范。编写README部署章节时必须遵循这些规范(中文主体,技术术语英文)。</reason>
+      </file>
+    </code>
+    <dependencies>
+      <node>
+        <package>vuepress</package>
+        <version>2.0.0-rc.26</version>
+        <reason>静态站点生成器,用于构建文档站点,文档中需要引用构建命令</reason>
+      </node>
+      <node>
+        <package>serve</package>
+        <version>latest</version>
+        <reason>本地静态文件服务器,用于预览构建结果,文档中需要提供预览命令</reason>
+      </node>
+      <ci>
+        <tool>GitHub Actions</tool>
+        <version>latest</version>
+        <reason>CI/CD工作流执行环境,文档中需要说明自动部署流程</reason>
+      </ci>
+      <ci>
+        <tool>GitHub Pages</tool>
+        <version>N/A</version>
+        <reason>静态站点托管服务,文档中需要提供访问URL和说明CDN刷新时间</reason>
+      </ci>
+      <runtime>
+        <tool>Node.js</tool>
+        <version>20 LTS (CI), 18 LTS (local)</version>
+        <reason>JavaScript运行时,文档中需要说明环境要求</reason>
+      </runtime>
+      <runtime>
+        <tool>pnpm</tool>
+        <version>10.x</version>
+        <reason>包管理器,文档中的构建命令使用pnpm</reason>
+      </runtime>
+    </dependencies>
+  </artifacts>
+
+  <constraints>
+    <constraint>
+      <category>documentation</category>
+      <rule>文档必须使用中文编写,技术术语保留英文(遵循CLAUDE.md规范)</rule>
+    </constraint>
+    <constraint>
+      <category>documentation</category>
+      <rule>所有命令和代码块必须准确可执行,直接复制粘贴即可使用</rule>
+    </constraint>
+    <constraint>
+      <category>documentation</category>
+      <rule>Markdown格式必须正确,确保在GitHub上渲染无误</rule>
+    </constraint>
+    <constraint>
+      <category>content</category>
+      <rule>部署章节必须包含: 自动部署说明、本地构建测试、常见问题解答,缺一不可</rule>
+    </constraint>
+    <constraint>
+      <category>content</category>
+      <rule>故障排查指南必须覆盖至少4个常见问题,每个问题包含症状、原因、解决步骤</rule>
+    </constraint>
+    <constraint>
+      <category>quality</category>
+      <rule>文档必须简洁易懂,避免冗长描述和技术黑话,面向开发者和贡献者</rule>
+    </constraint>
+    <constraint>
+      <category>quality</category>
+      <rule>所有URL、路径、命令必须经过验证,确保准确无误</rule>
+    </constraint>
+  </constraints>
+
+  <interfaces>
+    <interface>
+      <name>README.md - 部署章节</name>
+      <kind>documentation-section</kind>
+      <signature>## 部署 (Markdown section)</signature>
+      <path>README.md</path>
+      <description>项目主文档中的部署章节,需要添加自动部署说明、本地构建测试、故障排查指南。这是团队成员了解部署流程的主要入口。</description>
+    </interface>
+    <interface>
+      <name>GitHub Actions Workflow</name>
+      <kind>ci-cd-pipeline</kind>
+      <signature>.github/workflows/deploy.yml</signature>
+      <path>.github/workflows/deploy.yml</path>
+      <description>自动部署工作流,文档中需要引用其触发条件(push to main)和构建步骤。工作流配置决定了自动部署的行为。</description>
+    </interface>
+    <interface>
+      <name>VuePress Build Command</name>
+      <kind>cli-command</kind>
+      <signature>pnpm run docs:build</signature>
+      <path>package.json (scripts)</path>
+      <description>构建命令,将docs目录下的Markdown文件构建为静态HTML,输出到docs/.vuepress/dist/。文档中需要提供此命令供本地测试。</description>
+    </interface>
+    <interface>
+      <name>Local Preview Command</name>
+      <kind>cli-command</kind>
+      <signature>npx serve docs/.vuepress/dist</signature>
+      <path>N/A</path>
+      <description>本地预览命令,启动静态文件服务器预览构建结果。文档中需要提供此命令和访问URL(http://localhost:3000)。</description>
+    </interface>
+    <interface>
+      <name>GitHub Pages URL</name>
+      <kind>web-endpoint</kind>
+      <signature>https://arksou-ltd.github.io/AINative/</signature>
+      <path>N/A</path>
+      <description>生产环境访问地址,文档中需要提供此URL并说明CDN刷新时间(5-10分钟)。</description>
+    </interface>
+  </interfaces>
+
+  <tests>
+    <standards>
+本Story是文档编写任务,主要通过文档质量验证而非自动化测试。验证方法包括: (1)自查命令和URL准确性, (2)在GitHub上查看Markdown渲染效果, (3)按文档操作一遍验证可行性, (4)让团队成员review文档可读性。文档质量标准: 结构清晰、命令准确、语言规范(中文主体/技术术语英文)、Markdown格式正确、覆盖常见问题。
+    </standards>
+    <locations>
+      <location>手动验证 - README.md本地Markdown预览</location>
+      <location>手动验证 - GitHub仓库页面README渲染效果</location>
+      <location>手动验证 - 按文档执行构建和预览命令</location>
+      <location>手动验证 - 团队成员review(可选)</location>
+    </locations>
+    <ideas>
+      <idea ac="1">
+        <test>验证部署章节结构完整: 包含"自动部署"和"本地构建测试"两个小节,以及"常见问题"小节</test>
+      </idea>
+      <idea ac="1">
+        <test>验证自动部署说明准确: 触发条件(push to main)、构建流程(5个步骤)、访问URL、生效时间(5-10分钟)全部正确</test>
+      </idea>
+      <idea ac="1">
+        <test>验证本地构建测试命令准确: pnpm run docs:build和npx serve docs/.vuepress/dist可直接执行,访问URL http://localhost:3000正确</test>
+      </idea>
+      <idea ac="1">
+        <test>验证语言规范: 主要内容中文,技术术语英文(GitHub Pages, Actions, VuePress, pnpm等),代码块英文</test>
+      </idea>
+      <idea ac="2">
+        <test>验证故障排查指南包含4个问题: Actions成功但404、资源404、页面不更新、HTTPS错误</test>
+      </idea>
+      <idea ac="2">
+        <test>验证问题1格式: 标题、原因描述、解决方案列表,包含Pages设置、base配置、gh-pages分支检查</test>
+      </idea>
+      <idea ac="2">
+        <test>验证问题2格式: 标题、原因描述、解决方案列表,包含Network面板检查、base前缀确认、构建产物检查</test>
+      </idea>
+      <idea ac="2">
+        <test>验证问题3格式: 标题、原因描述、解决方案列表,包含强制刷新、隐私模式、等待缓存、验证分支更新</test>
+      </idea>
+      <idea ac="2">
+        <test>验证问题4格式: 标题、原因描述、解决方案列表,包含Enforce HTTPS检查、证书生成时间说明</test>
+      </idea>
+      <idea ac="3">
+        <test>执行git add README.md,验证文件被正确暂存</test>
+      </idea>
+      <idea ac="3">
+        <test>执行git commit命令,验证提交消息符合项目规范(docs(deploy): ...)</test>
+      </idea>
+      <idea ac="3">
+        <test>执行git push origin main,验证推送成功无错误</test>
+      </idea>
+      <idea ac="quality">
+        <test>在GitHub仓库页面查看README.md,验证Markdown渲染正确(标题层级、代码块高亮、列表格式)</test>
+      </idea>
+      <idea ac="quality">
+        <test>复制文档中的构建命令执行,验证命令可用且构建成功</test>
+      </idea>
+      <idea ac="quality">
+        <test>复制文档中的预览命令执行,验证可启动服务器并通过浏览器访问http://localhost:3000</test>
+      </idea>
+    </ideas>
+  </tests>
+</story-context>

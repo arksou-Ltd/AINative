@@ -14,7 +14,9 @@
       "Bash(pnpm run docs:clean:*)",
       "Bash(git add:*)",
       "Bash(git commit:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "SlashCommand(/bmad:bmm:workflows:story-context)",
+      "Bash(test:*)"
     ]
   }
 }

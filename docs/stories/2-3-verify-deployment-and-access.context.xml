@@ -1,0 +1,289 @@
+<story-context id="bmad/bmm/workflows/4-implementation/story-context/template" v="1.0">
+  <metadata>
+    <epicId>2</epicId>
+    <storyId>3</storyId>
+    <title>验证部署流程与访问</title>
+    <status>drafted</status>
+    <generatedAt>2025-12-15</generatedAt>
+    <generator>BMAD Story Context Workflow</generator>
+    <sourceStoryPath>docs/stories/2-3-verify-deployment-and-access.md</sourceStoryPath>
+  </metadata>
+
+  <story>
+    <asA>开发者</asA>
+    <iWant>验证网站可通过GitHub Pages URL正常访问</iWant>
+    <soThat>确认部署流程完全打通</soThat>
+    <tasks>
+      <task id="1" ac="1">
+        <title>验证GitHub Actions构建状态</title>
+        <subtasks>
+          <subtask>访问GitHub仓库Actions页面</subtask>
+          <subtask>确认最新workflow run状态为success (绿色✅)</subtask>
+          <subtask>检查workflow日志,确认所有steps都通过</subtask>
+          <subtask>记录构建耗时(预期 &lt;5分钟)</subtask>
+          <subtask>验证gh-pages分支已更新(查看最后提交时间)</subtask>
+        </subtasks>
+      </task>
+      <task id="2" ac="2,3,4">
+        <title>验证网站访问</title>
+        <subtasks>
+          <subtask>访问GitHub Pages URL: https://arksou-ltd.github.io/AINative/</subtask>
+          <subtask>验证Hello World内容正确显示</subtask>
+          <subtask>检查HTTPS连接(浏览器地址栏锁图标)</subtask>
+          <subtask>打开浏览器开发者工具 → Network面板</subtask>
+          <subtask>刷新页面,确认所有资源(CSS/JS/图片)正常加载(无404)</subtask>
+          <subtask>检查资源路径是否正确(应包含/AINative/前缀)</subtask>
+        </subtasks>
+      </task>
+      <task id="3" ac="5">
+        <title>验证浏览器控制台</title>
+        <subtasks>
+          <subtask>打开浏览器开发者工具 → Console面板</subtask>
+          <subtask>确认无JavaScript错误(红色error)</subtask>
+          <subtask>确认无CSS加载失败警告</subtask>
+          <subtask>可忽略info/debug级别日志</subtask>
+        </subtasks>
+      </task>
+      <task id="4" ac="6">
+        <title>验证增量部署</title>
+        <subtasks>
+          <subtask>修改docs/README.md,添加时间戳或版本号</subtask>
+          <subtask>提交并推送: git commit -m "test(deploy): verify incremental deployment"</subtask>
+          <subtask>等待GitHub Actions完成(5-10分钟)</subtask>
+          <subtask>强制刷新页面(Ctrl+Shift+R / Cmd+Shift+R)</subtask>
+          <subtask>验证修改已生效</subtask>
+          <subtask>如果未生效,检查gh-pages分支是否更新</subtask>
+        </subtasks>
+      </task>
+      <task id="5" ac="optional">
+        <title>CDN缓存验证 (可选,深入验证)</title>
+        <subtasks>
+          <subtask>使用不同浏览器访问(Chrome/Firefox/Safari)</subtask>
+          <subtask>使用浏览器隐私模式访问</subtask>
+          <subtask>记录不同地区CDN节点响应时间(可选)</subtask>
+          <subtask>验证缓存头(Cache-Control)</subtask>
+        </subtasks>
+      </task>
+      <task id="6" ac="preventive">
+        <title>故障排查准备(预防性)</title>
+        <subtasks>
+          <subtask>记录所有验证步骤结果</subtask>
+          <subtask>截图关键页面(首页、Actions状态、Network面板)</subtask>
+          <subtask>如遇问题,参考Dev Notes中的故障排查指南</subtask>
+          <subtask>记录任何异常现象到Debug Log</subtask>
+        </subtasks>
+      </task>
+    </tasks>
+  </story>
+
+  <acceptanceCriteria>
+    <criterion id="1">GitHub Actions工作流显示绿色✅(构建成功)</criterion>
+    <criterion id="2">访问https://&lt;username&gt;.github.io/AINative/显示Hello World页面</criterion>
+    <criterion id="3">HTTPS正常工作(绿色锁图标)</criterion>
+    <criterion id="4">页面样式正确加载(无404错误)</criterion>
+    <criterion id="5">浏览器控制台无报错</criterion>
+    <criterion id="6">修改内容后重新推送,页面自动更新(验证增量部署)</criterion>
+  </acceptanceCriteria>
+
+  <artifacts>
+    <docs>
+      <doc>
+        <path>docs/epics.md</path>
+        <title>Epic 2: 部署验证与Hello World</title>
+        <section>Story 2.3: 验证部署流程与访问</section>
+        <snippet>验证网站可通过GitHub Pages URL正常访问,确认部署流程完全打通。检查Actions状态、HTTPS、资源加载、控制台无错误,并验证增量部署。</snippet>
+      </doc>
+      <doc>
+        <path>docs/architecture.md</path>
+        <title>Deployment Architecture</title>
+        <section>GitHub Pages Configuration</section>
+        <snippet>base路径配置: /AINative/, 部署分支: gh-pages, 构建目录: docs/.vuepress/dist. VuePress配置必须包含正确的base路径以确保资源正确加载。</snippet>
+      </doc>
+      <doc>
+        <path>docs/PRD.md</path>
+        <title>Technical Constraints</title>
+        <section>GitHub Pages Deployment</section>
+        <snippet>静态站点部署到GitHub Pages,无后端服务器,纯静态HTML/CSS/JS。性能目标: 首页加载 &lt; 2秒, Lighthouse Performance &gt; 90分。</snippet>
+      </doc>
+      <doc>
+        <path>docs/stories/2-1-configure-github-repo-and-actions.md</path>
+        <title>Story 2.1: 配置GitHub仓库与Actions工作流</title>
+        <section>Deployment Pipeline</section>
+        <snippet>GitHub Actions工作流配置完成,触发条件: push to main分支。构建环境: Ubuntu + Node.js 20 + pnpm 10。peaceiris/actions-gh-pages@v3用于部署到gh-pages分支。</snippet>
+      </doc>
+      <doc>
+        <path>docs/stories/2-2-create-hello-world-page.md</path>
+        <title>Story 2.2: 创建Hello World验证页面</title>
+        <section>Deployment Verification</section>
+        <snippet>Hello World内容已部署,heroText: "AINative - Hello World 🎉"。部署管线已验证可用,构建时间 &lt;1分钟。已知问题: 首次启动开发服务器可能遇到ELOOP错误,使用pnpm run docs:clean清理。</snippet>
+      </doc>
+    </docs>
+    <code>
+      <file>
+        <path>.github/workflows/deploy.yml</path>
+        <kind>workflow</kind>
+        <symbol>Deploy to GitHub Pages</symbol>
+        <lines>all</lines>
+        <reason>GitHub Actions工作流配置文件,定义了完整的CI/CD管线,需要验证其执行状态和日志</reason>
+      </file>
+      <file>
+        <path>docs/README.md</path>
+        <kind>content</kind>
+        <symbol>Homepage</symbol>
+        <lines>all</lines>
+        <reason>首页内容文件(Hello World页面),是验证部署的核心内容,需要确认其在GitHub Pages上正确显示</reason>
+      </file>
+      <file>
+        <path>docs/.vuepress/config.ts</path>
+        <kind>config</kind>
+        <symbol>VuePress Configuration</symbol>
+        <lines>all</lines>
+        <reason>VuePress配置文件,包含关键的base路径配置(/AINative/),直接影响资源路径和访问URL</reason>
+      </file>
+      <file>
+        <path>package.json</path>
+        <kind>manifest</kind>
+        <symbol>Project Dependencies</symbol>
+        <lines>scripts</lines>
+        <reason>包含构建脚本(docs:build, docs:dev),需要了解构建命令和依赖版本</reason>
+      </file>
+    </code>
+    <dependencies>
+      <node>
+        <package>vuepress</package>
+        <version>2.0.0-rc.26</version>
+        <reason>静态站点生成器,用于构建文档站点</reason>
+      </node>
+      <node>
+        <package>vuepress-plugin-md-enhance</package>
+        <version>2.0.0-rc.99</version>
+        <reason>VuePress插件,提供Markdown增强功能和reveal.js支持</reason>
+      </node>
+      <ci>
+        <tool>GitHub Actions</tool>
+        <version>latest</version>
+        <reason>CI/CD工作流执行环境</reason>
+      </ci>
+      <ci>
+        <tool>peaceiris/actions-gh-pages</tool>
+        <version>v3</version>
+        <reason>GitHub Pages部署工具,将构建产物部署到gh-pages分支</reason>
+      </ci>
+      <runtime>
+        <tool>Node.js</tool>
+        <version>20 LTS</version>
+        <reason>JavaScript运行时环境,用于执行VuePress构建</reason>
+      </runtime>
+      <runtime>
+        <tool>pnpm</tool>
+        <version>10.x</version>
+        <reason>包管理器,用于依赖安装和脚本执行</reason>
+      </runtime>
+    </dependencies>
+  </artifacts>
+
+  <constraints>
+    <constraint>
+      <category>deployment</category>
+      <rule>base路径必须配置为 /AINative/ 以匹配GitHub仓库名,否则资源路径错误导致404</rule>
+    </constraint>
+    <constraint>
+      <category>deployment</category>
+      <rule>GitHub Pages Source必须设置为gh-pages分支,否则网站无法访问</rule>
+    </constraint>
+    <constraint>
+      <category>deployment</category>
+      <rule>构建产物必须输出到 docs/.vuepress/dist/ 目录,这是GitHub Actions工作流配置的发布目录</rule>
+    </constraint>
+    <constraint>
+      <category>timing</category>
+      <rule>CDN缓存生效需要5-10分钟,验证更新时需要强制刷新或等待缓存过期</rule>
+    </constraint>
+    <constraint>
+      <category>testing</category>
+      <rule>验证必须包含: Actions状态检查、URL访问、HTTPS工作、资源加载、控制台无错误、增量部署</rule>
+    </constraint>
+    <constraint>
+      <category>documentation</category>
+      <rule>记录所有验证步骤结果和截图,为后续故障排查提供参考</rule>
+    </constraint>
+  </constraints>
+
+  <interfaces>
+    <interface>
+      <name>GitHub Pages URL</name>
+      <kind>web-endpoint</kind>
+      <signature>https://arksou-ltd.github.io/AINative/</signature>
+      <path>N/A</path>
+      <description>GitHub Pages托管的网站访问地址,需验证可访问性、HTTPS和资源加载</description>
+    </interface>
+    <interface>
+      <name>GitHub Actions API</name>
+      <kind>ci-status</kind>
+      <signature>GitHub Repository → Actions → Workflow Runs</signature>
+      <path>.github/workflows/deploy.yml</path>
+      <description>GitHub Actions工作流执行状态和日志,需通过GitHub UI或API查询</description>
+    </interface>
+    <interface>
+      <name>gh-pages Branch</name>
+      <kind>git-branch</kind>
+      <signature>git branch: gh-pages</signature>
+      <path>N/A</path>
+      <description>部署分支,包含构建后的静态文件,需验证其更新时间和内容</description>
+    </interface>
+    <interface>
+      <name>Browser DevTools</name>
+      <kind>debugging-tool</kind>
+      <signature>Network Panel, Console Panel</signature>
+      <path>N/A</path>
+      <description>浏览器开发者工具,用于检查资源加载状态、控制台错误和网络请求</description>
+    </interface>
+  </interfaces>
+
+  <tests>
+    <standards>
+本Story是验证性工作,主要通过手动测试和观察验证部署流程。无需编写自动化测试代码,但需要系统性地执行验证步骤并记录结果。测试方法包括: 访问GitHub UI查看Actions状态和日志,使用浏览器访问GitHub Pages URL并打开DevTools检查资源加载和控制台,修改内容后推送验证增量部署。所有验证步骤需要记录截图和结果。
+    </standards>
+    <locations>
+      <location>手动验证 - GitHub Actions页面</location>
+      <location>手动验证 - 浏览器访问 https://arksou-ltd.github.io/AINative/</location>
+      <location>手动验证 - 浏览器DevTools (Network, Console)</location>
+      <location>手动验证 - gh-pages分支内容检查</location>
+    </locations>
+    <ideas>
+      <idea ac="1">
+        <test>访问GitHub仓库Actions页面,找到最新的workflow run,验证状态为success(绿色✅),所有job steps通过</test>
+      </idea>
+      <idea ac="1">
+        <test>检查workflow日志,确认构建步骤: checkout代码、setup Node、安装依赖、执行构建、部署到gh-pages,全部无报错</test>
+      </idea>
+      <idea ac="1">
+        <test>记录构建耗时,验证是否在预期范围内(&lt;5分钟),如果超时需要分析原因</test>
+      </idea>
+      <idea ac="1">
+        <test>访问gh-pages分支,查看最后提交时间,确认与main分支推送时间匹配,表示部署成功</test>
+      </idea>
+      <idea ac="2,3">
+        <test>在浏览器访问 https://arksou-ltd.github.io/AINative/,验证页面显示Hello World内容,检查地址栏是否有绿色锁图标(HTTPS)</test>
+      </idea>
+      <idea ac="4">
+        <test>打开浏览器DevTools → Network面板,刷新页面,检查所有资源(CSS/JS/图片)的HTTP状态码,确认全部为200,无404错误</test>
+      </idea>
+      <idea ac="4">
+        <test>在Network面板中检查资源路径,确认所有路径包含/AINative/前缀,验证base路径配置正确</test>
+      </idea>
+      <idea ac="5">
+        <test>打开浏览器DevTools → Console面板,检查是否有红色错误信息(JavaScript错误或CSS加载失败),警告可以忽略</test>
+      </idea>
+      <idea ac="6">
+        <test>修改docs/README.md内容(如添加时间戳),提交并推送到main分支,等待GitHub Actions完成构建</test>
+      </idea>
+      <idea ac="6">
+        <test>等待5-10分钟CDN缓存刷新,然后强制刷新页面(Ctrl+Shift+R / Cmd+Shift+R),验证修改内容已生效</test>
+      </idea>
+      <idea ac="6">
+        <test>如果页面未更新,检查gh-pages分支是否已更新,如果分支已更新但页面未变化,说明是CDN缓存问题,需要继续等待或清除浏览器缓存</test>
+      </idea>
+    </ideas>
+  </tests>
+</story-context>
