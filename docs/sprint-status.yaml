@@ -49,8 +49,8 @@ development_status:
   epic-2: backlog
   2-1-configure-github-repo-and-actions: done
   2-2-create-hello-world-page: done
-  2-3-verify-deployment-and-access: review
-  2-4-document-deployment-process: drafted
+  2-3-verify-deployment-and-access: done
+  2-4-document-deployment-process: ready-for-dev
   epic-2-retrospective: optional
 
   # Epic 3: 内容体系建设
