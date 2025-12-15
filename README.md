@@ -1,7 +1,7 @@
 # AINative
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Node Version](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen)](https://nodejs.org/)
+[![Node Version](https://img.shields.io/badge/node-%3E%3D20.0.0-brightgreen)](https://nodejs.org/)
 [![pnpm Version](https://img.shields.io/badge/pnpm-%3E%3D8.0.0-blue)](https://pnpm.io/)
 
 **AINative** 是一个双模式静态文档网站，旨在通过创新的内容呈现方式，帮助企业和个人理解和实践AI Native转型。
@@ -25,7 +25,7 @@
 
 ### 前置要求
 
-- **Node.js** >= 18.0.0 (推荐使用LTS版本)
+- **Node.js** >= 20.0.0 (推荐使用LTS版本)
 - **pnpm** >= 10.0.0 (推荐的包管理器)
 
 ### 安装依赖
@@ -126,7 +126,7 @@ AINative/
 
 **构建环境**：
 - **操作系统**: Ubuntu Latest
-- **Node.js**: 18.x LTS
+- **Node.js**: 20.x LTS
 - **包管理器**: pnpm 10.x
 
 **部署流程**：
