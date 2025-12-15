@@ -8,7 +8,8 @@
       "SlashCommand(/bmad:bmm:workflows:research)",
       "WebSearch",
       "SlashCommand(/bmad:bmm:workflows:product-brief)",
-      "SlashCommand(/bmad:bmm:workflows:prd)"
+      "SlashCommand(/bmad:bmm:workflows:prd)",
+      "SlashCommand(/bmad:bmm:workflows:create-epics-and-stories)"
     ]
   }
 }

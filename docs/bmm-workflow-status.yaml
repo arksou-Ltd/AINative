@@ -29,13 +29,14 @@ workflow_status:
 
   # Phase 1: Planning
   prd: docs/PRD.md
+  create-epics-and-stories: docs/epics.md
   validate-prd: optional
   create-design: conditional
 
   # Phase 2: Solutioning
-  create-architecture: required
+  create-architecture: docs/bmm-architecture-2025-12-15.md
   validate-architecture: optional
-  solutioning-gate-check: required
+  solutioning-gate-check: docs/bmm-readiness-assessment-2025-12-15.md
 
   # Phase 3: Implementation
   sprint-planning: required
