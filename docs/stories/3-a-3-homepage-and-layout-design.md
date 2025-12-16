@@ -84,7 +84,7 @@ Status: drafted
   - [ ] 6.3 验证6章卡片显示正确且可点击跳转
   - [ ] 6.4 验证响应式布局：调整浏览器宽度测试
   - [ ] 6.5 验证Hover效果：鼠标悬停卡片时有视觉反馈
-  - [ ] 6.6 验证页面title和meta标签：打开开发工具查看<head>
+  - [ ] 6.6 验证页面title和meta标签：打开开发工具查看`<head>`
 
 - [ ] Task 7: 提交首页更新 (完成)
   - [ ] 7.1 暂存更改：`git add docs/README.md docs/.vuepress/config.ts docs/.vuepress/styles/`

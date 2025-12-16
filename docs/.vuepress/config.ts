@@ -61,6 +61,7 @@ export default defineUserConfig({
 
     // 侧边栏
     sidebar: {
+      /*
       // 第1章：介绍
       '/1-introduction/': [
         {
@@ -290,7 +291,8 @@ export default defineUserConfig({
       ],
 
       // 首页
-      '/': [],
+      // '/': [],
+      */
     },
 
     // 仓库配置
