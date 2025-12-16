@@ -1,0 +1,221 @@
+// Import fonts
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
+
+// Define Tech Pioneer theme variables
+:root {
+  // Color Palette - Cyber Blue
+  --c-bg: #020617; /* Midnight Blue */
+  --c-bg-light: #0f172a;
+  --c-bg-lighter: #1e293b;
+  
+  --c-brand: #38bdf8; /* Electric Blue */
+  --c-brand-light: #7dd3fc;
+  --c-brand-dark: #0ea5e9;
+  
+  --c-text: #f8fafc;
+  --c-text-light: #e2e8f0;
+  --c-text-lighter: #94a3b8;
+  
+  --c-border: #1e293b;
+  --c-border-dark: #0f172a;
+  
+  // Custom Variables for this theme
+  --c-accent-glow: rgba(56, 189, 248, 0.5);
+  --glass-bg: rgba(30, 41, 59, 0.7);
+  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --card-hover-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+  
+  // Font override
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  --font-family-code: 'JetBrains Mono', source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+// Global styles
+body {
+  font-family: var(--font-family);
+  background-color: var(--c-bg);
+  color: var(--c-text);
+}
+
+// Home Page Styling
+.home {
+  .hero {
+    // Hero Title Gradient
+    h1 {
+      font-size: 3rem;
+      background: linear-gradient(120deg, #fff 0%, var(--c-brand) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-top: 3rem;
+      
+      @media (max-width: 768px) {
+        font-size: 2rem;
+        margin-top: 2rem;
+      }
+    }
+    
+    // Tagline
+    .description {
+      color: var(--c-text-light);
+      max-width: 40rem;
+      margin: 1.5rem auto;
+    }
+    
+    // Background Glow Effect
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60%;
+      height: 60%;
+      background: radial-gradient(circle, var(--c-accent-glow) 0%, transparent 70%);
+      opacity: 0.15;
+      z-index: -1;
+      filter: blur(40px);
+    }
+    
+    // Action Buttons
+    .action-button {
+      &.primary {
+        background-color: var(--c-brand);
+        border-color: var(--c-brand);
+        color: #0f172a;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        
+        &:hover {
+          background-color: var(--c-brand-light);
+          box-shadow: 0 0 15px var(--c-accent-glow);
+        }
+      }
+      
+      &.secondary {
+        background-color: transparent;
+        color: var(--c-text);
+        border: 1px solid var(--c-border);
+        transition: all 0.3s ease;
+        
+        &:hover {
+          background-color: var(--c-bg-lighter);
+          border-color: var(--c-brand);
+        }
+      }
+    }
+  }
+  
+  // Features / Bento Grid
+  .features {
+    border-top: none; // Remove default border
+    padding-top: 3rem;
+    
+    // Desktop Grid Layout
+    @media (min-width: 1024px) {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      align-items: stretch;
+      
+      .feature {
+        flex-basis: auto;
+        width: auto;
+        margin: 0;
+        max-width: none;
+      }
+    }
+    
+    // Tablet Layout
+    @media (min-width: 719px) and (max-width: 1023px) {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      
+      .feature {
+        flex-basis: auto;
+        width: auto;
+        margin: 0;
+        max-width: none;
+      }
+    }
+    
+    // Insight Card Styling
+    .feature {
+      background-color: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--c-border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+      height: 100%;
+      box-shadow: var(--card-shadow);
+      
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--card-hover-shadow);
+        border-color: rgba(56, 189, 248, 0.3);
+      }
+      
+      h2 {
+        color: var(--c-brand);
+        border-bottom: none;
+        padding-bottom: 0;
+        margin-bottom: 0.75rem;
+        font-size: 1.25rem;
+      }
+      
+      p {
+        color: var(--c-text-lighter);
+        margin: 0;
+        line-height: 1.6;
+      }
+    }
+  }
+  
+  // Footer
+  .footer {
+    color: var(--c-text-lighter);
+    border-top: 1px solid var(--c-border);
+  }
+}
+
+// Navbar overrides for dark theme
+.navbar {
+  background-color: rgba(2, 6, 23, 0.8) !important;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--c-border);
+  
+  .site-name {
+    color: var(--c-text) !important;
+  }
+  
+  .navbar-items {
+    .navbar-item > a {
+      color: var(--c-text-light);
+      
+      &:hover, &.router-link-active {
+        color: var(--c-brand);
+      }
+    }
+  }
+}
+
+// Sidebar overrides
+.sidebar {
+  background-color: var(--c-bg);
+  border-right: 1px solid var(--c-border);
+  
+  .sidebar-item {
+    color: var(--c-text-light);
+    
+    &.active {
+      color: var(--c-brand);
+      border-left-color: var(--c-brand);
+    }
+    
+    &:hover {
+      color: var(--c-brand-light);
+    }
+  }
+}

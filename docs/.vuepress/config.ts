@@ -5,8 +5,8 @@ import { viteBundler } from '@vuepress/bundler-vite'
 export default defineUserConfig({
   base: '/AINative/',
   lang: 'zh-CN',
-  title: 'AINative',
-  description: 'AI Native知识分享平台 - 理解并实践AI Native转型',
+  title: 'AINative - AI Native知识分享平台',
+  description: '理解并实践AI Native转型',
   head: [
     ['meta', { name: 'viewport', content: 'width=device-width,initial-scale=1.0' }],
     ['meta', { name: 'keywords', content: 'AI Native, AI转型, 企业数字化, 知识分享' }],

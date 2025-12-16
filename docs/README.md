@@ -1,20 +1,40 @@
 ---
 home: true
-heroText: AINative - Hello World 🎉
-tagline: 欢迎来到AI Native知识分享平台!
+heroText: AI Native 知识分享平台
+tagline: 理解并实践AI Native转型
+heroImage: null
+actions:
+  - text: 开始阅读
+    link: /1-introduction/
+    type: primary
+  - text: 演示模式
+    link: /slides/1-introduction
+    type: secondary
+features:
+  - title: 第1章：介绍
+    details: 组织能力才是公司真正的壁垒
+    link: /1-introduction/
+  - title: 第2章：现状对比
+    details: 传统组织 vs AI Native 组织
+    link: /2-comparison/
+  - title: 第3章：核心定义
+    details: 什么是 AI Native？
+    link: /3-core-definition/
+  - title: 第4章：实践演示
+    details: 一个Builder完成一个产品的实际操作
+    link: /4-practice-demo/
+  - title: 第5章：转化路程
+    details: 组织架构转型与核心实践方法论
+    link: /5-transition-practice/
+  - title: 第6章：展望
+    details: AI时代如何保持个人竞争力
+    link: /6-outlook/
 ---
 
-## 快速入口
+## 欢迎访问 AI Native 知识分享平台
 
-- 📖 AI Native 简述章节（侧边栏导航） → [AI Native 简述](/ai-native-intro/)  
-- 📊 PPT/双模式（规划中）→ 保持关注后续更新
+本平台致力于帮助您理解AI Native的核心概念，并提供实践转型的完整路径。
 
-## 部署验证
+### 快速开始
 
-- 部署平台: GitHub Pages
-- 技术栈: VuePress 2 + Vite + TypeScript
-- 自动部署: ✅ 已启用
-- 最后更新: 2025-12-15
-- 验证时间戳: 2025-12-15 20:51 (Story 2.3 增量部署测试)
-
-下一步: 继续完善内容与双模式文档系统 📖 + 📊
+选择您感兴趣的章节开始阅读，或使用演示模式浏览完整内容。
