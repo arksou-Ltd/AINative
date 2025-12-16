@@ -1,0 +1,122 @@
+<story-context id="bmad/bmm/workflows/4-implementation/story-context/template" v="1.0">
+  <metadata>
+    <epicId>3-a</epicId>
+    <storyId>3-a-3</storyId>
+    <title>首页与框架布局设计</title>
+    <status>ready-for-dev</status>
+    <generatedAt>2025-12-16</generatedAt>
+    <generator>BMAD Story Context Workflow</generator>
+    <sourceStoryPath>docs/stories/3-a-3-homepage-and-layout-design.md</sourceStoryPath>
+  </metadata>
+
+  <story>
+    <asA>UX设计师/前端开发者</asA>
+    <iWant>设计并实现首页和整体框架布局</iWant>
+    <soThat>用户看到美观、友好的页面，并能快速导航到各章节</soThat>
+    <tasks>
+      <task id="1">Task 1: 设计首页Hero区域 (AC: #1, #3)</task>
+      <task id="2">Task 2: 创建6章导航卡片内容 (AC: #1, #4)</task>
+      <task id="3">Task 3: 配置首页元信息 (AC: #3)</task>
+      <task id="4">Task 4: 实现响应式布局和样式优化 (AC: #2, #5)</task>
+      <task id="5">Task 5: 添加"演示模式"入口 (AC: #1, 可选增强)</task>
+      <task id="6">Task 6: 本地验证和测试 (质量保证)</task>
+      <task id="7">Task 7: 提交首页更新 (完成)</task>
+    </tasks>
+  </story>
+
+  <acceptanceCriteria>
+    <criteria id="1">设计首页视觉布局（Hero区域、6章导航卡片、快速入口）</criteria>
+    <criteria id="2">实现响应式首页组件（桌面端和移动端适配）</criteria>
+    <criteria id="3">配置首页路由和元信息（title、description、keywords）</criteria>
+    <criteria id="4">首页清晰展示6章内容概览和导航入口</criteria>
+    <criteria id="5">整体框架布局美观、交互友好</criteria>
+  </acceptanceCriteria>
+
+  <artifacts>
+    <docs>
+      <doc>
+        <path>docs/PRD.md</path>
+        <title>Product Requirements Document</title>
+        <section>首页功能需求</section>
+        <snippet>首页应包含Hero区域展示核心价值，以及清晰的章节导航卡片。提供"开始阅读"和"演示模式"双入口。</snippet>
+      </doc>
+      <doc>
+        <path>docs/architecture.md</path>
+        <title>Architecture Design</title>
+        <section>前端技术栈</section>
+        <snippet>VuePress 2 + Vue 3 + Vite. 使用默认主题(@vuepress/theme-default)进行定制，SCSS + CSS Variables管理样式。</snippet>
+      </doc>
+      <doc>
+        <path>docs/epics.md</path>
+        <title>Epics</title>
+        <section>Epic 3-A: 内容框架搭建</section>
+        <snippet>搭建网站的内容骨架，包括信息架构设计、导航配置、首页布局设计。确保用户能方便地找到所需内容。</snippet>
+      </doc>
+      <doc>
+        <path>docs/ux-design-specification.md</path>
+        <title>UX Design Specification</title>
+        <section>1. 视觉设计基础</section>
+        <snippet>设计主题：科技先锋 (Tech Pioneer)。背景色：午夜深蓝 (#020617)。强调色：电光蓝 (#38bdf8)。布局理念：沉浸式卡片流。</snippet>
+      </doc>
+      <doc>
+        <path>docs/ux-color-themes.html</path>
+        <title>UX Color Themes Preview</title>
+        <section>CSS Variables</section>
+        <snippet>包含完整的 CSS 变量定义：--bg-primary, --bg-secondary, --accent-primary, --accent-glow 等。</snippet>
+      </doc>
+    </docs>
+    <code>
+      <artifact>
+        <path>docs/.vuepress/config.ts</path>
+        <kind>config</kind>
+        <symbol>defineUserConfig</symbol>
+        <reason>需要修改site title, description, keywords等元信息</reason>
+      </artifact>
+      <artifact>
+        <path>docs/README.md</path>
+        <kind>content</kind>
+        <symbol>frontmatter</symbol>
+        <reason>首页内容的入口文件，需要配置home: true及相关frontmatter</reason>
+      </artifact>
+    </code>
+    <dependencies>
+      <dependency>
+        <ecosystem>npm</ecosystem>
+        <package>vuepress</package>
+        <version>2.0.0-rc.26</version>
+      </dependency>
+      <dependency>
+        <ecosystem>npm</ecosystem>
+        <package>@vuepress/theme-default</package>
+        <version>2.0.0-rc.26</version>
+      </dependency>
+    </dependencies>
+  </artifacts>
+
+  <constraints>
+    <constraint>必须严格遵循 "Tech Pioneer" (赛博深蓝) 配色方案</constraint>
+    <constraint>使用 SCSS 覆盖 VuePress 默认主题变量 (如 --c-bg, --c-brand)</constraint>
+    <constraint>卡片设计需体现 Glassmorphism (毛玻璃) 和微光 (Glow) 效果</constraint>
+    <constraint>Mobile First 设计原则，但桌面端需呈现 Bento Grid 布局</constraint>
+    <constraint>保持 VuePress 默认主题架构，仅通过 CSS/SCSS 进行视觉重塑</constraint>
+  </constraints>
+
+  <interfaces>
+    <interface>
+      <name>Home Frontmatter</name>
+      <kind>YAML Configuration</kind>
+      <signature>home: true, heroText: string, features: array</signature>
+      <path>docs/README.md</path>
+    </interface>
+  </interfaces>
+
+  <tests>
+    <standards>手动验证响应式布局和交互效果。使用浏览器开发者工具检查meta标签。</standards>
+    <locations>docs/README.md, docs/.vuepress/styles/index.scss</locations>
+    <ideas>
+      <idea>在手机模式下检查Hero文字大小是否合适</idea>
+      <idea>验证卡片点击是否正确跳转</idea>
+      <idea>检查演示模式按钮链接是否有效</idea>
+    </ideas>
+  </tests>
+</story-context>
