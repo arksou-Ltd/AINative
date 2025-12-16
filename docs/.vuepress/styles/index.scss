@@ -1,106 +1,143 @@
 // Import fonts
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap');
 
-// Define Tech Pioneer theme variables
+// Force Dark Mode & Define Tech Pioneer Variables
 :root {
-  // Color Palette - Cyber Blue
-  --c-bg: #020617; /* Midnight Blue */
-  --c-bg-light: #0f172a;
-  --c-bg-lighter: #1e293b;
+  color-scheme: dark;
   
-  --c-brand: #38bdf8; /* Electric Blue */
+  // Core Palette - Deep Space & Electric Blue
+  --c-bg: #020617;        // Midnight Blue (Base)
+  --c-bg-light: #0f172a;  // Lighter blue for contrast
+  --c-bg-lighter: #1e293b;
+  --c-bg-navbar: rgba(2, 6, 23, 0.8);
+  --c-bg-sidebar: #020617;
+  --c-bg-arrow: #94a3b8;
+  
+  // Brand Colors - Neon & Electric
+  --c-brand: #38bdf8;     // Electric Blue
   --c-brand-light: #7dd3fc;
   --c-brand-dark: #0ea5e9;
+  --c-accent: #818cf8;    // Indigo/Purple accent
   
-  --c-text: #f8fafc;
-  --c-text-light: #e2e8f0;
-  --c-text-lighter: #94a3b8;
+  // Text Colors
+  --c-text: #f8fafc;      // White (Slate 50)
+  --c-text-light: #cbd5e1; // Slate 300
+  --c-text-lighter: #94a3b8; // Slate 400
+  --c-text-quote: #94a3b8;
   
-  --c-border: #1e293b;
-  --c-border-dark: #0f172a;
+  // Border & Separators
+  --c-border: rgba(255, 255, 255, 0.1);
+  --c-border-dark: rgba(255, 255, 255, 0.05);
   
-  // Custom Variables for this theme
-  --c-accent-glow: rgba(56, 189, 248, 0.5);
-  --glass-bg: rgba(30, 41, 59, 0.7);
-  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --card-hover-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+  // Code Blocks
+  --code-bg-color: #0f172a;
+  --code-hl-bg-color: rgba(56, 189, 248, 0.1);
   
-  // Font override
-  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  --font-family-code: 'JetBrains Mono', source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  // Custom Effects Variables
+  --glass-bg: rgba(15, 23, 42, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  --glow-primary: rgba(56, 189, 248, 0.3);
+  
+  // Typography
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-family-code: 'JetBrains Mono', monospace;
 }
 
-// Global styles
-body {
-  font-family: var(--font-family);
+// Global Reset
+html, body {
   background-color: var(--c-bg);
   color: var(--c-text);
 }
 
-// Home Page Styling
+// Global Background Mesh (Applied to body to persist across pages)
+body {
+  position: relative;
+  min-height: 100vh;
+  &::before {
+    content: '';
+    position: fixed;
+    top: -20%;
+    left: 20%;
+    width: 60vw;
+    height: 60vh;
+    background: radial-gradient(circle at center, rgba(56, 189, 248, 0.15) 0%, rgba(129, 140, 248, 0.1) 30%, transparent 70%);
+    filter: blur(120px);
+    z-index: -1;
+    pointer-events: none;
+  }
+}
+
+// Home Page Specific Overrides
 .home {
+  // Hero Section
   .hero {
-    // Hero Title Gradient
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    
+    img {
+      max-height: 200px;
+      margin-bottom: 2rem;
+      filter: drop-shadow(0 0 20px rgba(56, 189, 248, 0.3));
+    }
+
     h1 {
-      font-size: 3rem;
-      background: linear-gradient(120deg, #fff 0%, var(--c-brand) 100%);
+      font-size: 4.5rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, #ffffff 30%, var(--c-brand) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin-top: 3rem;
+      filter: drop-shadow(0 0 30px rgba(56, 189, 248, 0.2));
       
       @media (max-width: 768px) {
-        font-size: 2rem;
-        margin-top: 2rem;
+        font-size: 2.5rem;
       }
     }
-    
-    // Tagline
+
     .description {
+      font-size: 1.25rem;
       color: var(--c-text-light);
-      max-width: 40rem;
-      margin: 1.5rem auto;
+      max-width: 42rem;
+      margin: 0 auto 2.5rem;
+      line-height: 1.6;
     }
-    
-    // Background Glow Effect
-    position: relative;
-    &::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 60%;
-      height: 60%;
-      background: radial-gradient(circle, var(--c-accent-glow) 0%, transparent 70%);
-      opacity: 0.15;
-      z-index: -1;
-      filter: blur(40px);
-    }
-    
+
     // Action Buttons
     .action-button {
+      padding: 0.8rem 2rem;
+      border-radius: 9999px;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      
       &.primary {
-        background-color: var(--c-brand);
-        border-color: var(--c-brand);
-        color: #0f172a;
-        font-weight: 600;
-        transition: all 0.3s ease;
+        background: var(--c-brand);
+        border: 1px solid var(--c-brand);
+        color: #020617;
+        box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
         
         &:hover {
-          background-color: var(--c-brand-light);
-          box-shadow: 0 0 15px var(--c-accent-glow);
+          background: #fff;
+          border-color: #fff;
+          transform: translateY(-2px);
+          box-shadow: 0 0 30px rgba(56, 189, 248, 0.6);
         }
       }
-      
+
       &.secondary {
-        background-color: transparent;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.2);
         color: var(--c-text);
-        border: 1px solid var(--c-border);
-        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+        margin-left: 1rem;
         
         &:hover {
-          background-color: var(--c-bg-lighter);
-          border-color: var(--c-brand);
+          background: rgba(255, 255, 255, 0.1);
+          border-color: var(--c-text);
+          transform: translateY(-2px);
         }
       }
     }
@@ -108,114 +145,92 @@ body {
   
   // Features / Bento Grid
   .features {
-    border-top: none; // Remove default border
-    padding-top: 3rem;
+    border-top: none;
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
     
-    // Desktop Grid Layout
     @media (min-width: 1024px) {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-      align-items: stretch;
+      gap: 2rem;
       
-      .feature {
-        flex-basis: auto;
-        width: auto;
-        margin: 0;
-        max-width: none;
-      }
+      .feature { margin: 0; width: auto; max-width: none; }
     }
     
-    // Tablet Layout
     @media (min-width: 719px) and (max-width: 1023px) {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 1.5rem;
-      
-      .feature {
-        flex-basis: auto;
-        width: auto;
-        margin: 0;
-        max-width: none;
-      }
+      .feature { margin: 0; width: auto; max-width: none; }
     }
     
-    // Insight Card Styling
     .feature {
-      background-color: var(--glass-bg);
-      backdrop-filter: blur(10px);
-      border: 1px solid var(--c-border);
-      border-radius: 12px;
-      padding: 1.5rem;
-      transition: all 0.3s ease;
       height: 100%;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      backdrop-filter: blur(12px);
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
       box-shadow: var(--card-shadow);
       
+      // Top Highlight
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0; height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      }
+      
       &:hover {
-        transform: translateY(-5px);
-        box-shadow: var(--card-hover-shadow);
-        border-color: rgba(56, 189, 248, 0.3);
+        transform: translateY(-8px);
+        background: rgba(255, 255, 255, 0.04);
+        border-color: var(--c-brand);
+        box-shadow: 0 0 40px rgba(56, 189, 248, 0.1);
+        
+        h2 { color: var(--c-brand); }
       }
       
       h2 {
-        color: var(--c-brand);
-        border-bottom: none;
-        padding-bottom: 0;
-        margin-bottom: 0.75rem;
-        font-size: 1.25rem;
+        font-size: 1.35rem;
+        font-weight: 600;
+        color: var(--c-text);
+        margin-bottom: 1rem;
+        border: none;
+        transition: color 0.3s ease;
       }
       
       p {
         color: var(--c-text-lighter);
-        margin: 0;
+        font-size: 1rem;
         line-height: 1.6;
+        margin: 0;
       }
     }
   }
   
-  // Footer
   .footer {
-    color: var(--c-text-lighter);
     border-top: 1px solid var(--c-border);
+    padding: 3rem 0;
+    color: var(--c-text-lighter);
   }
 }
 
-// Navbar overrides for dark theme
+// Navbar Glass Effect Override
+:root {
+  --navbar-bg: rgba(2, 6, 23, 0.7) !important; // VuePress internal variable override
+}
 .navbar {
-  background-color: rgba(2, 6, 23, 0.8) !important;
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--c-border);
-  
-  .site-name {
-    color: var(--c-text) !important;
-  }
-  
-  .navbar-items {
-    .navbar-item > a {
-      color: var(--c-text-light);
-      
-      &:hover, &.router-link-active {
-        color: var(--c-brand);
-      }
-    }
-  }
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-// Sidebar overrides
+// Sidebar Glass Effect
 .sidebar {
-  background-color: var(--c-bg);
+  background-color: rgba(2, 6, 23, 0.95);
+  backdrop-filter: blur(10px);
   border-right: 1px solid var(--c-border);
-  
-  .sidebar-item {
-    color: var(--c-text-light);
-    
-    &.active {
-      color: var(--c-brand);
-      border-left-color: var(--c-brand);
-    }
-    
-    &:hover {
-      color: var(--c-brand-light);
-    }
-  }
 }
