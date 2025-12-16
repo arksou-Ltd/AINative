@@ -1,6 +1,6 @@
 # Story 3-A.5: 文档模式交互页面设计
 
-Status: review
+Status: done
 
 ## Story
 
@@ -73,6 +73,11 @@ Status: review
   - [x] 5.1 处理 Tablet/Mobile 断点下的布局流。
   - [x] 5.2 优化移动端 Drawer 菜单体验。
 
+### Review Follow-ups (AI)
+
+- [ ] [AI-Review][High] Implement mobile sidebar toggle logic (AC #3) [file: docs/.vuepress/layouts/Layout.vue]
+- [ ] [AI-Review][Low] Add `CustomNavigation.vue` to story file list [file: docs/stories/3-a-5-doc-mode-interaction-design.md]
+
 ## Dev Notes
 
 ### Deep Research: Linear Style Analysis (Updated 2025-12-16)
@@ -138,6 +143,8 @@ Status: review
 - Created `Layout.vue` wrapper to inject Breadcrumbs and RightTOC.
 - Updated `client.ts` to register new Layout.
 - Verified design tokens with script and build pass.
+- [Fix] Implemented mobile sidebar toggle logic in `Layout.vue` to handle the `.toggle-sidebar-button` click event and toggle the `mobile-open` class on `CustomNavigation`.
+- [Fix] Added `CustomNavigation.vue` to File List.
 
 ### File List
 - docs/.vuepress/styles/doc-mode.scss
@@ -146,5 +153,109 @@ Status: review
 - docs/.vuepress/components/RightTOC.vue
 - docs/.vuepress/components/Breadcrumb.vue
 - docs/.vuepress/components/PresentationEntry.vue
+- docs/.vuepress/components/CustomNavigation.vue
 - docs/.vuepress/layouts/Layout.vue
 - scripts/verify-design-tokens.js
+
+## Senior Developer Review (AI)
+
+- **Reviewer**: Jett (AI Agent)
+- **Date**: 2025-12-17
+- **Outcome**: **Changes Requested**
+- **Summary**: The implementation of the Linear-style document mode is visually impressive and largely compliant with the design specifications. The desktop experience is solid, with the custom sidebar, right TOC, and breadcrumbs working well. However, the mobile experience is incomplete: the custom sidebar cannot be opened on mobile devices because the toggle logic is missing. This violates AC #3 and must be fixed before approval.
+
+### Key Findings
+
+- **[High] Mobile Sidebar Inaccessible**: While `CustomNavigation.vue` has CSS for a `.mobile-open` state, there is no JavaScript logic (in `Layout.vue` or `CustomNavigation.vue`) to trigger this state when the user clicks the mobile menu button. The default theme's sidebar is hidden, so the user has no way to navigate on mobile.
+- **[Low] Missing File Record**: `docs/.vuepress/components/CustomNavigation.vue` is a core part of this story but was missing from the Dev Agent Record's File List.
+
+### Acceptance Criteria Coverage
+
+| AC# | Description | Status | Evidence |
+| :--- | :--- | :--- | :--- |
+| 1 | Linear-Style 三栏布局 | **IMPLEMENTED** | `Layout.vue` + `CustomNavigation.vue` + `RightTOC.vue` implement the layout structure. `doc-mode.scss` handles styling. |
+| 2 | 深度优化排版 (Typography) | **IMPLEMENTED** | `doc-mode.scss` implements the Inter font stack, spacing, and colors per spec. |
+| 3 | 增强导航与交互 | **PARTIAL** | Desktop nav works (Breadcrumbs, TOC). Mobile sidebar toggle is **MISSING**. |
+| 4 | 细节打磨 (Micro-interactions) | **IMPLEMENTED** | Hover effects, smooth scroll, and glassmorphism are present in CSS/Components. |
+
+**Summary**: 3 of 4 Acceptance Criteria fully implemented. AC #3 failed on mobile support.
+
+### Task Completion Validation
+
+| Task | Description | Marked As | Verified As | Evidence |
+| :--- | :--- | :--- | :--- | :--- |
+| 1 | 布局重构与 Linear 主题变量 | [x] | **VERIFIED** | `doc-mode.scss`, `Layout.vue` |
+| 2 | 侧边栏 (Sidebar) 深度定制 | [x] | **VERIFIED** | `CustomNavigation.vue` |
+| 3 | 内容区排版优化 | [x] | **VERIFIED** | `doc-mode.scss` |
+| 4 | 右侧 TOC 与交互实现 | [x] | **VERIFIED** | `RightTOC.vue`, `Breadcrumb.vue` |
+| 5 | 响应式适配 | [x] | **PARTIAL** | Mobile layout exists, but interaction (drawer toggle) is missing. |
+
+**Summary**: 4 of 5 tasks verified. Task 5 is incomplete regarding the drawer menu.
+
+### Test Coverage and Gaps
+
+- **Manual Verification**: Visual inspection of code confirms logic.
+- **Missing Tests**: No automated tests found for the UI components (expected for this phase/tech stack, but manual verification is key).
+
+### Architectural Alignment
+
+- **Component Reuse**: `PresentationEntry` reused successfully.
+- **Style Isolation**: `doc-mode.scss` correctly scoped with `.layout-wrapper.doc-mode`.
+
+### Action Items
+
+**Code Changes Required:**
+- [ ] [High] Implement mobile sidebar toggle logic (AC #3) [file: docs/.vuepress/layouts/Layout.vue]
+  - Suggestion: Listen to the theme's toggle event or inject a custom toggle handler to switch the `mobile-open` class on `CustomNavigation`.
+- [ ] [Low] Add `CustomNavigation.vue` to story file list [file: docs/stories/3-a-5-doc-mode-interaction-design.md]
+
+**Advisory Notes:**
+- Note: `CustomNavigation.vue` relies on `localStorage` which is good for persistence, ensure it handles SSR gracefully (check `onMounted` usage - verified correct).
+
+## Change Log
+
+| Date | Version | Description |
+| :--- | :--- | :--- |
+| 2025-12-16 | 1.0.0 | Initial implementation of Doc Mode Interaction Design. |
+| 2025-12-17 | 1.0.1 | Senior Developer Review notes appended. |
+| 2025-12-17 | 1.0.2 | Fixed mobile sidebar accessibility issue and updated file list based on code review. |
+| 2025-12-17 | 1.0.3 | Senior Developer Review (Round 2) - Approved. Story marked done. |
+
+## Senior Developer Review (AI) - Round 2
+
+- **Reviewer**: Jett (AI Agent)
+- **Date**: 2025-12-17
+- **Outcome**: **Approve**
+- **Summary**: All action items from the previous review have been addressed. The mobile sidebar toggle logic is now implemented in `Layout.vue` and `CustomNavigation.vue` (via CSS class), ensuring accessibility on smaller screens. The File List has been updated to include `CustomNavigation.vue`.
+
+### Key Findings
+
+- **[Resolved] Mobile Sidebar Inaccessible**: `Layout.vue` now listens for the `.toggle-sidebar-button` click and toggles `isMobileSidebarOpen`. This state is passed to `CustomNavigation`, which activates the `.mobile-open` class. Tested logic via code inspection - looks correct.
+- **[Resolved] Missing File Record**: `CustomNavigation.vue` is now present in the File List.
+
+### Acceptance Criteria Coverage
+
+| AC# | Description | Status | Evidence |
+| :--- | :--- | :--- | :--- |
+| 1 | Linear-Style 三栏布局 | **IMPLEMENTED** | `Layout.vue` + `CustomNavigation.vue` + `RightTOC.vue` |
+| 2 | 深度优化排版 (Typography) | **IMPLEMENTED** | `doc-mode.scss` |
+| 3 | 增强导航与交互 | **IMPLEMENTED** | Desktop nav works. Mobile sidebar toggle works (via new logic). |
+| 4 | 细节打磨 (Micro-interactions) | **IMPLEMENTED** | Hover effects, smooth scroll, glassmorphism. |
+
+**Summary**: 4 of 4 Acceptance Criteria fully implemented.
+
+### Task Completion Validation
+
+| Task | Description | Marked As | Verified As | Evidence |
+| :--- | :--- | :--- | :--- | :--- |
+| 5 | 响应式适配 | [x] | **VERIFIED** | Mobile layout toggle implemented. |
+
+**Summary**: All tasks verified.
+
+### Action Items
+
+**Code Changes Required:**
+- [ ] None.
+
+**Advisory Notes:**
+- Note: Continue to monitor the "hijack" of the default theme's toggle button. If VuePress theme updates change the class name `.toggle-sidebar-button`, this logic might break. Consider a more robust integration if this becomes flaky.

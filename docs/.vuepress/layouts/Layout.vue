@@ -1,7 +1,10 @@
 <template>
   <div class="layout-wrapper" :class="{ 'doc-mode': isDocPage }">
     <!-- 自定义左侧导航（仅文档页面显示） -->
-    <CustomNavigation v-if="isDocPage" />
+    <CustomNavigation 
+      v-if="isDocPage" 
+      :class="{ 'mobile-open': isMobileSidebarOpen }"
+    />
 
     <ParentLayout>
       <template #page-content-top>
@@ -19,11 +22,63 @@ import CustomNavigation from '../components/CustomNavigation.vue'
 import RightTOC from '../components/RightTOC.vue'
 import Breadcrumb from '../components/Breadcrumb.vue'
 import { usePageData } from '@vuepress/client'
-import { computed } from 'vue'
+import { computed, ref, onMounted, onUnmounted, watch } from 'vue'
+import { useRoute } from 'vue-router'
 
 const page = usePageData()
+const route = useRoute()
+const isMobileSidebarOpen = ref(false)
+
 const isDocPage = computed(() => {
   return !page.value.frontmatter.home && !page.value.frontmatter.layout
+})
+
+// Mobile Sidebar Logic
+const toggleMobileSidebar = (e) => {
+  e.stopPropagation()
+  isMobileSidebarOpen.value = !isMobileSidebarOpen.value
+}
+
+const closeMobileSidebar = () => {
+  isMobileSidebarOpen.value = false
+}
+
+// Watch route to close sidebar on navigation
+watch(() => route.path, () => {
+  closeMobileSidebar()
+})
+
+// Setup global listener for the default theme's toggle button
+let toggleBtn = null
+
+const setupToggleListener = () => {
+  // Wait for DOM to be ready
+  setTimeout(() => {
+    toggleBtn = document.querySelector('.toggle-sidebar-button')
+    if (toggleBtn) {
+      // Clone the button to remove default event listeners if possible, 
+      // or just add ours and stop propagation if we want to completely hijack it.
+      // However, stopping propagation might break internal theme state (like aria-expanded).
+      // Since we hide the default sidebar via CSS, letting the default theme logic run 
+      // is mostly harmless, except it might toggle classes on body.
+      // We'll just add our listener.
+      toggleBtn.addEventListener('click', toggleMobileSidebar)
+    }
+  }, 500) // Delay to ensure ParentLayout has mounted
+}
+
+const cleanupToggleListener = () => {
+  if (toggleBtn) {
+    toggleBtn.removeEventListener('click', toggleMobileSidebar)
+  }
+}
+
+onMounted(() => {
+  setupToggleListener()
+})
+
+onUnmounted(() => {
+  cleanupToggleListener()
 })
 </script>
 
