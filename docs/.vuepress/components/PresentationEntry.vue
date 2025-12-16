@@ -1,7 +1,7 @@
 <template>
   <div v-if="showEntry" :class="['presentation-entry', mode]">
     <a :href="pptLink" class="entry-btn" :class="{ ghost: mode === 'inline' }">
-      <span class="icon">📊</span> 
+      <PresentationChartBarIcon class="icon-svg" />
       <span class="text">演示模式</span>
     </a>
   </div>
@@ -10,6 +10,7 @@
 <script setup lang="ts">
 import { computed, onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
+import { PresentationChartBarIcon } from '@heroicons/vue/24/outline'
 
 const props = defineProps({
   mode: {
@@ -118,11 +119,14 @@ onMounted(() => {
   box-shadow: none;
 }
 
-.icon {
-  font-size: 1.2rem;
+.icon-svg {
+  width: 1.2rem;
+  height: 1.2rem;
+  flex-shrink: 0;
 }
 
-.entry-btn.ghost .icon {
-  font-size: 1rem;
+.entry-btn.ghost .icon-svg {
+  width: 1rem;
+  height: 1rem;
 }
 </style>

@@ -29,63 +29,8 @@ export default defineUserConfig({
       { text: '首页', link: '/' },
       { text: 'GitHub', link: 'https://github.com/arksou-Ltd' },
     ],
-    // Sidebar configuration enabled
-    sidebar: {
-      '/1-introduction/': [
-        {
-          text: '第一章：介绍',
-          children: [
-            'README.md',
-            'why-organizational-capability.md',
-            'ai-native-brief.md',
-            'simple-case-demo.md',
-          ],
-        },
-      ],
-      '/2-comparison/': [
-        {
-          text: '第二章：现状对比',
-          children: ['README.md'],
-        },
-      ],
-      '/3-core-definition/': [
-        {
-          text: '第三章：核心定义',
-          children: [
-            'README.md',
-            'digital-workforce.md',
-          ],
-        },
-      ],
-      '/4-practice-demo/': [
-        {
-          text: '第四章：实践演示',
-          children: ['README.md'],
-        },
-      ],
-      '/5-transition-practice/': [
-        {
-          text: '第五章：转化路程',
-          children: [
-            'README.md',
-            '5-1-organization-architecture/README.md',
-            '5-2-core-practices/README.md',
-          ],
-        },
-      ],
-      '/6-outlook/': [
-        {
-          text: '第六章：展望',
-          children: ['README.md'],
-        },
-      ],
-      '/case-studies/': [
-        {
-          text: '案例研究',
-          children: ['README.md'],
-        },
-      ],
-    }, 
+    // 禁用默认 Sidebar，改用自定义导航组件
+    sidebar: false,
     docsDir: 'docs',
     editLink: false,
     lastUpdated: false,

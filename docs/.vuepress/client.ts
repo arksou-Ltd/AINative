@@ -18,6 +18,5 @@ export default defineClientConfig({
     Slide,
     Layout,
   },
-  // Removed PresentationEntry from rootComponents as it is now integrated in RightTOC/Layout
-  rootComponents: [], 
+  rootComponents: [],
 })
