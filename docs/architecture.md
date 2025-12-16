@@ -78,60 +78,127 @@
 ```
 AINative/
 ├── docs/
-│   ├── README.md               # 首页（双入口按钮：PPT / Document）
-│   ├── contact.md              # 联系页
-│   ├── ai-native-intro/
+│   ├── README.md                          # 首页（双入口按钮：PPT / Document）
+│   ├── contact.md                         # 联系页
+│   ├── information-architecture.md        # IA设计文档
+│   │
+│   ├── 1-introduction/                    # 第1章：介绍
 │   │   ├── README.md
-│   │   ├── core-hook.md
-│   │   ├── first-principles.md
-│   │   ├── core-analogy.md
-│   │   ├── 60-80-100-model.md
-│   │   └── why-now.md
-│   ├── case-studies/
+│   │   └── why-organizational-capability.md
+│   │
+│   ├── 2-comparison/                      # 第2章：现状对比
 │   │   ├── README.md
-│   │   ├── openai.md
-│   │   ├── cursor-ai.md
-│   │   ├── commonwealth-bank.md
-│   │   ├── bupa.md
-│   │   ├── amazon.md
-│   │   ├── moderna.md
-│   │   ├── bayer.md
-│   │   ├── nvidia.md
+│   │   ├── traditional-organization.md
+│   │   └── ai-native-organization.md
+│   │
+│   ├── 3-core-definition/                 # 第3章：核心定义
+│   │   ├── README.md
+│   │   ├── builder-ai-team.md
+│   │   ├── professional-optimization.md
+│   │   └── result-oriented-division.md
+│   │
+│   ├── 4-practice-demo/                   # 第4章：AI Native实践演示
+│   │   ├── README.md
+│   │   ├── demo-overview.md
+│   │   ├── toolchain-setup.md
+│   │   ├── workflow-demonstration.md
+│   │   └── reference.md
+│   │
+│   ├── 5-transition-practice/             # 第5章：过渡性转化路程实践
+│   │   ├── README.md
+│   │   ├── 5-1-organization-architecture/ # 5.1 组织架构转型
+│   │   │   ├── README.md
+│   │   │   ├── standard-model/            # 标准型组织
+│   │   │   │   ├── README.md
+│   │   │   │   ├── core-principles.md
+│   │   │   │   ├── team-scale.md
+│   │   │   │   ├── role-definition.md
+│   │   │   │   └── work-style.md
+│   │   │   ├── transitional-model/        # 过渡型组织
+│   │   │   │   ├── README.md
+│   │   │   │   ├── new-products.md
+│   │   │   │   └── existing-products.md
+│   │   │   └── transition-roadmap/        # 过渡性实施路线
+│   │   │       ├── README.md
+│   │   │       ├── organization-level.md
+│   │   │       ├── daily-workflow.md
+│   │   │       └── product-development/   # 7步产品开发流程
+│   │   │           ├── README.md
+│   │   │           ├── 1-data-analysis.md
+│   │   │           ├── 2-idea-generation.md
+│   │   │           ├── 3-market-research.md
+│   │   │           ├── 4-competitive-analysis.md
+│   │   │           ├── 5-requirements.md
+│   │   │           ├── 6-ux-design.md
+│   │   │           └── 7-development.md
+│   │   └── 5-2-core-practices/            # 5.2 核心实践方法论
+│   │       ├── README.md
+│   │       ├── bmad-method/               # BMAD-METHOD详解
+│   │       │   ├── README.md
+│   │       │   ├── core-features.md
+│   │       │   ├── quality-guarantee.md
+│   │       │   └── how-to-use.md
+│   │       ├── builder-growth-path.md
+│   │       └── tool-stack-guide.md
+│   │
+│   ├── 6-outlook/                         # 第6章：AI Native展望
+│   │   ├── README.md
+│   │   ├── scenario-distinction.md
+│   │   ├── path-1-builder.md
+│   │   ├── path-2-specialist.md
+│   │   └── staying-relevant.md
+│   │
+│   ├── case-studies/                      # 案例库（独立章节）
+│   │   ├── README.md
+│   │   ├── success-companies/             # 成功公司案例
+│   │   │   ├── README.md
+│   │   │   ├── openai.md
+│   │   │   ├── cursor-ai.md
+│   │   │   ├── commonwealth-bank.md
+│   │   │   └── bupa.md
+│   │   ├── organization-transformation/   # 组织转型案例
+│   │   │   ├── README.md
+│   │   │   ├── amazon.md
+│   │   │   ├── moderna.md
+│   │   │   ├── bayer.md
+│   │   │   └── nvidia.md
 │   │   └── market-data.md
-│   ├── transformation/
-│   │   ├── README.md
-│   │   ├── org-structure.md
-│   │   ├── tool-stack.md
-│   │   └── builder-path.md
-│   ├── slides/                 # PPT 模式 Markdown（reveal.js）
-│   │   ├── intro.md
-│   │   ├── cases.md
-│   │   └── transformation.md
+│   │
+│   ├── slides/                            # PPT 演示模式
+│   │   ├── 1-introduction.md              # 对应第1章
+│   │   ├── 2-comparison.md                # 对应第2章
+│   │   ├── 3-definition.md                # 对应第3章
+│   │   ├── 4-practice.md                  # 对应第4章
+│   │   ├── 5-transition.md                # 对应第5章
+│   │   ├── 6-outlook.md                   # 对应第6章
+│   │   └── cases.md                       # 对应案例库
+│   │
 │   └── .vuepress/
-│       ├── config.ts           # VuePress 配置（base、sidebar、head、插件）
+│       ├── config.ts                      # VuePress 配置（base、sidebar、head、插件）
 │       ├── styles/
-│       │   └── index.css       # 主题定制（颜色/字体/断点）
+│       │   └── index.css                  # 主题定制（颜色/字体/断点）
 │       └── public/
-│           └── images/         # 站点图片（WebP/<200KB，kebab-case）
+│           └── images/                    # 站点图片（WebP/<200KB，kebab-case）
 ├── package.json
 ├── package-lock.json
 ├── .github/workflows/deploy.yml
-└── README.md                   # 项目级说明
+└── README.md                              # 项目级说明
 ```
 
 ## Epic to Architecture Mapping
 
 - Epic 1 基础设施：框架选型（VuePress 2 + Vite + TS）、目录骨架、开发/构建脚本、基础样式变量。
 - Epic 2 部署验证：GitHub Actions + Pages 发布，base 路径 `/AINative/`，Hello World 验证。
-- Epic 3 内容体系：3 章 Markdown + 图片资源组织（kebab-case, `/images`），与 slides 共用素材。
-- Epic 4 PPT 模式：`vuepress-plugin-revealjs` 集成，30-50 页幻灯片（intro/cases/transformation），浅色主题。
-- Epic 5 Document 模式：3 级侧边栏、导航高亮、表格滚动、提示块、代码高亮、Doc↔PPT 跳转按钮。
+- **Epic 3-A 内容框架搭建**：建立完整的6章目录结构（1-6章 + 案例库），配置VuePress导航系统，创建IA设计文档。
+- **Epic 3-B 内容填充**：填充所有6章内容（30000+字）+ 8个案例分析 + 图片资源（WebP格式）。
+- Epic 4 PPT 模式：`vuepress-plugin-revealjs` 集成，7个PPT文件（对应6章+案例库），浅色主题。
+- Epic 5 Document 模式：多层侧边栏、导航高亮、表格滚动、提示块、代码高亮、Doc↔PPT 跳转按钮。
 - Epic 6 发布与优化：SEO（meta/OG/sitemap/robots）、性能（lazy-load, WebP, <200KB）、可访问性（alt/对比度/键盘导航），README/CONTRIBUTING。
 
 ## FR Coverage Notes
-- FR-1 内容展示：3 章章节与图片路径在 Project Structure，slides 复用内容（行 ai-native-intro/case-studies/transformation + slides）。
-- FR-2 文档模式：3 级侧边栏、表格滚动、代码高亮、提示块（Implementation Patterns + IA）。
-- FR-3 PPT 模式：slides 目录 + reveal 支持，30-50 页要求在 IA/决策表中覆盖。
+- FR-1 内容展示：6 章章节架构（1-introduction ~ 6-outlook + case-studies），所有图片资源路径 `/images`，slides 与 docs 一一对应。
+- FR-2 文档模式：多层侧边栏（章节5支持3层嵌套）、表格滚动、代码高亮、提示块（Implementation Patterns + IA）。
+- FR-3 PPT 模式：slides 目录包含7个文件，每章独立PPT，支持全屏演示和键盘导航。
 - FR-4 首页/联系页：结构树包含 README（首页）与 contact.md。
 - FR-5 部署：GitHub Pages + gh-pages 发布流程。
 - FR-6 SEO/性能：决策表 + Performance/SEO 章节；需补充 meta/OG/robots 示例（见下）。

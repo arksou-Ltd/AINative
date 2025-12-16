@@ -399,219 +399,475 @@
 
 ## Epic 3: 内容体系建设 📝
 
-**目标**: 准备完整的3章内容和图片资源，为Document和PPT模式提供素材。
+**目标**: 建立完整的6章内容架构，并填充所有内容和图片资源。
 
-**价值**: 内容是产品核心价值，3章内容缺一不可，构成完整认知链路。
+**价值**: 内容是产品核心价值，6章完整框架构成AI Native认知体系的完整链路。
+
+**实施策略**: 分两个阶段执行
+- **Epic 3-A**: 框架搭建（优先）- 建立目录结构和导航系统
+- **Epic 3-B**: 内容填充（Epic 4&5之后）- 填充实际内容
 
 **验收标准**:
-- ✅ 3章Markdown内容完整（AI Native简述、案例、转化路程）
-- ✅ 所有图片资源准备完毕（压缩、命名规范）
-- ✅ 文件结构清晰，导航配置正确
+- ✅ 6章目录结构完整（第1-6章 + 案例库）
+- ✅ VuePress导航配置完成（sidebar + navbar）
+- ✅ 所有章节内容完整（30000+字）
+- ✅ 图片资源准备完毕（WebP格式，<200KB/张）
+- ✅ Doc↔PPT映射关系清晰
 
 ---
 
-### Story 3.1: 编写AI Native简述内容
+## Epic 3-A: 内容框架搭建 🏗️
 
-**作为** 内容创作者，
-**我想** 编写AI Native核心概念的系统化介绍，
-**以便** 用户理解AI Native的本质。
+**目标**: 建立完整的6章目录结构和导航系统
 
-**验收标准：**
+**价值**: 框架优先，确保Epic 4和Epic 5有完整的架构基础，避免后期重构
 
-**Given** 已有头脑风暴成果和市场研究报告作为参考
-**When** 我编写AI Native简述内容
-**Then** 应该创建以下Markdown文件：
-- ✅ `docs/ai-native-intro/README.md`（章节首页）
-- ✅ `docs/ai-native-intro/core-hook.md`（核心Hook："组织能力才是公司真正的壁垒"）
-- ✅ `docs/ai-native-intro/first-principles.md`（第一性原理：能力边界、角色转变、组织架构）
-- ✅ `docs/ai-native-intro/core-analogy.md`（核心类比："传统组织 vs 全球顶尖科学家组织"）
-- ✅ `docs/ai-native-intro/60-80-100-model.md`（Builder + AI + 专业团队模型）
-- ✅ `docs/ai-native-intro/why-now.md`（为什么是现在：大模型突破）
-
-**内容质量标准：**
-- 每个文件2000-3000字
-- 语言通俗易懂，避免过度技术术语
-- 包含引用（来自市场研究报告）
-- 结构清晰：背景 → 概念 → 解释 → 意义
-
-**Prerequisites:** Epic 2完成（可开始内容创作）
-
-**Technical Notes:**
-- 内容使用中文编写
-- Markdown格式标准（标题层级、列表、引用）
-- 预留图片占位符：`![核心Hook示意图](./images/core-hook.png)`
+**验收标准**:
+- ✅ 完整的6章目录树已创建
+- ✅ 所有README.md导航文件已添加
+- ✅ VuePress sidebar/navbar配置完成并验证可用
+- ✅ Doc↔PPT映射关系已定义
+- ✅ Information Architecture文档已完成
 
 ---
 
-### Story 3.2: 整理真实案例内容
+### Story 3-A.1: 设计完整信息架构（IA）✅
 
-**作为** 内容创作者，
-**我想** 整理8个真实案例和市场数据，
-**以便** 建立用户信任和可行性认知。
-
-**验收标准：**
-
-**Given** 市场研究报告包含详细案例数据
-**When** 我整理案例内容
-**Then** 应该创建：
-- ✅ `docs/case-studies/README.md`（案例库首页）
-- ✅ **成功公司案例**（4个）：
-  - `openai.md`（$13B ARR）
-  - `cursor-ai.md`（$2.6B估值）
-  - `commonwealth-bank.md`（84%用户留存）
-  - `bupa.md`（410k行AI代码）
-- ✅ **组织转型案例**（4个）：
-  - `amazon.md`（15% IC/Manager提升）
-  - `moderna.md`（部门合并）
-  - `bayer.md`（50%管理层裁减）
-  - `nvidia.md`（Jensen 40+直接下属）
-- ✅ `market-data.md`（市场数据汇总）
-
-**内容质量标准：**
-- 每个案例1000-1500字
-- 结构统一：公司背景 → AI应用 → 成果数据 → 启示
-- 所有数据标注来源（脚注引用）
-
-**Prerequisites:** Story 3.1可并行
-
-**Technical Notes:**
-- 案例真实可追溯（避免虚构）
-- 数据更新日期标注
-- 图片占位符：`![OpenAI增长曲线](./images/openai-growth.png)`
-
----
-
-### Story 3.3: 编写转化路程指南
-
-**作为** 内容创作者，
-**我想** 编写可落地的转型实践路径，
-**以便** 用户知道如何开始AI Native转型。
+**作为** Product Manager，
+**我想** 基于6章框架设计完整的目录树和文件清单，
+**以便** 后续开发有清晰的架构蓝图。
 
 **验收标准：**
 
-**Given** 已明确转型路径（组织架构 + 工具栈 + Builder培养）
-**When** 我编写转化路程指南
-**Then** 应该创建：
-- ✅ `docs/transformation/README.md`（转化路程首页）
-- ✅ `docs/transformation/org-structure.md`（组织架构转型）
-  - 标准型AI Native组织
-  - 过渡型组织架构
-  - 双轨制策略
-- ✅ `docs/transformation/tool-stack.md`（工具栈推荐）
-  - 基础层：Cursor（$20/月）
-  - 进阶层：Claude Code CLI / Gemini CLI
-  - 管理层：Linear / Slack / Github / Devin
-  - 框架层：BMAD-METHOD
-- ✅ `docs/transformation/builder-path.md`（Builder能力培养）
-  - Level 1-5详细路径
-  - 每个Level的时间预估、能力要求、里程碑
-
-**内容质量标准：**
-- 每个文件2500-3500字
-- 提供具体可操作的步骤
-- 包含工具对比表（Markdown表格）
-- 包含能力模型图（占位符）
-
-**Prerequisites:** Story 3.2可并行
-
-**Technical Notes:**
-- 工具栈信息需定期更新（价格、功能）
-- Builder路径基于实际经验设计
-- 提供决策树帮助用户选择方案
-
----
-
-### Story 3.4: 准备图片资源
-
-**作为** 内容创作者，
-**我想** 准备所有内容需要的图片资源，
-**以便** 内容可视化呈现。
-
-**验收标准：**
-
-**Given** 内容已编写，图片占位符已标注
-**When** 我准备图片资源
+**Given** 用户指定的6章框架结构
+**When** 我设计完整的信息架构
 **Then** 应该：
-- ✅ 创建`docs/.vuepress/public/images/`目录
-- ✅ 准备以下图片：
-  - **简述部分**：核心Hook示意图、第一性原理图、60-80-100模型图、类比对比图
-  - **案例部分**：OpenAI增长曲线、Cursor团队规模对比、组织架构对比图
-  - **转化路程**：标准型组织架构图、过渡型架构图、工具栈分层图、Builder能力模型图
-- ✅ 所有图片：
-  - 格式：PNG（截图）/ SVG（图表）/ WebP（优化）
-  - 压缩：单张 < 200KB
-  - 命名：英文kebab-case（如`core-hook.png`）
-  - 尺寸：宽度1200px（2x分辨率）
-- ✅ 替换Markdown中的占位符为实际路径
+- ✅ 创建完整的6章目录结构（`1-introduction/` ~ `6-outlook/` + `case-studies/`）
+- ✅ 每个目录包含`README.md`导航文件（共16个README文件）
+- ✅ 所有文件名使用kebab-case，符合架构约定
+- ✅ 产出`docs/information-architecture.md` IA设计文档（20KB+），包含：
+  - 完整目录树设计
+  - 每章的文件清单和内容要点
+  - 导航系统设计（navbar + sidebar）
+  - Doc↔PPT映射关系
+  - 文件命名规范和内容质量标准
 
-**Prerequisites:** Story 3.1-3.3完成（内容确定）
+**输出文件：**
+- `docs/information-architecture.md`（IA设计文档）
+- `docs/1-introduction/README.md`
+- `docs/2-comparison/README.md`
+- `docs/3-core-definition/README.md`
+- `docs/4-practice-demo/README.md`
+- `docs/5-transition-practice/README.md`（及其下所有子目录README）
+- `docs/6-outlook/README.md`
+- `docs/case-studies/README.md`（及其下子目录README）
+
+**Prerequisites:** Epic 2完成，用户确认6章框架
 
 **Technical Notes:**
-- 使用Figma/Canva制作图表
-- 使用TinyPNG压缩图片
-- 确保图片有`alt`文本（可访问性）
-- 所有图片版权清晰（自制或开源）
+- 参考文档：`brainstorming-session-results-2025-12-15.md`、`PRD.md`
+- 章节4为"AI Native实践演示"（桌面操作演示，Linear+Slack+Github+Devin）
+- 章节5包含详细的5.1和5.2，包括产品开发7步流程
+- 所有目录和文件名必须使用kebab-case
+
+**Status:** ✅ 已完成 (2025-12-16)
 
 ---
 
-### Story 3.5: 组织Markdown文件结构与导航配置
+### Story 3-A.2: 配置VuePress导航和sidebar ✅
 
 **作为** 开发者，
-**我想** 组织好内容的目录结构并配置导航，
-**以便** 内容逻辑清晰且易于访问。
+**我想** 实现6章完整导航系统并创建PPT文件骨架，
+**以便** Epic 4和Epic 5可以基于完整框架进行布局开发。
 
 **验收标准：**
 
-**Given** 所有内容和图片已准备
+**Given** Story 3-A.1的IA设计已完成
 **When** 我配置VuePress导航
 **Then** 应该：
-- ✅ 最终目录结构：
-  ```
-  docs/
-  ├── README.md (首页)
-  ├── ai-native-intro/
-  │   ├── README.md
-  │   ├── core-hook.md
-  │   ├── first-principles.md
-  │   ├── core-analogy.md
-  │   ├── 60-80-100-model.md
-  │   └── why-now.md
-  ├── case-studies/
-  │   ├── README.md
-  │   ├── openai.md
-  │   ├── cursor-ai.md
-  │   ├── commonwealth-bank.md
-  │   ├── bupa.md
-  │   ├── amazon.md
-  │   ├── moderna.md
-  │   ├── bayer.md
-  │   ├── nvidia.md
-  │   └── market-data.md
-  ├── transformation/
-  │   ├── README.md
-  │   ├── org-structure.md
-  │   ├── tool-stack.md
-  │   └── builder-path.md
-  └── .vuepress/
-      └── public/
-          └── images/
-  ```
-- ✅ 配置`docs/.vuepress/config.js`的sidebar：
-  ```js
-  sidebar: {
-    '/ai-native-intro/': [...],
-    '/case-studies/': [...],
-    '/transformation/': [...]
-  }
-  ```
-- ✅ 本地预览确认所有链接正常
+- ✅ 在`docs/.vuepress/config.ts`中配置完整的navbar（9个导航项）
+- ✅ 配置所有6章 + 案例库的sidebar（支持多层折叠，章节5有3层嵌套）
+- ✅ 创建`docs/slides/`目录下所有PPT文件骨架（7个文件）：
+  - `1-introduction.md`
+  - `2-comparison.md`
+  - `3-definition.md`
+  - `4-practice.md`
+  - `5-transition.md`
+  - `6-outlook.md`
+  - `cases.md`
+- ✅ 本地运行`pnpm run docs:dev`验证导航可用（服务器成功启动）
+- ✅ VuePress编译无错误（可以有broken links警告，因为内容文件尚未创建）
 
-**Prerequisites:** Story 3.4完成
+**输出文件：**
+- `docs/.vuepress/config.ts`（更新navbar和sidebar）
+- `docs/slides/*.md`（7个PPT骨架文件）
+
+**Prerequisites:** Story 3-A.1完成
 
 **Technical Notes:**
-- 使用相对路径链接Markdown文件
-- 配置自动生成sidebar（如果工具支持）
-- 验证所有内链和图片链接无404
+- sidebar使用collapsible配置实现折叠功能
+- PPT文件包含章节结构和核心观点提炼
+- Doc↔PPT映射关系：`/1-introduction/` ↔ `/slides/1-introduction`
+
+**Status:** ✅ 已完成 (2025-12-16)
+
+---
+
+### Story 3-A.3: 首页与框架布局设计
+
+**作为** UX设计师/前端开发者，
+**我想** 设计并实现首页和整体框架布局，
+**以便** 用户看到美观、友好的页面，并能快速导航到各章节。
+
+**验收标准：**
+
+**Given** Story 3-A.2的导航系统已配置
+**When** 我设计并实现首页布局
+**Then** 应该：
+- ✅ 设计首页视觉布局（Hero区域、6章导航卡片、快速入口）
+- ✅ 实现响应式首页组件（桌面端和移动端适配）
+- ✅ 配置首页路由和元信息（title、description、keywords）
+- ✅ 首页清晰展示6章内容概览和导航入口
+- ✅ 整体框架布局美观、交互友好
+
+**输出文件：**
+- `docs/README.md`（首页内容，VuePress默认首页）
+- `docs/.vuepress/components/`（自定义组件，如需要）
+- `docs/.vuepress/styles/`（自定义样式文件）
+
+**Prerequisites:** Story 3-A.2完成
+
+**Technical Notes:**
+- 使用VuePress的Home布局或自定义布局
+- Hero区域包含项目标题、副标题、快速开始按钮
+- 6章导航卡片：每章一个卡片，包含图标、标题、简短描述
+- 添加"开始阅读"和"演示模式"两个主要CTA按钮
+
+**Status:** 📍 待开始
+
+---
+
+### Story 3-A.4: PPT模式交互页面设计
+
+**作为** 前端开发者，
+**我想** 设计并实现PPT演示模式，
+**以便** 用户可以使用全屏PPT风格展示内容。
+
+**验收标准：**
+
+**Given** Story 3-A.3的首页布局已完成
+**When** 我实现PPT模式
+**Then** 应该：
+- ✅ 实现PPT全屏展示模式（类似PowerPoint的全屏效果）
+- ✅ 支持键盘导航（Space/Arrow键翻页，Esc退出全屏）
+- ✅ 实现PPT风格的视觉设计：
+  - 大字号标题
+  - 简洁布局
+  - 视觉焦点突出
+  - 每页一个核心观点
+- ✅ 支持全屏切换（F11或自定义全屏按钮）
+- ✅ 实现Doc↔PPT模式切换功能（悬浮球或快捷键）
+- ✅ 添加进度指示器（当前页/总页数）
+
+**技术方案：**
+- 方案1：使用VuePress + vuepress-plugin-md-enhance的Presentation功能
+- 方案2：集成Reveal.js（通过自定义组件）
+- 方案3：自定义实现（使用Vue 3组件 + CSS全屏API）
+
+**输出文件：**
+- `docs/.vuepress/config.ts`（PPT模式插件配置）
+- `docs/.vuepress/styles/ppt-mode.scss`（PPT模式样式）
+- `docs/.vuepress/components/PPTController.vue`（PPT控制器组件，如需要）
+
+**Prerequisites:** Story 3-A.3完成
+
+**Technical Notes:**
+- 参考Reveal.js的键盘快捷键设计
+- 全屏API：`document.documentElement.requestFullscreen()`
+- 确保移动端也有良好体验（触摸滑动翻页）
+
+**Status:** 📍 待开始
+
+---
+
+### Story 3-A.5: 文档模式交互页面设计
+
+**作为** 前端开发者，
+**我想** 设计并实现文档模式，参考Linear Docs的布局和交互，
+**以便** 用户获得出色的阅读体验。
+
+**验收标准：**
+
+**Given** Story 3-A.3的首页布局已完成
+**When** 我实现文档模式
+**Then** 应该：
+- ✅ 实现类似Linear Docs的侧边栏导航：
+  - 固定侧边栏（左侧）
+  - 支持折叠功能（移动端自动折叠）
+  - 多层级导航清晰
+- ✅ 实现右侧目录大纲（Table of Contents / On This Page）
+  - 自动提取H2、H3标题
+  - 当前阅读位置高亮
+  - 点击跳转到对应章节
+- ✅ 优化阅读体验：
+  - 合适的行宽（max-width: 720px）
+  - 合适的行高（line-height: 1.7）
+  - 舒适的字体（系统字体栈或Google Fonts）
+- ✅ 添加页面内锚点跳转（点击TOC跳转平滑滚动）
+- ✅ 实现搜索功能（VuePress内置搜索或Algolia DocSearch）
+- ✅ 响应式设计（移动端折叠侧边栏，点击汉堡菜单打开）
+- ✅ 添加面包屑导航（顶部显示当前路径）
+
+**参考设计：**
+- Linear Docs: https://linear.app/docs
+- 布局特点：侧边栏固定、内容居中、右侧大纲、清晰的视觉层级
+
+**输出文件：**
+- `docs/.vuepress/config.ts`（文档模式主题配置）
+- `docs/.vuepress/styles/doc-mode.scss`（文档模式样式）
+- `docs/.vuepress/components/TableOfContents.vue`（TOC组件，如需要）
+- `docs/.vuepress/components/Breadcrumb.vue`（面包屑组件，如需要）
+
+**Prerequisites:** Story 3-A.3完成
+
+**Technical Notes:**
+- VuePress默认主题已提供sidebar和TOC功能，可在此基础上优化
+- 使用Intersection Observer API实现当前阅读位置高亮
+- 搜索功能：VuePress内置`@vuepress/plugin-search`或集成Algolia
+- 参考Linear Docs的间距、字体、颜色系统
+
+**Status:** 📍 待开始
+
+---
+
+## Epic 3-B: 内容填充 📝
+
+**目标**: 填充所有6章的实际内容和图片资源
+
+**价值**: 在Epic 4&5完成布局验证后，填充高质量内容，完成产品核心价值交付
+
+**验收标准**:
+- ✅ 6章所有内容文件完成（30000+字）
+- ✅ 8个案例详细分析完成（每篇1000-1500字）
+- ✅ 所有图片资源制作完成（WebP格式）
+- ✅ 无臆造数据，所有引用标注来源
+- ✅ 内容质量达到发布标准
+
+**实施策略**: Epic 4&5完成后开始，按章节依次填充
+
+---
+
+### Story 3-B.1: 编写章节1 - 介绍
+
+**作为** 内容创作者，
+**我想** 完成"组织能力壁垒"章节内容，
+**以便** 引发读者对组织能力的深度思考。
+
+**验收标准：**
+
+**Given** 章节1目录结构已创建
+**When** 我编写章节1内容
+**Then** 应该完成：
+- ✅ `docs/1-introduction/why-organizational-capability.md`（2000-3000字）
+  - 什么决定了组织能力
+  - 为什么组织能力是壁垒
+  - 引发思考：你的组织的核心能力是什么
+
+**内容质量标准：**
+- 语言通俗易懂，避免过度技术术语
+- 结构清晰：背景 → 概念 → 解释 → 意义
+- 包含图片占位符（至少1个）
+
+**Prerequisites:** Epic 3-A完成，Epic 4&5完成（布局验证OK）
+
+**Estimated Effort:** 4小时
+
+---
+
+### Story 3-B.2: 编写章节2 - 现状对比
+
+**作为** 内容创作者，
+**我想** 完成"传统 vs AI Native"对比章节，
+**以便** 读者清晰看到两种组织模式的差异。
+
+**验收标准：**
+
+**Given** 章节2目录结构已创建
+**When** 我编写章节2内容
+**Then** 应该完成：
+- ✅ `docs/2-comparison/traditional-organization.md`（1500-2000字）
+- ✅ `docs/2-comparison/ai-native-organization.md`（1500-2000字）
+- ✅ 包含核心对比表（人员能力、组织方式、产出质量）
+- ✅ 包含核心类比表述："普通人 vs 全球顶尖科学家"
+
+**内容质量标准：**
+- 对比维度清晰
+- 包含图示占位符（至少2个）
+- 引用真实数据和案例
+
+**Prerequisites:** Story 3-B.1可并行
+
+**Estimated Effort:** 5小时
+
+---
+
+### Story 3-B.3: 编写章节3 - 核心定义
+
+**验收标准：**
+
+**Given** 章节3目录结构已创建
+**When** 我编写章节3内容
+**Then** 应该完成：
+- ✅ `docs/3-core-definition/builder-ai-team.md`（1500-2000字）
+- ✅ `docs/3-core-definition/professional-optimization.md`（1000-1500字）
+- ✅ `docs/3-core-definition/result-oriented-division.md`（1000-1500字）
+- ✅ 详细解释60-80-100分模型
+- ✅ 包含核心公式：`AI Native = Builder + AI + 专业团队优化`
+
+**Prerequisites:** Story 3-B.2可并行
+
+**Estimated Effort:** 5小时
+
+---
+
+### Story 3-B.4: 编写章节4 - AI Native实践演示
+
+**验收标准：**
+
+**Given** 章节4目录结构已创建
+**When** 我编写章节4内容
+**Then** 应该完成：
+- ✅ `docs/4-practice-demo/demo-overview.md`（800-1000字）
+- ✅ `docs/4-practice-demo/toolchain-setup.md`（1200-1500字）
+- ✅ `docs/4-practice-demo/workflow-demonstration.md`（1500-2000字）
+- ✅ `docs/4-practice-demo/reference.md`（500-800字）
+- ✅ 详细描述Linear+Slack+Github+Devin工具链
+- ✅ 展示一个Builder完成一个产品的全过程
+- ✅ 包含参考链接（小宇宙播客等）
+
+**Prerequisites:** Story 3-B.3可并行
+
+**Estimated Effort:** 5小时
+
+---
+
+### Story 3-B.5: 编写章节5.1 - 组织架构转型
+
+**验收标准：**
+
+**Given** 章节5.1目录结构已创建
+**When** 我编写章节5.1内容
+**Then** 应该完成：
+- ✅ **标准型组织架构**（5个文件，共3000字）：
+  - `standard-model/core-principles.md`
+  - `standard-model/team-scale.md`
+  - `standard-model/role-definition.md`
+  - `standard-model/work-style.md`
+- ✅ **过渡型组织架构**（3个文件，共2500字）：
+  - `transitional-model/new-products.md`
+  - `transitional-model/existing-products.md`
+- ✅ **过渡性实施路线**（3个主文件 + 7个产品开发流程文件，共6000字）：
+  - `transition-roadmap/organization-level.md`
+  - `transition-roadmap/daily-workflow.md`
+  - `transition-roadmap/product-development/1-data-analysis.md` ~ `7-development.md`
+
+**Prerequisites:** Story 3-B.4完成
+
+**Estimated Effort:** 12小时
+
+---
+
+### Story 3-B.6: 编写章节5.2 - 核心实践方法论
+
+**验收标准：**
+
+**Given** 章节5.2目录结构已创建
+**When** 我编写章节5.2内容
+**Then** 应该完成：
+- ✅ **BMAD-METHOD详解**（4个文件，共3000字）：
+  - `bmad-method/core-features.md`（4阶段、3轨道、21智能体）
+  - `bmad-method/quality-guarantee.md`（5点质量保障原因）
+  - `bmad-method/how-to-use.md`（编程实践应用）
+- ✅ `builder-growth-path.md`（2500字，5个Level详细路径）
+- ✅ `tool-stack-guide.md`（2500字，分层工具栈推荐）
+
+**Prerequisites:** Story 3-B.5完成
+
+**Estimated Effort:** 8小时
+
+---
+
+### Story 3-B.7: 编写章节6 - 展望引导
+
+**验收标准：**
+
+**Given** 章节6目录结构已创建
+**When** 我编写章节6内容
+**Then** 应该完成：
+- ✅ `docs/6-outlook/scenario-distinction.md`（800-1000字）
+- ✅ `docs/6-outlook/path-1-builder.md`（1000-1200字）
+- ✅ `docs/6-outlook/path-2-specialist.md`（1000-1200字）
+- ✅ `docs/6-outlook/staying-relevant.md`（800-1000字）
+- ✅ 场景区分清晰（真实世界 vs 虚拟世界）
+- ✅ 两条路径详解
+- ✅ 强调开放和适应性
+
+**Prerequisites:** Story 3-B.6可并行
+
+**Estimated Effort:** 5小时
+
+---
+
+### Story 3-B.8: 编写案例库
+
+**验收标准：**
+
+**Given** 案例库目录结构已创建
+**When** 我编写案例库内容
+**Then** 应该完成：
+- ✅ **成功公司案例**（4个文件，每篇1000-1500字）：
+  - `success-companies/openai.md`
+  - `success-companies/cursor-ai.md`
+  - `success-companies/commonwealth-bank.md`
+  - `success-companies/bupa.md`
+- ✅ **组织转型案例**（4个文件，每篇1000-1500字）：
+  - `organization-transformation/amazon.md`
+  - `organization-transformation/moderna.md`
+  - `organization-transformation/bayer.md`
+  - `organization-transformation/nvidia.md`
+- ✅ `market-data.md`（1500-2000字，市场数据汇总）
+- ✅ 所有数据标注真实来源
+- ✅ 无臆造数据
+
+**Prerequisites:** Story 3-B.7可并行
+
+**Estimated Effort:** 10小时
+
+---
+
+### Story 3-B.9: 准备图片资源
+
+**验收标准：**
+
+**Given** 所有内容文件已完成，图片占位符已标注
+**When** 我准备图片资源
+**Then** 应该：
+- ✅ 创建并优化所有图片资源
+- ✅ 所有图片格式WebP，单图<200KB
+- ✅ 图片命名kebab-case
+- ✅ 替换所有占位符为实际图片路径
+- ✅ 存放在`docs/.vuepress/public/images/`
+
+**图片清单**：
+- 章节1-2：对比图、示意图（4-5张）
+- 章节3：模型图、架构图（3-4张）
+- 章节4：工具链图、流程图（3-4张）
+- 章节5：组织架构图、流程图（6-8张）
+- 案例库：数据图表、截图（8-10张）
+
+**Prerequisites:** Story 3-B.8完成
+
+**Estimated Effort:** 8小时
 
 ---
 

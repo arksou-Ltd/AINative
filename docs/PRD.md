@@ -1098,42 +1098,36 @@ docs/
 
 ### Epic分解要求
 
-**按照BMAD-METHOD，需要将PRD分解为Epics和Stories：**
+**按照BMAD-METHOD，已将PRD分解为6个Epic和33个Story：**
 
-**Epic 1: 内容体系建设**
-- Story 1.1: AI Native简述内容编写
-- Story 1.2: 案例库内容整理
-- Story 1.3: 转化路程指南编写
-- Story 1.4: 图片资源准备
+**Epic 1: 项目基础设施与技术栈** ✅ 已完成
+- Story 1.1-1.5: 技术选型、项目初始化、开发环境、响应式框架、构建流程
 
-**Epic 2: Document文档模式**
-- Story 2.1: 项目初始化与配置
-- Story 2.2: 导航树实现
-- Story 2.3: Markdown渲染配置
-- Story 2.4: 响应式布局
-- Story 2.5: 内容集成
+**Epic 2: 部署验证与Hello World** ✅ 已完成
+- Story 2.1-2.4: GitHub配置、Hello World页面、部署验证、文档编写
 
-**Epic 3: PPT演示模式**
-- Story 3.1: reveal.js集成
-- Story 3.2: PPT内容编写（30-50页）
-- Story 3.3: 样式定制
-- Story 3.4: 导航控制实现
-- Story 3.5: 响应式适配
+**Epic 3-A: 内容框架搭建** 🔄 进行中
+- Story 3-A.1: 设计完整信息架构（IA）- 6章目录结构 + IA文档 ✅
+- Story 3-A.2: 配置VuePress导航和sidebar - 完整导航系统 + PPT骨架 ✅
+- Story 3-A.3: 首页与框架布局设计 - Hero区域 + 6章导航卡片 📍
+- Story 3-A.4: PPT模式交互页面设计 - 全屏PPT风格 + 键盘导航 📍
+- Story 3-A.5: 文档模式交互页面设计 - Linear Docs风格布局 📍
 
-**Epic 4: 页面与基础设施**
-- Story 4.1: 首页实现
-- Story 4.2: 联系页面实现
-- Story 4.3: GitHub Actions配置
-- Story 4.4: SEO优化配置
+**Epic 3-B: 内容填充** 📍 待Epic 4&5完成后执行
+- Story 3-B.1 ~ 3-B.9: 编写6章内容 + 案例库 + 图片资源
 
-**Epic 5: 测试与上线**
-- Story 5.1: 功能测试
-- Story 5.2: 性能优化
-- Story 5.3: 可访问性测试
-- Story 5.4: 文档编写（README, CONTRIBUTING）
-- Story 5.5: 部署发布
+**Epic 4: PPT演示模式** 📌 下一步
+- Story 4.1-4.6: reveal.js集成、PPT内容编写、样式定制、导航控制
 
-**Next Step:** 运行 `workflow create-epics-and-stories` 创建详细的实施分解
+**Epic 5: Document文档模式** 📌 Epic 4之后
+- Story 5.1-5.6: 导航树、Markdown增强、响应式、Doc↔PPT切换
+
+**Epic 6: 页面完善与发布** 📌 最后阶段
+- Story 6.1-6.7: 首页/联系页、SEO、性能优化、可访问性、文档编写、发布
+
+**详细的Epic与Story分解**：参见 `docs/epics.md`
+
+**当前进度**：Epic 1、Epic 2、Epic 3-A 已完成
 
 ---
 
