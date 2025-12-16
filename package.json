@@ -26,8 +26,9 @@
     "docs:clean": "rimraf docs/.vuepress/dist docs/.vuepress/.cache docs/.vuepress/.temp"
   },
   "devDependencies": {
-    "@vuepress/helper": "2.0.0-rc.26",
     "@vuepress/bundler-vite": "2.0.0-rc.26",
+    "@vuepress/client": "2.0.0-rc.26",
+    "@vuepress/helper": "2.0.0-rc.26",
     "@vuepress/theme-default": "2.0.0-rc.26",
     "rimraf": "^6.1.2",
     "vue": "^3.3.0",
