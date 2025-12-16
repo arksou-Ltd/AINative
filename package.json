@@ -30,10 +30,12 @@
     "@vuepress/client": "2.0.0-rc.26",
     "@vuepress/helper": "2.0.0-rc.26",
     "@vuepress/theme-default": "2.0.0-rc.26",
+    "reveal.js": "^5.2.1",
     "rimraf": "^6.1.2",
     "vue": "^3.3.0",
+    "vue-router": "^4.6.4",
     "vuepress": "2.0.0-rc.26",
-    "vuepress-plugin-md-enhance": "2.0.0-rc.99"
+    "vuepress-plugin-md-enhance": "2.0.0-rc.26"
   },
   "pnpm": {
     "overrides": {
@@ -46,5 +48,8 @@
       "@vuepress/plugin-seo": "link:./vendor/plugin-seo-stub",
       "@vuepress/plugin-sitemap": "link:./vendor/plugin-sitemap-stub"
     }
+  },
+  "dependencies": {
+    "sass-embedded": "^1.77.0"
   }
 }

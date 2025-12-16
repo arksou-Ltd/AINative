@@ -1,3 +1,8 @@
+---
+layout: Slide
+title: 第3章：核心定义
+---
+
 # 第3章：核心定义
 
 _演示模式：什么是 AI Native?_
@@ -66,7 +71,7 @@ AI Native = Builder + AI（60-80分）
 
 **AI Native模式**：
 ```
-Builder + AI 端到端负责整个流程
+Builder + AI 端到��负责整个流程
 （减少交接，快速迭代）
 ```
 

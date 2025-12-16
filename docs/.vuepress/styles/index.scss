@@ -234,3 +234,107 @@ body {
   backdrop-filter: blur(10px);
   border-right: 1px solid var(--c-border);
 }
+
+// Reveal.js Presentation Overrides (Tech Pioneer Theme)
+.reveal-viewport {
+  background-color: var(--c-bg) !important;
+  font-family: var(--font-family) !important;
+}
+
+.reveal {
+  color: var(--c-text) !important;
+  
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--c-text) !important;
+    font-weight: 700;
+    text-transform: none !important;
+    margin-bottom: 0.5em;
+  }
+
+  h1 {
+    font-size: 3.5rem;
+    background: linear-gradient(135deg, #ffffff 30%, var(--c-brand) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 20px rgba(56, 189, 248, 0.2));
+  }
+
+  h2 {
+    font-size: 2.5rem;
+    color: var(--c-brand-light) !important;
+  }
+
+  p, li {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    color: var(--c-text-light);
+  }
+
+  a {
+    color: var(--c-brand) !important;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  strong {
+    color: var(--c-brand-light);
+    font-weight: 600;
+  }
+
+  // Lists
+  ul, ol {
+    margin-left: 1em;
+    li {
+      margin-bottom: 0.5em;
+      &::marker {
+        color: var(--c-brand);
+      }
+    }
+  }
+
+  // Code blocks
+  pre {
+    background: var(--code-bg-color) !important;
+    border: 1px solid var(--c-border);
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    
+    code {
+      font-family: var(--font-family-code) !important;
+      font-size: 1.2rem;
+      line-height: 1.5;
+    }
+  }
+
+  // Controls
+  .controls {
+    color: var(--c-brand) !important;
+    button {
+      filter: drop-shadow(0 0 5px rgba(56, 189, 248, 0.5));
+    }
+  }
+
+  // Progress bar
+  .progress {
+    color: var(--c-brand) !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    span {
+      background-color: var(--c-brand) !important;
+      box-shadow: 0 0 10px var(--c-brand);
+    }
+  }
+}
+
+// Mobile optimization for Reveal.js
+@media (max-width: 768px) {
+  .reveal h1 {
+    font-size: 2rem !important;
+  }
+  .reveal h2 {
+    font-size: 1.5rem !important;
+  }
+  .reveal p, .reveal li {
+    font-size: 1rem !important;
+  }
+}

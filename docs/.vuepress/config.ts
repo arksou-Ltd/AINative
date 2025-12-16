@@ -1,6 +1,7 @@
 import { defineUserConfig } from 'vuepress'
 import { defaultTheme } from '@vuepress/theme-default'
 import { viteBundler } from '@vuepress/bundler-vite'
+import { mdEnhancePlugin } from "vuepress-plugin-md-enhance";
 
 export default defineUserConfig({
   base: '/AINative/',
@@ -12,6 +13,11 @@ export default defineUserConfig({
     ['meta', { name: 'keywords', content: 'AI Native, AI转型, 企业数字化, 知识分享' }],
     ['meta', { name: 'author', content: 'AINative Team' }],
     ['link', { rel: 'icon', href: '/AINative/favicon.ico' }],
+  ],
+  plugins: [
+    mdEnhancePlugin({
+      revealJs: true,
+    }),
   ],
   theme: defaultTheme({
     navbar: [

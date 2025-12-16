@@ -1,3 +1,8 @@
+---
+layout: Slide
+title: 第4章：实践演示
+---
+
 # 第4章：AI Native 实践演示
 
 _演示模式：一个Builder如何完成一个完整产品_

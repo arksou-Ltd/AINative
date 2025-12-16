@@ -1,0 +1,173 @@
+<story-context id="bmad/bmm/workflows/4-implementation/story-context/template" v="1.0">
+  <metadata>
+    <epicId>3-a</epicId>
+    <storyId>4</storyId>
+    <title>PPT模式交互页面设计</title>
+    <status>drafted</status>
+    <generatedAt>2025-12-16</generatedAt>
+    <generator>BMAD Story Context Workflow (with Deep Research)</generator>
+    <sourceStoryPath>docs/stories/3-a-4-ppt-mode-interaction-design.md</sourceStoryPath>
+  </metadata>
+
+  <story>
+    <asA>前端开发者</asA>
+    <iWant>实现基于 reveal.js 的 PPT 演示模式并配置相关交互</iWant>
+    <soThat>用户可以获得沉浸式的全屏演示体验，并能与文档模式无缝切换</soThat>
+    <tasks>
+- [ ] Task 1: 集成 `vuepress-plugin-md-enhance` (AC: #1)
+  - [ ] 1.1 安装依赖 `pnpm add -D vuepress-plugin-md-enhance`
+  - [ ] 1.2 在 `docs/.vuepress/config.ts` 中引入并配置插件
+  - [ ] 1.3 开启 `presentation: { plugins: ['highlight', 'math', 'search', 'notes', 'zoom'] }`
+  - [ ] 1.4 创建 `docs/slides/test.md` 进行基础渲染测试
+
+- [ ] Task 2: 定制 reveal.js 主题样式 (AC: #2)
+  - [ ] 2.1 创建 `docs/.vuepress/styles/reveal.scss` (或在 index.scss 中通过 `.reveal` 作用域控制)
+  - [ ] 2.2 覆盖 reveal.js 变量：
+    - `--r-background-color`: #020617
+    - `--r-main-color`: #f8fafc
+    - `--r-heading-color`: #f8fafc
+    - `--r-link-color`: #38bdf8
+  - [ ] 2.3 调整排版：增加段落间距，优化列表样式
+  - [ ] 2.4 在 config.ts 中注入自定义样式
+
+- [ ] Task 3: 实现全局控制组件 (AC: #3, #4)
+  - [ ] 3.1 创建组件 `docs/.vuepress/components/SlideControls.vue`
+  - [ ] 3.2 实现 "返回文档" 按钮逻辑 (根据当前 slide 路径解析回退的文档路径)
+  - [ ] 3.3 使用 `client.ts` (`defineClientConfig`) 全局注���组件，或仅在 Slide 布局中注入
+  - [ ] 3.4 样式定位：绝对定位在左上角，半透明玻璃拟态效果 (Glassmorphism)
+
+- [ ] Task 4: 配置文档页面的入口按钮 (AC: #4)
+  - [ ] 4.1 创建组件 `docs/.vuepress/components/PresentationEntry.vue`
+  - [ ] 4.2 实现跳转逻辑：根据当前文档路径推断 Slide 路径
+  - [ ] 4.3 样式设计：悬浮球 (Floating Action Button) 或 顶部 Banner 按钮
+
+- [ ] Task 5: 移动端与响应式优化 (AC: #5)
+  - [ ] 5.1 验证 reveal.js 默认的移动端缩放行为
+  - [ ] 5.2 调整移动端字体大小断点 (使用 `@media`)
+  - [ ] 5.3 确保控制按钮在移动端不遮挡内容
+
+- [ ] Task 6: 验证与测试
+  - [ ] 6.1 运行 `pnpm run docs:dev`
+  - [ ] 6.2 验证 PPT 渲染、翻页、样式
+  - [ ] 6.3 验证双向跳转链接是否正确
+  - [ ] 6.4 移动端真机或模拟器测试
+</tasks>
+  </story>
+
+  <acceptanceCriteria>
+1. ✅ 集成并配置 `vuepress-plugin-md-enhance` 的演示功能 (reveal.js)
+   - 启用 `presentation` 功能
+   - 配置 reveal.js 核心参数 (controls, progress, center, hash)
+   - 确保 `docs/slides/*.md` 下的文件能被正确渲染为幻灯片
+
+2. ✅ 定制 PPT 视觉主题 (Tech Pioneer Presentation)
+   - 背景色统一为 "Midnight Blue" (#020617)，保持全站视觉���致性
+   - 字体适配大屏演示 (正文 ≥ 24px, 标题 ≥ 48px)
+   - 强调色使用 "Electric Blue" (#38bdf8)
+   - 自定义 slide 切换动画 (推荐 `slide` 或 `fade`)
+
+3. ✅ 实现 PPT 导航与控制
+   - 支持键盘导航 (Space/Arrow 翻页, Esc 退出/概览)
+   - 屏幕右下角显示页码进度 (Current / Total)
+   - 移动端支持滑动翻页 (Swipe)
+
+4. ✅ 实现 "文档 ↔ PPT" 双向切换交互
+   - **入口**：在各章节文档页 (如 `/1-introduction/`) 顶部或悬浮位置添加 "📊 演示模式" 按钮
+   - **出口**：在 PPT 页面左上角添加固定悬浮的 "⬅ 返回文档" 按钮
+   - 确保切换时路径映射正确 (如 `/1-introduction/` ↔ `/slides/1-introduction.html`)
+
+5. ✅ 响应式适配
+   - 桌面端：16:9 宽屏布局，内容居中
+   - 移动端：自适应缩放，确保内容不出屏幕，文字可读
+</acceptanceCriteria>
+
+  <artifacts>
+    <docs>
+      <artifact>
+        <path>docs/ux-design-specification.md</path>
+        <title>AINative UX Design Specification</title>
+        <section>Visual Foundation, Core Cards, Navigation & Controls</section>
+        <snippet>Design theme: Tech Pioneer (Midnight Blue #020617, Electric Blue #38bdf8). Glassmorphism controls. Floating Mode Toggle for switching between Doc/PPT.</snippet>
+      </artifact>
+      <artifact>
+        <path>docs/architecture.md</path>
+        <title>Architecture</title>
+        <section>Technology Stack Details</section>
+        <snippet>Uses vuepress-plugin-md-enhance (presentation/reveal). Integration Points: Doc ↔ PPT buttons, mapped paths. Implementation Patterns: Unified styles in index.css.</snippet>
+      </artifact>
+      <research>
+        <title>Web Presentation & Glassmorphism Design Trends (2025)</title>
+        <findings>
+          - **Glassmorphism 2.0**: Frosted glass effects (backdrop-filter: blur) with subtle borders (1px solid rgba(255,255,255,0.1)) are standard for overlay controls to maintain context without blocking content.
+          - **Dark Mode Presentation**: High contrast text (White on Deep Blue) reduces eye strain and looks premium. Neon accents (Electric Blue) guide focus.
+          - **Micro-interactions**: Hover states on controls should have a subtle glow or lift (transform: translateY) to indicate interactivity.
+          - **Mobile Swipe**: For mobile, standard tap arrows are outdated. Swipe gestures (built-in to reveal.js) are preferred.
+          - **Linear App Inspiration**: Clean typography, minimal UI chrome, high performance transitions. "Tech Pioneer" theme aligns with Linear's dark mode aesthetic.
+        </findings>
+        <references>
+          - "Dark Mode and Glass Morphism: The Hottest UI Trends in 2025" (Medium)
+          - "Linear web app UI screen examples" (Nicelydone)
+          - Reveal.js documentation on custom controls and layouts
+        </references>
+      </research>
+    </docs>
+    <code>
+      <artifact>
+        <path>docs/.vuepress/config.ts</path>
+        <kind>config</kind>
+        <symbol>defineUserConfig</symbol>
+        <reason>Where vuepress-plugin-md-enhance needs to be configured.</reason>
+      </artifact>
+      <artifact>
+        <path>docs/.vuepress/styles/index.scss</path>
+        <kind>style</kind>
+        <reason>Contains global CSS variables (--c-bg, --c-brand) that reveal.js theme must inherit.</reason>
+      </artifact>
+    </code>
+    <dependencies>
+      <dependency>
+        <key>vuepress-plugin-md-enhance</key>
+        <version>latest</version>
+        <notes>Provides reveal.js integration</notes>
+      </dependency>
+      <dependency>
+        <key>reveal.js</key>
+        <version>bundled</version>
+        <notes>Core presentation library</notes>
+      </dependency>
+    </dependencies>
+  </artifacts>
+
+  <constraints>
+    <constraint>Must use 'Midnight Blue' (#020617) background for slides to match homepage.</constraint>
+    <constraint>Controls must use Glassmorphism to float above slides without obscuring content.</constraint>
+    <constraint>Mobile experience must remain readable (minScale adjustment in reveal.js config).</constraint>
+    <constraint>Navigation buttons must handle path mapping logic reliably (Doc path to Slide path).</constraint>
+  </constraints>
+
+  <interfaces>
+    <interface>
+      <name>SlideControls.vue</name>
+      <kind>Vue Component</kind>
+      <signature>&lt;template&gt;Fixed overlay with 'Back to Doc' button&lt;/template&gt;</signature>
+      <path>docs/.vuepress/components/SlideControls.vue</path>
+    </interface>
+    <interface>
+      <name>PresentationEntry.vue</name>
+      <kind>Vue Component</kind>
+      <signature>&lt;template&gt;Button to launch presentation mode&lt;/template&gt;</signature>
+      <path>docs/.vuepress/components/PresentationEntry.vue</path>
+    </interface>
+  </interfaces>
+
+  <tests>
+    <standards>Verify reveal.js initializes correctly on slide pages. Check that custom theme overrides default reveal.js styles (background, fonts). Verify navigation links work in both directions.</standards>
+    <locations>docs/slides/</locations>
+    <ideas>
+      <idea>Test slide transition animations (slide vs fade).</idea>
+      <idea>Verify 'Esc' key behavior (overview mode).</idea>
+      <idea>Check mobile swipe gesture.</idea>
+      <idea>Verify deep linking (refreshing a slide URL keeps you on that slide).</idea>
+    </ideas>
+  </tests>
+</story-context>

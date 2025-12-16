@@ -1,3 +1,8 @@
+---
+layout: Slide
+title: 第2章：现状对比
+---
+
 # 第2章：现状对比
 
 _演示模式：传统组织 vs AI Native 组织_
