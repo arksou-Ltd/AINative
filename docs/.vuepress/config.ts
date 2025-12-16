@@ -6,7 +6,7 @@ import { mdEnhancePlugin } from "vuepress-plugin-md-enhance";
 export default defineUserConfig({
   base: '/AINative/',
   lang: 'zh-CN',
-  title: 'AINative - AI Native知识分享平台',
+  title: 'AI Native',
   description: '理解并实践AI Native转型',
   head: [
     ['meta', { name: 'viewport', content: 'width=device-width,initial-scale=1.0' }],
@@ -19,15 +19,73 @@ export default defineUserConfig({
       revealJs: true,
     }),
   ],
+  markdown: {
+    headers: {
+      level: [2, 3, 4],
+    },
+  },
   theme: defaultTheme({
     navbar: [
       { text: '首页', link: '/' },
-      { text: '组件演示', link: '/story-context-demo' },
-      { text: '第1章', link: '/1-introduction/' },
+      { text: 'GitHub', link: 'https://github.com/arksou-Ltd' },
     ],
-    // Sidebar disabled temporarily due to missing content files causing build errors
-    sidebar: {}, 
-    repo: 'your-org/AINative',
+    // Sidebar configuration enabled
+    sidebar: {
+      '/1-introduction/': [
+        {
+          text: '第一章：介绍',
+          children: [
+            'README.md',
+            'why-organizational-capability.md',
+            'ai-native-brief.md',
+            'simple-case-demo.md',
+          ],
+        },
+      ],
+      '/2-comparison/': [
+        {
+          text: '第二章：现状对比',
+          children: ['README.md'],
+        },
+      ],
+      '/3-core-definition/': [
+        {
+          text: '第三章：核心定义',
+          children: [
+            'README.md',
+            'digital-workforce.md',
+          ],
+        },
+      ],
+      '/4-practice-demo/': [
+        {
+          text: '第四章：实践演示',
+          children: ['README.md'],
+        },
+      ],
+      '/5-transition-practice/': [
+        {
+          text: '第五章：转化路程',
+          children: [
+            'README.md',
+            '5-1-organization-architecture/README.md',
+            '5-2-core-practices/README.md',
+          ],
+        },
+      ],
+      '/6-outlook/': [
+        {
+          text: '第六章：展望',
+          children: ['README.md'],
+        },
+      ],
+      '/case-studies/': [
+        {
+          text: '案例研究',
+          children: ['README.md'],
+        },
+      ],
+    }, 
     docsDir: 'docs',
     editLink: false,
     lastUpdated: false,

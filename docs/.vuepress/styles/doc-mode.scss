@@ -1,0 +1,199 @@
+/* 
+   Linear Docs Design System - 1:1 Restoration (Iteration 4 - Final Polish)
+   Target: Documentation Pages Only (via .layout-wrapper.doc-mode)
+*/
+
+/* 1. Define Linear Design Tokens (Global) */
+:root {
+  /* Colors */
+  --linear-bg-body: #08090A;
+  --linear-bg-sidebar: #08090A;
+  
+  --linear-text-primary: #F7F8F8;
+  --linear-text-body: #D0D6E0;
+  --linear-text-muted: #8A8F98;
+  --linear-text-tertiary: #575B66;
+  
+  --linear-accent: #5E6AD2;
+  
+  --linear-border-sidebar: #23252A;
+  --linear-border-subtle: rgba(255, 255, 255, 0.04);
+  
+  /* Dimensions */
+  --linear-sidebar-width: 280px;
+  --linear-header-height: 64px;
+  --linear-content-max-width: 720px;
+  
+  /* Fonts */
+  --linear-font-family: "Inter", "Inter Variable", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* 2. Scoped Overrides via Layout Wrapper */
+.layout-wrapper.doc-mode {
+  /* Map Default Theme Vars to Linear Tokens */
+  --c-bg: var(--linear-bg-body);
+  --c-bg-navbar: rgba(8, 9, 10, 0.8);
+  --c-bg-sidebar: var(--linear-bg-sidebar);
+  --c-border: var(--linear-border-sidebar);
+  --c-text: var(--linear-text-body);
+  --c-text-light: var(--linear-text-muted);
+  --c-text-lighter: var(--linear-text-tertiary);
+  --c-brand: var(--linear-accent);
+  
+  /* Override Fonts */
+  --font-family: var(--linear-font-family);
+  
+  /* Sidebar Width */
+  --sidebar-width: var(--linear-sidebar-width);
+  --navbar-height: var(--linear-header-height);
+  --sidebar-width-mobile: 280px;
+}
+
+/* 3. Global Elements within Doc Mode */
+
+/* Body Background Fix */
+.layout-wrapper.doc-mode .theme-container {
+  background-color: var(--linear-bg-body) !important;
+  min-height: 100vh;
+}
+
+/* Navbar Customization */
+.layout-wrapper.doc-mode .navbar {
+  background-color: rgba(8, 9, 10, 0.8) !important; /* Force override index.scss */
+  backdrop-filter: blur(12px) !important;
+  border-bottom: 1px solid var(--linear-border-sidebar) !important;
+  height: var(--linear-header-height) !important;
+}
+
+.layout-wrapper.doc-mode .navbar .site-name {
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+  color: var(--linear-text-primary);
+}
+
+/* Sidebar Customization */
+.layout-wrapper.doc-mode .sidebar {
+  background-color: var(--linear-bg-sidebar) !important; /* Force override index.scss */
+  border-right: 1px solid var(--linear-border-sidebar) !important;
+  padding-top: var(--linear-header-height);
+  z-index: 10;
+  backdrop-filter: none !important; /* Linear sidebar is opaque/solid color usually */
+}
+
+.layout-wrapper.doc-mode .sidebar-item {
+  border-left: none !important;
+  padding: 6px 12px !important;
+  margin: 4px 12px !important;
+  border-radius: 6px;
+  color: var(--linear-text-muted);
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.15s ease;
+}
+
+.layout-wrapper.doc-mode .sidebar-item:hover {
+  background-color: rgba(255, 255, 255, 0.04);
+  color: var(--linear-text-primary);
+}
+
+.layout-wrapper.doc-mode .sidebar-item.active {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  color: var(--linear-text-primary) !important;
+  font-weight: 600;
+  border-left-color: transparent !important;
+}
+
+.layout-wrapper.doc-mode .sidebar-heading {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--linear-text-tertiary);
+  padding-left: 24px;
+  margin-top: 24px;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+/* Main Content Typography & Layout */
+.layout-wrapper.doc-mode .page {
+  padding-left: var(--linear-sidebar-width);
+  padding-right: 0;
+  background-color: var(--linear-bg-body) !important;
+}
+
+.layout-wrapper.doc-mode .content__default {
+  margin: 0 auto;
+  max-width: var(--linear-content-max-width);
+  padding: 64px 40px 100px 40px;
+}
+
+/* H1 - Exact Linear Spec */
+.layout-wrapper.doc-mode h1 {
+  font-size: 40px !important;
+  line-height: 1.1 !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.02em !important;
+  margin-bottom: 32px !important;
+  color: var(--linear-text-primary) !important;
+  background: none !important; /* Remove gradient from index.scss */
+  -webkit-text-fill-color: initial !important; /* Remove gradient text fill */
+}
+
+/* H2 */
+.layout-wrapper.doc-mode h2 {
+  font-size: 24px !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.01em !important;
+  margin-top: 48px !important;
+  margin-bottom: 16px !important;
+  border-bottom: none !important;
+  color: var(--linear-text-primary) !important;
+}
+
+/* Paragraphs */
+.layout-wrapper.doc-mode p,
+.layout-wrapper.doc-mode li {
+  font-size: 15px !important;
+  line-height: 1.6 !important;
+  color: var(--linear-text-body) !important;
+  margin-bottom: 16px !important;
+}
+
+/* Links */
+.layout-wrapper.doc-mode a {
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.layout-wrapper.doc-mode .content__default a {
+  color: var(--linear-accent);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.layout-wrapper.doc-mode .content__default a:hover {
+  border-bottom-color: var(--linear-accent);
+}
+
+/* Code Blocks */
+.layout-wrapper.doc-mode div[class*="language-"] {
+  background-color: #121417;
+  border: 1px solid var(--linear-border-sidebar);
+  border-radius: 8px;
+  margin: 24px 0;
+}
+
+/* Hide Toggle Sidebar on Desktop */
+@media (min-width: 720px) {
+  .layout-wrapper.doc-mode .toggle-sidebar-button {
+    display: none;
+  }
+}
+
+/* Right TOC Adjustment */
+@media (min-width: 1280px) {
+  .layout-wrapper.doc-mode .page {
+    padding-right: 240px !important; /* var(--linear-toc-width) */
+  }
+}

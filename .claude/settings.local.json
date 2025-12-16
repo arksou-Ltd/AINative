@@ -17,7 +17,8 @@
       "Bash(git push:*)",
       "SlashCommand(/bmad:bmm:workflows:story-context)",
       "Bash(test:*)",
-      "Bash(tree:*)"
+      "Bash(tree:*)",
+      "Bash(npx:*)"
     ]
   }
 }
