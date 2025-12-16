@@ -181,8 +181,10 @@ title: 第1章介绍
     - **Dual Mode**: Implemented "Web Mode" (Split View with Sidebar) and "True Fullscreen Mode".
     - **Sidebar Navigation**: Auto-generated slide thumbnails/titles in a sidebar for quick navigation.
     - **Native Fullscreen**: Used `requestFullscreen` API for immersive experience.
-    - **Modern UI**: Implemented icon-only floating dock with high-quality SVG icons and glassmorphism effects, replacing text buttons.
+    - **Modern UI**: Implemented icon-only floating dock (Top-Right) with high-quality SVG icons and glassmorphism effects.
+    - **Auto-Hide**: Controls automatically fade out after 3 seconds of inactivity for distraction-free presentation.
   - **Content Updates**: Created all slide files (`1-introduction.md` to `cases.md`) with correct `layout: Slide` frontmatter and content skeleton.
+  - **Fixes**: Resolved SSR build error (`navigator is not defined`) by using dynamic imports for `reveal.js`.
   - Created `PresentationEntry.vue` for navigating from Docs to PPT.
   - Created `PresentationEntry.vue` for navigating from Docs to PPT.
   - Implemented Tech Pioneer theme overrides for reveal.js in `index.scss`.

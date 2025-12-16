@@ -1,5 +1,5 @@
 <template>
-  <div class="slide-layout" :class="{ 'web-mode': isWebMode }">
+  <div class="slide-layout" :class="{ 'web-mode': isWebMode, 'ui-hidden': isUIHidden }">
     <!-- Sidebar -->
     <SlideSidebar 
       :slides="slideTitles"
@@ -9,7 +9,7 @@
     />
 
     <!-- Main Reveal Container -->
-    <div class="reveal-wrapper">
+    <div class="reveal-wrapper" @mousemove="onWrapperMouseMove">
       <div class="reveal" ref="revealRef">
         <div class="slides"></div>
       </div>
@@ -20,7 +20,7 @@
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
     </button>
 
-    <!-- Bottom Right: Control Dock -->
+    <!-- Top Right: Control Dock (Moved from Bottom) -->
     <div class="control-dock">
       <!-- Layout Toggle (Web Mode) -->
       <button 
@@ -53,7 +53,7 @@
 <script setup>
 import { onMounted, ref, nextTick, onUnmounted } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
-import Reveal from 'reveal.js'
+// Static import of CSS is fine
 import 'reveal.js/dist/reveal.css'
 import 'reveal.js/dist/theme/black.css' 
 import SlideSidebar from '../components/SlideSidebar.vue'
@@ -67,6 +67,30 @@ const isFullscreen = ref(false)
 const deck = ref(null)
 const router = useRouter()
 const route = useRoute()
+
+// Idle State
+const isUIHidden = ref(false)
+let idleTimer = null
+
+const resetIdleTimer = () => {
+  isUIHidden.value = false
+  if (idleTimer) clearTimeout(idleTimer)
+  idleTimer = setTimeout(() => {
+    // Only hide in Fullscreen or always?
+    // User said "support hiding in fullscreen mode"
+    // Let's hide in both modes for cleaner look, or just fullscreen.
+    // Usually controls are useful in web mode.
+    // Let's apply to both for consistency, or just check isFullscreen.
+    // "同时在全屏模式下支持隐藏" implies mainly for fullscreen.
+    // But Top-Right dock might obscure content in Web Mode too.
+    // Let's apply to both.
+    isUIHidden.value = true
+  }, 3000)
+}
+
+const onWrapperMouseMove = () => {
+  resetIdleTimer()
+}
 
 // Navigation Map
 const getDocLink = () => {
@@ -107,12 +131,17 @@ const jumpToSlide = (index) => {
 }
 
 onMounted(async () => {
+  if (typeof window === 'undefined') return
+
   await nextTick()
   
-  // Listen to fullscreen changes
+  // Listeners
   document.addEventListener('fullscreenchange', () => {
     isFullscreen.value = !!document.fullscreenElement
   })
+  document.addEventListener('mousemove', resetIdleTimer)
+  document.addEventListener('keydown', resetIdleTimer)
+  resetIdleTimer()
   
   if (!sourceContent.value || !revealRef.value) return
 
@@ -159,6 +188,9 @@ onMounted(async () => {
   titles.push(currentTitle)
   slideTitles.value = titles
 
+  // Dynamic Import of Reveal.js to avoid SSR errors
+  const Reveal = (await import('reveal.js')).default
+  
   // Initialize Reveal
   deck.value = new Reveal(revealRef.value, {
     embedded: true,
@@ -187,6 +219,8 @@ onMounted(async () => {
 
 onUnmounted(() => {
   if (deck.value) deck.value.destroy()
+  document.removeEventListener('mousemove', resetIdleTimer)
+  document.removeEventListener('keydown', resetIdleTimer)
 })
 </script>
 
@@ -250,6 +284,7 @@ onUnmounted(() => {
   box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
 }
 
+/* Top Left */
 .back-btn {
   position: fixed;
   top: 24px;
@@ -257,10 +292,10 @@ onUnmounted(() => {
   z-index: 100;
 }
 
-/* Control Dock */
+/* Top Right (Moved) */
 .control-dock {
   position: fixed;
-  bottom: 24px;
+  top: 24px; /* Changed from bottom to top */
   right: 24px;
   display: flex;
   gap: 12px;
@@ -272,13 +307,26 @@ onUnmounted(() => {
   backdrop-filter: blur(8px);
 }
 
+/* Hide on Idle State */
+.ui-hidden .control-dock,
+.ui-hidden .back-btn {
+  opacity: 0;
+  transform: translateY(-20px); /* Slide up to hide */
+  pointer-events: none;
+}
+
+/* Transitions */
+.control-dock, .back-btn {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
 /* Tooltips */
 .icon-btn::after {
   content: attr(data-tooltip);
   position: absolute;
-  bottom: 100%;
+  top: 100%; /* Below the button now since dock is at top */
   left: 50%;
-  transform: translateX(-50%) translateY(-8px);
+  transform: translateX(-50%) translateY(8px);
   background: #0f172a;
   color: #fff;
   padding: 6px 10px;
@@ -292,18 +340,8 @@ onUnmounted(() => {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-.back-btn::after {
-  top: 100%;
-  bottom: auto;
-  transform: translateX(-50%) translateY(8px);
-}
-
 .icon-btn:hover::after {
   opacity: 1;
-  transform: translateX(-50%) translateY(-4px);
-}
-
-.back-btn:hover::after {
-  transform: translateX(-50%) translateY(4px);
+  transform: translateX(-50%) translateY(12px);
 }
 </style>
