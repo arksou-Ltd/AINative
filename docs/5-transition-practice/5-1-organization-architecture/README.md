@@ -1,4 +1,12 @@
-# 5.1 组织架构与工作流程转型
+<!--
+ * @Description: TODO
+ * @Author: jett.gao jett@laien.io
+ * @Date: 2025-12-16 10:12:32
+ * @LastEditors: jett.gao jett@laien.io
+ * @LastEditTime: 2025-12-17 17:34:05
+ * Copyright (c) 2025 by laien.ltd. All Rights Reserved. 
+-->
+# 组织架构与工作流程转型
 
 ## 如何调整组织架构和工作流程以支持AI Native模式
 

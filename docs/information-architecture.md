@@ -166,8 +166,8 @@ graph TD
 5-transition-practice/
 ├── README.md                               # 章节总览
 │
-├── 5-1-organization-architecture/          # 5.1 组织架构与工作流程转型
-│   ├── README.md                           # 5.1导航
+├── 5-1-organization-architecture/          # 组织架构与工作流程转型
+│   ├── README.md                           # 导航
 │   │
 │   ├── standard-model/                     # 标准型AI Native组织
 │   │   ├── README.md                       # 标准型概述
@@ -210,7 +210,7 @@ graph TD
 
 **内容要点**：
 
-**5.1 组织架构与工作流程转型**：
+**组织架构与工作流程转型**：
 - 标准型组织（新产品/新团队）
 - 过渡型组织（现有产品/大型组织）
 - 详细的转型实施路线
@@ -218,7 +218,7 @@ graph TD
   - 日常工作（会议、协作、工具）
   - 产品开发（7步完整流程）
 
-**5.2 核心实践方法论**：
+**核心实践方法论**：
 - BMAD-METHOD完整解析
 - Builder成长路径（Level 1-5）
 - 工具栈推荐和使用指南
@@ -362,9 +362,9 @@ navbar: [
 
 ```typescript
 '/5-transition-practice/': [
-  { text: '5. 过渡性转化路程', link: '/5-transition-practice/' },
+  { text: '过渡性转化路程', link: '/5-transition-practice/' },
   {
-    text: '5.1 组织架构与工作流程转型',
+    text: '组织架构与工作流程转型',
     collapsible: true,
     children: [
       {
