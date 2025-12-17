@@ -13,15 +13,21 @@ export interface NavItem {
 
 export const navigationStructure: NavItem[] = [
   {
-    text: '第一章：企业的持续成功',
+    text: '第一章：企业持续成功',
     icon: 'BookOpenIcon',
     collapsible: true,
     children: [
       {
-        text: '企业的持续成功',
+        text: '企业持续成功',
         icon: '',
         collapsible: false,
         link: '/1-introduction/'
+      },
+      {
+        text: '企业持续成功的本质',
+        icon: '',
+        collapsible: false,
+        link: '/1-introduction/enterprise-success.html'
       },
       {
         text: '组织能力是壁垒',
@@ -33,65 +39,51 @@ export const navigationStructure: NavItem[] = [
   },
   {
     text: '第二章：AI Native',
-    icon: 'ChartBarSquareIcon',
-    collapsible: true,
-    children: [
-      {
-        text: 'AI Native 组织',
-        icon: '',
-        collapsible: false,
-        link: '/2-ai-native/ai-native-brief.html'
-      },
-      {
-        text: 'AI Native 组织与传统组织的对比',
-        icon: '',
-        collapsible: false,
-        link: '/2-ai-native/organization-comparison.html'
-      }
-    ]
-  },
-  {
-    text: '第三章：核心定义',
     icon: 'CpuChipIcon',
     collapsible: true,
     children: [
       {
-        text: '核心定义概述',
+        text: 'AI Native',
         icon: '',
         collapsible: false,
-        link: '/3-core-definition/'
+        link: '/2-ai-native/'
       },
       {
-        text: '数字劳动力',
+        text: 'AI Native 组织',
         icon: '',
         collapsible: false,
-        link: '/3-core-definition/digital-workforce.html'
-      }
-    ]
-  },
-  {
-    text: '第四章：实践演示',
-    icon: 'CommandLineIcon',
-    collapsible: true,
-    children: [
+        link: '/2-ai-native/ai-native-organization.html'
+      },
+      {
+        text: '与传统组织对比',
+        icon: '',
+        collapsible: false,
+        link: '/2-ai-native/organization-comparison.html'
+      },
       {
         text: '实践演示',
         icon: '',
         collapsible: false,
-        link: '/4-practice-demo/'
+        link: '/2-ai-native/practice-demo.html'
       }
     ]
   },
   {
-    text: '第五章：转化路程',
+    text: '第三章：转化路程',
     icon: 'MapIcon',
     collapsible: true,
     children: [
       {
-        text: '转化路程概述',
+        text: '转化路程',
         icon: '',
         collapsible: false,
         link: '/5-transition-practice/'
+      },
+      {
+        text: '为什么是现在？',
+        icon: '',
+        collapsible: false,
+        link: '/5-transition-practice/why-now.html'
       },
       {
         text: '组织架构转型',
@@ -100,15 +92,21 @@ export const navigationStructure: NavItem[] = [
         link: '/5-transition-practice/5-1-organization-architecture/'
       },
       {
-        text: '核心实践方法论',
+        text: '常用工具使用',
         icon: '',
         collapsible: false,
-        link: '/5-transition-practice/5-2-core-practices/'
+        link: '/5-transition-practice/tools-guide.html'
+      },
+      {
+        text: '实践演示',
+        icon: '',
+        collapsible: false,
+        link: '/5-transition-practice/practice-implementation.html'
       }
     ]
   },
   {
-    text: '第六章：展望',
+    text: '第四章：展望',
     icon: 'SparklesIcon',
     collapsible: true,
     children: [
@@ -116,7 +114,7 @@ export const navigationStructure: NavItem[] = [
         text: '展望',
         icon: '',
         collapsible: false,
-        link: '/6-outlook/'
+        link: '/4-outlook/'
       }
     ]
   },
