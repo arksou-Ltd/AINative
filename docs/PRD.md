@@ -1096,6 +1096,65 @@ docs/
 
 ---
 
+### 实际进展对照 (2025-12-17)
+
+**重大进展：技术实现超预期完成！** 🎉
+
+| 阶段 | 原计划 | 实际完成 | 状态 | 说明 |
+|------|--------|---------|------|------|
+| Week 1: 内容准备 + 技术选型 | Week 1 | Week 1 | ✅ 按时 | Epic 1 全部完成 |
+| Week 2: Document 模式开发 | Week 2 | Week 2-3 | ✅ 提前 | Epic 2 + Epic 3-A 完成 |
+| Week 3: PPT 模式 + 首页 | Week 3 | Week 3 | ✅ 超前完成 | Epic 4 & 5 技术部分全部完成 |
+| Week 4: 测试与优化 | Week 4 | - | ⏸️ 待定 | 等待内容完成后进行 |
+| Week 5: 部署与发布 | Week 5 | - | ⏸️ 待定 | Epic 6 |
+
+**关键里程碑更新**：
+
+- ✅ **Epic 1-2 完成**: Week 2 (按时)
+- ✅ **Epic 3-A 完成**: Week 3 (按时)
+- ✅ **Epic 4-5 技术实现完成**: Week 3 **(超前 1-2 周)**
+  - reveal.js 框架集成 ✅
+  - Linear Docs 风格三栏布局 ✅
+  - 自定义导航系统 ✅
+  - 移动端响应式 ✅
+  - 双模式切换机制 ✅
+  - 所有 Vue 组件和样式 ✅
+- ⏸️ **Epic 3-B 内容填充**: Week 4-5 (当前焦点)
+- ⏸️ **Epic 6 优化与发布**: Week 5-6
+
+**技术实现总结**：
+
+**已完成组件**（12个）：
+- `CustomNavigation.vue` - 自定义左侧导航
+- `RightTOC.vue` - 右侧目录
+- `Breadcrumb.vue` - 面包屑导航
+- `PresentationEntry.vue` - 模式切换入口
+- `SlideControls.vue` - PPT 控制条
+- `SlideSidebar.vue` - PPT 侧边栏
+- `Layout.vue` - 文档模式布局包装
+- `Slide.vue` - PPT 模式布局
+- `NavbarPresentationButton.vue` - 导航栏切换按钮
+- `StoryContext.vue` - 故事上下文
+- `doc-mode.scss` - Linear Docs 主题
+- `index.scss` - 全局样式
+
+**已创建 Slides 文件**（7个）：
+- `slides/1-introduction.md` (框架)
+- `slides/2-comparison.md` (框架)
+- `slides/3-definition.md` (框架)
+- `slides/4-practice.md` (框架)
+- `slides/5-transition.md` (框架)
+- `slides/6-outlook.md` (框架)
+- `slides/cases.md` (框架)
+
+**剩余工作**：
+- Epic 3-B: 内容创作与填充（13 个 stories）
+- Epic 6: 页面完善与发布
+
+**进度评估**：技术实现进度 **42%** → **技术 100%** | 整体进度 **42%** | 内容填充 **0%**
+
+---
+
 ### Epic分解要求
 
 **按照BMAD-METHOD，已将PRD分解为6个Epic和33个Story：**
@@ -1106,28 +1165,38 @@ docs/
 **Epic 2: 部署验证与Hello World** ✅ 已完成
 - Story 2.1-2.4: GitHub配置、Hello World页面、部署验证、文档编写
 
-**Epic 3-A: 内容框架搭建** 🔄 进行中
+**Epic 3-A: 内容框架搭建** ✅ 已完成
 - Story 3-A.1: 设计完整信息架构（IA）- 6章目录结构 + IA文档 ✅
 - Story 3-A.2: 配置VuePress导航和sidebar - 完整导航系统 + PPT骨架 ✅
-- Story 3-A.3: 首页与框架布局设计 - Hero区域 + 6章导航卡片 📍
-- Story 3-A.4: PPT模式交互页面设计 - 全屏PPT风格 + 键盘导航 📍
-- Story 3-A.5: 文档模式交互页面设计 - Linear Docs风格布局 📍
+- Story 3-A.3: 首页与框架布局设计 - Hero区域 + 6章导航卡片 ✅
+- Story 3-A.4: PPT模式交互页面设计 - 全屏PPT风格 + 键盘导航 ✅
+- Story 3-A.5: 文档模式交互页面设计 - Linear Docs风格布局 ✅
 
-**Epic 3-B: 内容填充** 📍 待Epic 4&5完成后执行
+**Epic 3-B: 内容创作与填充** 🔄 当前焦点
 - Story 3-B.1 ~ 3-B.9: 编写6章内容 + 案例库 + 图片资源
+- Story 3-B.10 ~ 3-B.12: PPT 内容填充（从 Epic 4 移入）
+- Story 3-B.13: 内容集成（从 Epic 5 移入）
 
-**Epic 4: PPT演示模式** 📌 下一步
-- Story 4.1-4.6: reveal.js集成、PPT内容编写、样式定制、导航控制
+**Epic 4: PPT演示模式** ✅ 技术实现已完成
+- Story 4.1: reveal.js集成 ✅
+- Story 4.5: 导航控制 ✅
+- Story 4.6: 样式定制和响应式 ✅
+- 注：内容任务已移至 Epic 3-B
 
-**Epic 5: Document文档模式** 📌 Epic 4之后
-- Story 5.1-5.6: 导航树、Markdown增强、响应式、Doc↔PPT切换
+**Epic 5: Document文档模式** ✅ 技术实现已完成
+- Story 5.1: 左侧导航树 ✅
+- Story 5.2: Markdown渲染 ✅
+- Story 5.3: 导航交互 ✅
+- Story 5.5: 移动响应式 ✅
+- Story 5.6: 模式切换 ✅
+- 注：内容集成任务已移至 Epic 3-B
 
-**Epic 6: 页面完善与发布** 📌 最后阶段
+**Epic 6: 页面完善与发布** 📍 待Epic 3-B完成后执行
 - Story 6.1-6.7: 首页/联系页、SEO、性能优化、可访问性、文档编写、发布
 
 **详细的Epic与Story分解**：参见 `docs/epics.md`
 
-**当前进度**：Epic 1、Epic 2、Epic 3-A 已完成
+**当前进度**：Epic 1、2、3-A、4（技术）、5（技术）已完成 | Epic 3-B 进行中
 
 ---
 

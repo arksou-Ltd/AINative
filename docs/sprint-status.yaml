@@ -29,7 +29,7 @@
 # - SM typically drafts next story after previous one is 'done' to incorporate learnings
 # - Dev moves story to 'review', SM reviews, then Dev moves to 'done'
 
-generated: 2025-12-15
+generated: 2025-12-17
 project: AINative
 project_key: AINative
 tracking_system: file-system
@@ -37,7 +37,7 @@ story_location: "{project-root}/docs/stories"
 
 development_status:
   # Epic 1: 项目基础设施与技术栈
-  epic-1: backlog
+  epic-1: done
   1-1-tech-stack-research-and-decision: done
   1-2-initialize-project-structure: done
   1-3-configure-dev-environment-and-preview: done
@@ -46,7 +46,7 @@ development_status:
   epic-1-retrospective: optional
 
   # Epic 2: 部署验证与Hello World
-  epic-2: backlog
+  epic-2: done
   2-1-configure-github-repo-and-actions: done
   2-2-create-hello-world-page: done
   2-3-verify-deployment-and-access: done
@@ -54,7 +54,7 @@ development_status:
   epic-2-retrospective: optional
 
   # Epic 3-A: 内容框架搭建
-  epic-3-a: in-progress
+  epic-3-a: done
   3-a-1-design-information-architecture: done
   3-a-2-configure-vuepress-navigation: done
   3-a-3-homepage-and-layout-design: done
@@ -62,8 +62,8 @@ development_status:
   3-a-5-doc-mode-interaction-design: done
   epic-3-a-retrospective: optional
 
-  # Epic 3-B: 内容填充 (待Epic 4&5完成后执行)
-  epic-3-b: backlog
+  # Epic 3-B: 内容创作与填充 (当前焦点)
+  epic-3-b: in-progress
   3-b-1-write-chapter-1-introduction: backlog
   3-b-2-write-chapter-2-comparison: backlog
   3-b-3-write-chapter-3-core-definition: backlog
@@ -73,26 +73,28 @@ development_status:
   3-b-7-write-chapter-6-outlook: backlog
   3-b-8-write-case-studies: backlog
   3-b-9-prepare-image-resources: backlog
+  3-b-10-write-ppt-intro-content: backlog
+  3-b-11-write-ppt-case-studies: backlog
+  3-b-12-write-ppt-transformation: backlog
+  3-b-13-integrate-content-to-doc-mode: backlog
   epic-3-b-retrospective: optional
 
-  # Epic 4: PPT演示模式
-  epic-4: backlog
-  4-1-integrate-revealjs-framework: backlog
-  4-2-write-ppt-intro-content: backlog
-  4-3-write-ppt-case-studies: backlog
-  4-4-write-ppt-transformation: backlog
-  4-5-implement-navigation-controls: backlog
-  4-6-style-customization-and-responsive: backlog
+  # Epic 4: PPT演示模式 (技术实现已完成)
+  epic-4: done
+  4-1-integrate-revealjs-framework: done
+  4-5-implement-navigation-controls: done
+  4-6-style-customization-and-responsive: done
+  # 注: 4-2, 4-3, 4-4 为内容任务，已移至 Epic 3-B (3-b-10, 3-b-11, 3-b-12)
   epic-4-retrospective: optional
 
-  # Epic 5: Document文档模式
-  epic-5: backlog
-  5-1-implement-sidebar-navigation: backlog
-  5-2-configure-markdown-renderer: backlog
-  5-3-implement-navigation-interaction: backlog
-  5-4-integrate-content: backlog
-  5-5-implement-mobile-responsive: backlog
-  5-6-implement-mode-switching: backlog
+  # Epic 5: Document文档模式 (技术实现已完成)
+  epic-5: done
+  5-1-implement-sidebar-navigation: done
+  5-2-configure-markdown-renderer: done
+  5-3-implement-navigation-interaction: done
+  5-5-implement-mobile-responsive: done
+  5-6-implement-mode-switching: done
+  # 注: 5-4 为内容任务，已移至 Epic 3-B (3-b-13)
   epic-5-retrospective: optional
 
   # Epic 6: 页面完善与发布
