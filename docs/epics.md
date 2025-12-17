@@ -1477,7 +1477,7 @@
 **Prerequisites:** Story 5.3完成
 
 **Technical Notes:**
-- 使用相对路径链接：`[文本](./file.md)` 或 `[文本](../other/file.md)`
+- 使用相对路径链接：`[文本](./file.html)` 或 `[文本](../other/file.html)`
 - 图片路径：`![](~@public/images/xxx.png)` 或 `/images/xxx.png`
 - 验证所有锚点链接：`[跳转](#section-id)`
 - 本地预览逐页检查

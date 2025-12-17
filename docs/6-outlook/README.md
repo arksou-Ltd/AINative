@@ -6,10 +6,10 @@
 
 ### 章节内容
 
-- [场景区分](scenario-distinction.md) - 真实世界 vs 虚拟世界的不同路径
-- [路径1：成为Builder](path-1-builder.md) - 在真实世界保持竞争力
-- [路径2：成为专业领域顶尖](path-2-specialist.md) - 在专业领域深耕
-- [保持开放和适应性](staying-relevant.md) - 持续学习和进化
+- [场景区分](scenario-distinction.html) - 真实世界 vs 虚拟世界的不同路径
+- [路径1：成为Builder](path-1-builder.html) - 在真实世界保持竞争力
+- [路径2：成为专业领域顶尖](path-2-specialist.html) - 在专业领域深耕
+- [保持开放和适应性](staying-relevant.html) - 持续学习和进化
 
 ---
 

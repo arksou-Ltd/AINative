@@ -6,10 +6,10 @@
 
 ### 章节内容
 
-- [演示概述](demo-overview.md) - 演示目标和整体流程
-- [工具链配置](toolchain-setup.md) - Linear、Slack、Github、Devin等工具的配置
-- [工作流演示](workflow-demonstration.md) - 完整的工作流程演示
-- [参考资源](reference.md) - 相关播客、视频等学习资源
+- [演示概述](demo-overview.html) - 演示目标和整体流程
+- [工具链配置](toolchain-setup.html) - Linear、Slack、Github、Devin等工具的配置
+- [工作流演示](workflow-demonstration.html) - 完整的工作流程演示
+- [参考资源](reference.html) - 相关播客、视频等学习资源
 
 ### 演示工具链
 

@@ -6,7 +6,7 @@
 
 ### 章节结构
 
-## 5.1 [组织架构与工作流程转型](5-1-organization-architecture/README.md)
+## 5.1 [组织架构与工作流程转型](5-1-organization-architecture/README.html)
 
 如何调整组织架构和工作流程以支持AI Native模式
 
@@ -14,7 +14,7 @@
 - **过渡型AI Native组织** - 现有组织的渐进式转型方案
 - **过渡性实施路线** - 组织层面、日常工作、产品开发的详细转型步骤
 
-## 5.2 [核心实践方法论](5-2-core-practices/README.md)
+## 5.2 [核心实践方法论](5-2-core-practices/README.html)
 
 如何最大化与AI协作产出高质量成果
 

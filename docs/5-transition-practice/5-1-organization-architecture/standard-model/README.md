@@ -6,10 +6,10 @@
 
 ### 章节内容
 
-- [核心原则](core-principles.md) - AI Native组织的基本原则
-- [团队规模](team-scale.md) - 完全灵活的团队规模设计
-- [角色定义](role-definition.md) - Builder核心角色及其他角色
-- [工作方式](work-style.md) - 端到端、PDCA的工作模式
+- [核心原则](core-principles.html) - AI Native组织的基本原则
+- [团队规模](team-scale.html) - 完全灵活的团队规模设计
+- [角色定义](role-definition.html) - Builder核心角色及其他角色
+- [工作方式](work-style.html) - 端到端、PDCA的工作模式
 
 ### 核心特征
 

@@ -8,7 +8,7 @@
 
 ## 三个转型层面
 
-### [组织层面转型](organization-level.md)
+### [组织层面转型](organization-level.html)
 
 如何在组织架构层面进行调整：
 - 组织架构重组
@@ -16,7 +16,7 @@
 - KPI考核体系调整
 - 资源分配机制改革
 
-### [日常工作流程转型](daily-workflow.md)
+### [日常工作流程转型](daily-workflow.html)
 
 如何改变日常工作方式：
 - 会议和沟通模式
@@ -24,16 +24,16 @@
 - AI工具的日常使用
 - 端到端工作习惯养成
 
-### [产品开发流程转型](product-development/README.md)
+### [产品开发流程转型](product-development/README.html)
 
 详细的7步AI Native产品开发流程：
-1. [数据分析](product-development/1-data-analysis.md)
-2. [Idea生成](product-development/2-idea-generation.md)
-3. [市场研究](product-development/3-market-research.md)
-4. [竞品分析](product-development/4-competitive-analysis.md)
-5. [需求定义](product-development/5-requirements.md)
-6. [UX设计](product-development/6-ux-design.md)
-7. [开发实现](product-development/7-development.md)
+1. [数据分析](product-development/1-data-analysis.html)
+2. [Idea生成](product-development/2-idea-generation.html)
+3. [市场研究](product-development/3-market-research.html)
+4. [竞品分析](product-development/4-competitive-analysis.html)
+5. [需求定义](product-development/5-requirements.html)
+6. [UX设计](product-development/6-ux-design.html)
+7. [开发实现](product-development/7-development.html)
 
 ### 转型实施时序
 

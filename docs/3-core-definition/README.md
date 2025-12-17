@@ -6,10 +6,10 @@
 
 ### 章节内容
 
-- [Builder + AI 团队](builder-ai-team.md) - 60-80分的核心能力模型（目标：完整实现，可以是MVP版本、MVP功能或基本实现）
-- [专业团队优化](professional-optimization.md) - 90-100分的跨越（目标：打造成完美、高质量的结果）
-- [数字劳动力](digital-workforce.md) - Clone Builder思维的新兴技术（yoolee.cn、viven.ai）
-- [按结果分工](result-oriented-division.md) - 端到端负责的工作模式（一个Builder完成整条链路，并可持续PDCA）
+- [Builder + AI 团队](builder-ai-team.html) - 60-80分的核心能力模型（目标：完整实现，可以是MVP版本、MVP功能或基本实现）
+- [专业团队优化](professional-optimization.html) - 90-100分的跨越（目标：打造成完美、高质量的结果）
+- [数字劳动力](digital-workforce.html) - Clone Builder思维的新兴技术（yoolee.cn、viven.ai）
+- [按结果分工](result-oriented-division.html) - 端到端负责的工作模式（一个Builder完成整条链路，并可持续PDCA）
 
 ### 核心公式
 

@@ -6,33 +6,33 @@
 
 ### 案例分类
 
-## [成功公司案例](success-companies/README.md)
+## [成功公司案例](success-companies/README.html)
 
 完全AI Native的新兴公司案例，展示AI Native组织从0到1的成功路径。
 
-- [OpenAI](success-companies/openai.md) - AI原生公司的典范
-- [Cursor AI](success-companies/cursor-ai.md) - AI编程工具的突破
-- [Commonwealth Bank](success-companies/commonwealth-bank.md) - 金融行业的AI Native实践
-- [Bupa](success-companies/bupa.md) - 保险行业的AI转型
+- [OpenAI](success-companies/openai.html) - AI原生公司的典范
+- [Cursor AI](success-companies/cursor-ai.html) - AI编程工具的突破
+- [Commonwealth Bank](success-companies/commonwealth-bank.html) - 金融行业的AI Native实践
+- [Bupa](success-companies/bupa.html) - 保险行业的AI转型
 
 **关键洞察**：这些公司从创立之初就采用AI Native模式，展示了该模式的巨大潜力。
 
 ---
 
-## [组织转型案例](organization-transformation/README.md)
+## [组织转型案例](organization-transformation/README.html)
 
 传统大型组织向AI Native转型的案例，展示转型的路径和挑战。
 
-- [Amazon](organization-transformation/amazon.md) - 电商巨头的AI转型
-- [Moderna](organization-transformation/moderna.md) - 生物科技的AI应用
-- [Bayer](organization-transformation/bayer.md) - 传统制药的数字化转型
-- [NVIDIA](organization-transformation/nvidia.md) - 从硬件到AI生态的转型
+- [Amazon](organization-transformation/amazon.html) - 电商巨头的AI转型
+- [Moderna](organization-transformation/moderna.html) - 生物科技的AI应用
+- [Bayer](organization-transformation/bayer.html) - 传统制药的数字化转型
+- [NVIDIA](organization-transformation/nvidia.html) - 从硬件到AI生态的转型
 
 **关键洞察**：即使是大型传统组织，也能通过系统化的方法实现AI Native转型。
 
 ---
 
-## [市场数据汇总](market-data.md)
+## [市场数据汇总](market-data.html)
 
 全球AI应用和组织转型的市场数据和趋势分析。
 

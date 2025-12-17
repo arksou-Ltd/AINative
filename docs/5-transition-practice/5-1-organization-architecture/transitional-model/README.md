@@ -6,8 +6,8 @@
 
 ### 章节内容
 
-- [新产品策略](new-products.md) - 新产品采用完全标准模式
-- [现有产品策略](existing-products.md) - 现有产品的双轨制转型
+- [新产品策略](new-products.html) - 新产品采用完全标准模式
+- [现有产品策略](existing-products.html) - 现有产品的双轨制转型
 
 ### 双轨制核心策略
 

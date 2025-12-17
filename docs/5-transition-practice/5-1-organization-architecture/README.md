@@ -8,7 +8,7 @@
 
 ## 组织架构模型
 
-### [标准型AI Native组织](standard-model/README.md)
+### [标准型AI Native组织](standard-model/README.html)
 
 完全AI Native的组织架构设计，适用于：
 - 新产品开发
@@ -20,7 +20,7 @@
 - Builder为核心角色
 - 端到端PDCA工作方式
 
-### [过渡型AI Native组织](transitional-model/README.md)
+### [过渡型AI Native组织](transitional-model/README.html)
 
 现有组织的渐进式转型方案，适用于：
 - 现有产品线
@@ -33,7 +33,7 @@
 
 ## 转型实施路线
 
-### [过渡性实施路线](transition-roadmap/README.md)
+### [过渡性实施路线](transition-roadmap/README.html)
 
 三个层面的详细转型步骤：
 

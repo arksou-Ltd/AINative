@@ -22,7 +22,7 @@ graph LR
 
 ### 详细步骤
 
-#### [Step 1: 数据分析](1-data-analysis.md)
+#### [Step 1: 数据分析](1-data-analysis.html)
 **目标**：通过数据洞察发现产品机会
 
 - 用户行为数据分析
@@ -34,7 +34,7 @@ graph LR
 
 ---
 
-#### [Step 2: Idea 生成](2-idea-generation.md)
+#### [Step 2: Idea 生成](2-idea-generation.html)
 **目标**：基于数据洞察生成产品创意
 
 - 头脑风暴与AI共创
@@ -46,7 +46,7 @@ graph LR
 
 ---
 
-#### [Step 3: 市场研究](3-market-research.md)
+#### [Step 3: 市场研究](3-market-research.html)
 **目标**：验证市场需求和规模
 
 - TAM/SAM/SOM分析
@@ -58,7 +58,7 @@ graph LR
 
 ---
 
-#### [Step 4: 竞品分析](4-competitive-analysis.md)
+#### [Step 4: 竞品分析](4-competitive-analysis.html)
 **目标**：了解竞争态势，定义差异化
 
 - 主要竞品功能拆解
@@ -70,7 +70,7 @@ graph LR
 
 ---
 
-#### [Step 5: 需求定义](5-requirements.md)
+#### [Step 5: 需求定义](5-requirements.html)
 **目标**：明确产品需求和优先级
 
 - 用户故事编写
@@ -82,7 +82,7 @@ graph LR
 
 ---
 
-#### [Step 6: UX设计](6-ux-design.md)
+#### [Step 6: UX设计](6-ux-design.html)
 **目标**：设计用户体验和界面
 
 - 信息架构设计
@@ -94,7 +94,7 @@ graph LR
 
 ---
 
-#### [Step 7: 开发实现](7-development.md)
+#### [Step 7: 开发实现](7-development.html)
 **目标**：高质量快速开发和发布
 
 - 技术架构设计

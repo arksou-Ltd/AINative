@@ -6,7 +6,7 @@
 
 ### 案例列表
 
-## [OpenAI](openai.md)
+## [OpenAI](openai.html)
 **行业**：人工智能研究与应用
 **成立时间**：2015年
 **核心产品**：GPT系列、ChatGPT、DALL-E
@@ -18,7 +18,7 @@
 
 ---
 
-## [Cursor AI](cursor-ai.md)
+## [Cursor AI](cursor-ai.html)
 **行业**：AI编程工具
 **成立时间**：2022年
 **核心产品**：Cursor IDE
@@ -30,7 +30,7 @@
 
 ---
 
-## [Commonwealth Bank](commonwealth-bank.md)
+## [Commonwealth Bank](commonwealth-bank.html)
 **行业**：金融服务
 **成立时间**：1911年（AI转型：2020年代）
 **AI应用**：智能客服、风控、个性化服务
@@ -42,7 +42,7 @@
 
 ---
 
-## [Bupa](bupa.md)
+## [Bupa](bupa.html)
 **行业**：健康保险
 **成立时间**：1947年（AI转型：2020年代）
 **AI应用**：健康管理、理赔自动化、预测分析

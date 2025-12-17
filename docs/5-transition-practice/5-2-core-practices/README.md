@@ -6,14 +6,14 @@
 
 ### 章节内容
 
-## [BMAD-METHOD 详解](bmad-method/README.md)
+## [BMAD-METHOD 详解](bmad-method/README.html)
 
 AI协作的系统化方法论，包含：
 
-- [什么是BMAD-METHOD](bmad-method/README.md) - 核心概念和价值
-- [核心特点](bmad-method/core-features.md) - 四阶段、三轨道、专业分工
-- [为什么能保证高质量](bmad-method/quality-guarantee.md) - 5点质量保障机制
-- [如何使用](bmad-method/how-to-use.md) - 编程实践中的具体应用
+- [什么是BMAD-METHOD](bmad-method/README.html) - 核心概念和价值
+- [核心特点](bmad-method/core-features.html) - 四阶段、三轨道、专业分工
+- [为什么能保证高质量](bmad-method/quality-guarantee.html) - 5点质量保障机制
+- [如何使用](bmad-method/how-to-use.html) - 编程实践中的具体应用
 
 ### BMAD-METHOD 核心架构
 
@@ -32,7 +32,7 @@ BMAD-METHOD = 4个阶段 + 3条轨道 + 21个专业AI智能体 + 50+引导式工
 - BMad Builder（智能体和工作流构建）
 - Creative Intelligence System（创意智能系统）
 
-## [Builder 能力培养路径](builder-growth-path.md)
+## [Builder 能力培养路径](builder-growth-path.html)
 
 从入门到精通的5个Level成长路径：
 
@@ -48,7 +48,7 @@ BMAD-METHOD = 4个阶段 + 3条轨道 + 21个专业AI智能体 + 50+引导式工
 - 实践项目
 - 进阶标准
 
-## [工具栈指南](tool-stack-guide.md)
+## [工具栈指南](tool-stack-guide.html)
 
 分层次的AI工具栈推荐：
 

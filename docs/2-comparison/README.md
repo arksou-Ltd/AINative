@@ -6,8 +6,8 @@
 
 ### 章节内容
 
-- [传统组织](traditional-organization.md) - 普通人构建的组织模式
-- [AI Native组织](ai-native-organization.md) - 拥有全球顶尖科学家的组织模式
+- [传统组织](traditional-organization.html) - 普通人构建的组织模式
+- [AI Native组织](ai-native-organization.html) - 拥有全球顶尖科学家的组织模式
 
 ### 核心对比
 
