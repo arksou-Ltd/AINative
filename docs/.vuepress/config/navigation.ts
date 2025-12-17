@@ -27,32 +27,26 @@ export const navigationStructure: NavItem[] = [
         text: '组织能力是壁垒',
         icon: '',
         collapsible: false,
-        link: '/1-introduction/why-organizational-capability.html'
-      },
-      {
-        text: 'AI Native 简述',
-        icon: '',
-        collapsible: false,
-        link: '/1-introduction/ai-native-brief.html'
-      },
-      {
-        text: '简单案例演示',
-        icon: '',
-        collapsible: false,
-        link: '/1-introduction/simple-case-demo.html'
+        link: '/1-introduction/organizational-capability.html'
       }
     ]
   },
   {
-    text: '第二章：现状对比',
+    text: '第二章：AI Native',
     icon: 'ChartBarSquareIcon',
     collapsible: true,
     children: [
       {
-        text: '现状对比',
+        text: 'AI Native 组织',
         icon: '',
         collapsible: false,
-        link: '/2-comparison/'
+        link: '/2-ai-native/ai-native-brief.html'
+      },
+      {
+        text: 'AI Native 组织与传统组织的对比',
+        icon: '',
+        collapsible: false,
+        link: '/2-ai-native/organization-comparison.html'
       }
     ]
   },
