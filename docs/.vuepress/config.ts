@@ -17,6 +17,7 @@ export default defineUserConfig({
   plugins: [
     mdEnhancePlugin({
       revealJs: true,
+      imgSize: true,
     }),
   ],
   markdown: {

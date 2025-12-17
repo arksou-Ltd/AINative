@@ -13,18 +13,18 @@ export interface NavItem {
 
 export const navigationStructure: NavItem[] = [
   {
-    text: '第一章：介绍',
+    text: '第一章：企业的持续成功',
     icon: 'BookOpenIcon',
     collapsible: true,
     children: [
       {
-        text: '开场概述',
+        text: '企业的持续成功',
         icon: '',
         collapsible: false,
         link: '/1-introduction/'
       },
       {
-        text: '为什么组织能力是壁垒',
+        text: '组织能力是壁垒',
         icon: '',
         collapsible: false,
         link: '/1-introduction/why-organizational-capability.html'

@@ -25,7 +25,10 @@
       "WebFetch(domain:linear.app)",
       "Bash(pnpm add:*)",
       "mcp__playwright__browser_snapshot",
-      "mcp__playwright__browser_run_code"
+      "mcp__playwright__browser_run_code",
+      "Bash(grep:*)",
+      "Bash(xargs:*)",
+      "Bash(node scripts/fix-md-links.js:*)"
     ]
   }
 }
