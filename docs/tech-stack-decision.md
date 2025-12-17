@@ -467,7 +467,7 @@ AINative/
 │   ├── ai-native-intro/       # AI Native简述
 │   │   ├── README.md
 │   │   └── core-concept.md
-│   ├── case-studies/          # 真实案例
+│   ├── 5-case-studies/          # 真实案例
 │   ├── transformation/        # 转化路程
 │   ├── slides/                # PPT模式内容
 │   │   ├── intro.md

@@ -25,10 +25,10 @@ features:
     link: /4-practice-demo/
   - title: 第5章：转化路程
     details: 组织架构转型与核心实践方法论
-    link: /5-transition-practice/
+    link: /3-transition-practice/
   - title: 第6章：展望
     details: AI时代如何保持个人竞争力
-    link: /6-outlook/
+    link: /4-outlook/
 ---
 
 ## 欢迎访问 AI Native 知识分享平台

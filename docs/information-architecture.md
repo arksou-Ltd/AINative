@@ -26,9 +26,9 @@ docs/
 ├── 2-comparison/                # 第二章：现状对比
 ├── 3-core-definition/           # 第三章：核心定义
 ├── 4-practice-demo/             # 第四章：AI Native实践演示
-├── 5-transition-practice/       # 第五章：过渡性转化路程实践
+├── 3-transition-practice/       # 第五章：过渡性转化路程实践
 ├── 6-outlook/                   # 第六章：AI Native展望
-├── case-studies/                # 案例库（独立章节）
+├── 5-case-studies/                # 案例库（独立章节）
 ├── slides/                      # PPT演示模式
 └── .vuepress/                   # VuePress配置
     ├── config.ts                # 导航和配置
@@ -157,13 +157,13 @@ graph TD
 
 ---
 
-### 第五章：过渡性转化路程实践 (`5-transition-practice/`)
+### 第五章：过渡性转化路程实践 (`3-transition-practice/`)
 
 **目标**：提供详细的转型路径和实践方法论
 
 **文件结构**：
 ```
-5-transition-practice/
+3-transition-practice/
 ├── README.md                               # 章节总览
 │
 ├── 5-1-organization-architecture/          # 组织架构与工作流程转型
@@ -250,13 +250,13 @@ graph TD
 
 ---
 
-### 案例库 (`case-studies/`)
+### 案例库 (`5-case-studies/`)
 
 **目标**：提供真实案例支撑和启发
 
 **文件结构**：
 ```
-case-studies/
+5-case-studies/
 ├── README.md                           # 案例库导航
 │
 ├── success-companies/                  # 成功公司案例（AI Native新兴公司）
@@ -319,9 +319,9 @@ navbar: [
   { text: '第2章：现状对比', link: '/2-comparison/' },
   { text: '第3章：核心定义', link: '/3-core-definition/' },
   { text: '第4章：实践演示', link: '/4-practice-demo/' },
-  { text: '第5章：转化路程', link: '/5-transition-practice/' },
+  { text: '第5章：转化路程', link: '/3-transition-practice/' },
   { text: '第6章：展望', link: '/6-outlook/' },
-  { text: '案例库', link: '/case-studies/' },
+  { text: '案例库', link: '/5-case-studies/' },
   { text: '演示模式', link: '/slides/1-introduction' },
 ]
 ```
@@ -361,25 +361,25 @@ navbar: [
 **章节5**：多层折叠结构
 
 ```typescript
-'/5-transition-practice/': [
-  { text: '过渡性转化路程', link: '/5-transition-practice/' },
+'/3-transition-practice/': [
+  { text: '过渡性转化路程', link: '/3-transition-practice/' },
   {
     text: '组织架构与工作流程转型',
     collapsible: true,
     children: [
       {
         text: '标准型组织',
-        link: '/5-transition-practice/5-1-organization-architecture/standard-model/',
+        link: '/3-transition-practice/5-1-organization-architecture/standard-model/',
       },
       {
         text: '过渡型组织',
-        link: '/5-transition-practice/5-1-organization-architecture/transitional-model/',
+        link: '/3-transition-practice/5-1-organization-architecture/transitional-model/',
       },
       {
         text: '过渡性实施路线',
-        link: '/5-transition-practice/5-1-organization-architecture/transition-roadmap/',
+        link: '/3-transition-practice/5-1-organization-architecture/transition-roadmap/',
         children: [
-          { text: '产品开发7步流程', link: '/5-transition-practice/5-1-organization-architecture/transition-roadmap/product-development/' },
+          { text: '产品开发7步流程', link: '/3-transition-practice/5-1-organization-architecture/transition-roadmap/product-development/' },
         ],
       },
     ],
@@ -388,9 +388,9 @@ navbar: [
     text: '5.2 核心实践方法论',
     collapsible: true,
     children: [
-      { text: 'BMAD-METHOD', link: '/5-transition-practice/5-2-core-practices/bmad-method/' },
-      { text: 'Builder成长路径', link: '/5-transition-practice/5-2-core-practices/builder-growth-path' },
-      { text: '工具栈指南', link: '/5-transition-practice/5-2-core-practices/tool-stack-guide' },
+      { text: 'BMAD-METHOD', link: '/3-transition-practice/5-2-core-practices/bmad-method/' },
+      { text: 'Builder成长路径', link: '/3-transition-practice/5-2-core-practices/builder-growth-path' },
+      { text: '工具栈指南', link: '/3-transition-practice/5-2-core-practices/tool-stack-guide' },
     ],
   },
 ],
@@ -407,29 +407,29 @@ navbar: [
   { text: '保持适应性', link: '/6-outlook/staying-relevant' },
 ],
 
-'/case-studies/': [
-  { text: '案例库', link: '/case-studies/' },
+'/5-case-studies/': [
+  { text: '案例库', link: '/5-case-studies/' },
   {
     text: '成功公司案例',
     collapsible: true,
     children: [
-      { text: 'OpenAI', link: '/case-studies/success-companies/openai' },
-      { text: 'Cursor AI', link: '/case-studies/success-companies/cursor-ai' },
-      { text: 'Commonwealth Bank', link: '/case-studies/success-companies/commonwealth-bank' },
-      { text: 'Bupa', link: '/case-studies/success-companies/bupa' },
+      { text: 'OpenAI', link: '/5-case-studies/success-companies/openai' },
+      { text: 'Cursor AI', link: '/5-case-studies/success-companies/cursor-ai' },
+      { text: 'Commonwealth Bank', link: '/5-case-studies/success-companies/commonwealth-bank' },
+      { text: 'Bupa', link: '/5-case-studies/success-companies/bupa' },
     ],
   },
   {
     text: '组织转型案例',
     collapsible: true,
     children: [
-      { text: 'Amazon', link: '/case-studies/organization-transformation/amazon' },
-      { text: 'Moderna', link: '/case-studies/organization-transformation/moderna' },
-      { text: 'Bayer', link: '/case-studies/organization-transformation/bayer' },
-      { text: 'NVIDIA', link: '/case-studies/organization-transformation/nvidia' },
+      { text: 'Amazon', link: '/5-case-studies/organization-transformation/amazon' },
+      { text: 'Moderna', link: '/5-case-studies/organization-transformation/moderna' },
+      { text: 'Bayer', link: '/5-case-studies/organization-transformation/bayer' },
+      { text: 'NVIDIA', link: '/5-case-studies/organization-transformation/nvidia' },
     ],
   },
-  { text: '市场数据', link: '/case-studies/market-data' },
+  { text: '市场数据', link: '/5-case-studies/market-data' },
 ],
 ```
 
@@ -441,9 +441,9 @@ navbar: [
 | `/2-comparison/` | `/slides/2-comparison` | 1:1映射 |
 | `/3-core-definition/` | `/slides/3-definition` | 1:1映射 |
 | `/4-practice-demo/` | `/slides/4-practice` | 1:1映射 |
-| `/5-transition-practice/` | `/slides/5-transition` | 1:1映射 |
+| `/3-transition-practice/` | `/slides/5-transition` | 1:1映射 |
 | `/6-outlook/` | `/slides/6-outlook` | 1:1映射 |
-| `/case-studies/` | `/slides/cases` | 1:1映射 |
+| `/5-case-studies/` | `/slides/cases` | 1:1映射 |
 
 **切换机制**：
 - 悬浮切换球（右下角）
@@ -460,8 +460,8 @@ navbar: [
 
 **示例**：
 - ✅ `1-introduction/`
-- ✅ `5-transition-practice/`
-- ✅ `case-studies/`
+- ✅ `3-transition-practice/`
+- ✅ `5-case-studies/`
 - ✅ `product-development/`
 - ❌ `AI-Native-Introduction/` （避免大写）
 - ❌ `5_transition_practice/` （避免下划线）

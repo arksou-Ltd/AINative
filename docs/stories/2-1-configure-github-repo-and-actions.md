@@ -286,7 +286,7 @@ AINative/
 - ✅ 产物结构：
   - `index.html`（首页）
   - `assets/`（CSS/JS 带 hash）
-  - `ai-native-intro/`, `case-studies/`, `transformation/`（各章节 HTML）
+  - `ai-native-intro/`, `5-case-studies/`, `transformation/`（各章节 HTML）
   - `images/`（静态资源）
 - ✅ base 路径 `/AINative/` 已在构建产物中生效
 - ✅ 本地预览验证通过（`http://localhost:3000/AINative/`）

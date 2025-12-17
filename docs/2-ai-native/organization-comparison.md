@@ -2,12 +2,6 @@
 
 _💡 本文系统化对比传统组织与 AI Native 组织在能力、思维、治理等维度的根本差异_
 
-## 快速导航
-
-- 📖 **AI Native 定义**：查看 [AI Native 组织](./ai-native-organization.md) 了解核心概念和机制
-- 📊 **对比分析**：继续阅读本文，了解传统组织与 AI Native 组织的系统化对比
-- 📑 **实践案例**：查看 [AI Native 组织 - 实践案例](./ai-native-organization.md#实践案例)
-
 ---
 
 ## 核心对比概览

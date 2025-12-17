@@ -126,4 +126,4 @@ _演示模式：如何从传统组织转型到AI Native_
 
 ---
 
-_对应文档：[第5章：转化路程](/5-transition-practice/)_
+_对应文档：[第5章：转化路程](/3-transition-practice/)_

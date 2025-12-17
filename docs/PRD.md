@@ -578,7 +578,7 @@ docs/
 │   ├── README.md
 │   ├── first-principles.md
 │   └── ...
-├── case-studies/               # 案例
+├── 5-case-studies/               # 案例
 │   ├── README.md
 │   ├── openai.md
 │   └── ...

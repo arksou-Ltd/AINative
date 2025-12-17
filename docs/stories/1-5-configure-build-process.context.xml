@@ -238,7 +238,7 @@
         - assets/app.{hash}.css（应用样式，带hash）
         - assets/chunk-{hash}.js（代码分割chunk）
         - ai-native-intro/index.html, core-hook.html, ...
-        - case-studies/, transformation/, images/, slides/
+        - 5-case-studies/, transformation/, images/, slides/
         所有Markdown文件转换为HTML，资源文件添加hash指纹，目录结构与源文件一致
       </output>
       <gitignore path=".gitignore">

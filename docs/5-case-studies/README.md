@@ -10,7 +10,7 @@
 
 完全AI Native的新兴公司案例，展示AI Native组织从0到1的成功路径。
 
-- [OpenAI](success-companies/openai.html) - AI原生公司的典范
+- [OpenAI](success-companies/openai.html) - AI Native公司的典范
 - [Cursor AI](success-companies/cursor-ai.html) - AI编程工具的突破
 - [Commonwealth Bank](success-companies/commonwealth-bank.html) - 金融行业的AI Native实践
 - [Bupa](success-companies/bupa.html) - 保险行业的AI转型

@@ -442,7 +442,7 @@
 **Given** 用户指定的6章框架结构
 **When** 我设计完整的信息架构
 **Then** 应该：
-- ✅ 创建完整的6章目录结构（`1-introduction/` ~ `6-outlook/` + `case-studies/`）
+- ✅ 创建完整的6章目录结构（`1-introduction/` ~ `6-outlook/` + `5-case-studies/`）
 - ✅ 每个目录包含`README.md`导航文件（共16个README文件）
 - ✅ 所有文件名使用kebab-case，符合架构约定
 - ✅ 产出`docs/information-architecture.md` IA设计文档（20KB+），包含：
@@ -458,9 +458,9 @@
 - `docs/2-comparison/README.md`
 - `docs/3-core-definition/README.md`
 - `docs/4-practice-demo/README.md`
-- `docs/5-transition-practice/README.md`（及其下所有子目录README）
+- `docs/3-transition-practice/README.md`（及其下所有子目录README）
 - `docs/6-outlook/README.md`
-- `docs/case-studies/README.md`（及其下子目录README）
+- `docs/5-case-studies/README.md`（及其下子目录README）
 
 **Prerequisites:** Epic 2完成，用户确认6章框架
 
@@ -1547,7 +1547,7 @@
   - 点击跳转到对应Document页面（如：`slides/intro.html` → `/ai-native-intro/`）
 - ✅ **URL映射**：
   - `/ai-native-intro/` ↔ `/slides/intro.html`
-  - `/case-studies/` ↔ `/slides/cases.html`
+  - `/5-case-studies/` ↔ `/slides/cases.html`
   - `/transformation/` ↔ `/slides/transformation.html`
 - ✅ **状态保持**（可选）：
   - PPT退出时记住当前页码，Document链接到对应section
@@ -1610,7 +1610,7 @@
   - 适合谁阅读
 - ✅ **快速导航**（3个卡片）：
   - AI Native简述 → `/ai-native-intro/`
-  - 真实案例 → `/case-studies/`
+  - 真实案例 → `/5-case-studies/`
   - 转化路程 → `/transformation/`
 - ✅ **页脚**：
   - GitHub链接（Star / Fork）

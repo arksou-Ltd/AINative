@@ -95,7 +95,7 @@ AINative/
 │   ├── README.md              # 首页
 │   ├── contact.md             # 联系页
 │   ├── ai-native-intro/       # AI Native简述
-│   ├── case-studies/          # 真实案例
+│   ├── 5-case-studies/          # 真实案例
 │   ├── transformation/        # 转化路程
 │   ├── slides/                # PPT模式内容
 │   └── .vuepress/

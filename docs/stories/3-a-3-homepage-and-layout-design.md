@@ -59,7 +59,7 @@ Status: ready-for-dev
   - [x] 2.3 添加第2章卡片：title="第2章：现状对比"，details="传统组织 vs AI Native 组织"，link="/2-comparison/"
   - [x] 2.4 添加第3章卡片：title="第3章：核心定义"，details="什么是 AI Native？"，link="/3-core-definition/"
   - [x] 2.5 添加第4章卡片：title="第4章：实践演示"，details="一个Builder完成一个产品的实际操作"，link="/4-practice-demo/"
-  - [x] 2.6 添加第5章卡片：title="第5章：转化路程"，details="组织架构转型与核心实践方法论"，link="/5-transition-practice/"
+  - [x] 2.6 添加第5章卡片：title="第5章：转化路程"，details="组织架构转型与核心实践方法论"，link="/3-transition-practice/"
   - [x] 2.7 添加第6章卡片：title="第6章：展望"，details="AI时代如何保持个人竞争力"，link="/6-outlook/"
 
 - [x] Task 3: 配置首页元信息 (AC: #3)

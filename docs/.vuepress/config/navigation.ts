@@ -77,31 +77,31 @@ export const navigationStructure: NavItem[] = [
         text: '转化路程',
         icon: '',
         collapsible: false,
-        link: '/5-transition-practice/'
+        link: '/3-transition-practice/'
       },
       {
         text: '为什么是现在？',
         icon: '',
         collapsible: false,
-        link: '/5-transition-practice/why-now.html'
+        link: '/3-transition-practice/why-now.html'
       },
       {
         text: '组织架构转型',
         icon: '',
         collapsible: false,
-        link: '/5-transition-practice/5-1-organization-architecture/'
+        link: '/3-transition-practice/3-1-organization-architecture/'
       },
       {
         text: '常用工具使用',
         icon: '',
         collapsible: false,
-        link: '/5-transition-practice/tools-guide.html'
+        link: '/3-transition-practice/tools-guide.html'
       },
       {
         text: '实践演示',
         icon: '',
         collapsible: false,
-        link: '/5-transition-practice/practice-implementation.html'
+        link: '/3-transition-practice/practice-implementation.html'
       }
     ]
   },
@@ -119,7 +119,7 @@ export const navigationStructure: NavItem[] = [
     ]
   },
   {
-    text: '案例研究',
+    text: '第五章：案例研究',
     icon: 'BriefcaseIcon',
     collapsible: true,
     children: [
@@ -127,7 +127,7 @@ export const navigationStructure: NavItem[] = [
         text: '案例概览',
         icon: '',
         collapsible: false,
-        link: '/case-studies/'
+        link: '/5-case-studies/'
       }
     ]
   }

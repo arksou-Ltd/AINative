@@ -91,9 +91,9 @@ docs/
 ├── 2-comparison/                     🚧 目录结构已创建，待填充
 ├── 3-core-definition/                🚧 目录结构已创建，待填充
 ├── 4-practice-demo/                  🚧 目录结构已创建，待填充
-├── 5-transition-practice/            🚧 目录结构已创建，待填充
+├── 3-transition-practice/            🚧 目录结构已创建，待填充
 ├── 6-outlook/                        🚧 目录结构已创建，待填充
-└── case-studies/                     🚧 目录结构已创建，待填充
+└── 5-case-studies/                     🚧 目录结构已创建，待填充
 ```
 
 ### 🎯 Next Steps
@@ -176,7 +176,7 @@ docs/
 | Framework/Build | VuePress 2 + Vite bundler + TypeScript | vuepress@2.0.0-rc.26（pnpm view 2025-12-15）；Node 18.x LTS | Epic 1/2/5/6 | Starter 贴合中文文档 + 静态站点，Vite 构建快，TS 降低回归 |
 | PPT Mode | `vuepress-plugin-md-enhance`（presentation/reveal），slides `docs/slides/*.md` → `/slides/*.html` | 2.0.0-rc.99（pnpm view 2025-12-15） | Epic 4/5 | 低成本集成 30-50 页 PPT，复用 Markdown |
 | Deployment | GitHub Pages `base: /AINative/`; CI: setup-node@v4 + `pnpm install --frozen-lockfile` + `pnpm run docs:build`; 发布 `docs/.vuepress/dist` → gh-pages | Node 18.x；pnpm 8.x | Epic 2/6 | 标准 Pages 流，锁版本降故障 |
-| Information Architecture | 3 级 sidebar：`ai-native-intro/*`, `case-studies/*`, `transformation/*`; Doc↔PPT 映射 `/ai-native-intro/` ↔ `/slides/intro.html` 等；首页 `/`，联系 `/contact.html` | n/a | Epic 4/5/6 | 明确导航与模式切换，降低跳出 |
+| Information Architecture | 3 级 sidebar：`ai-native-intro/*`, `5-case-studies/*`, `transformation/*`; Doc↔PPT 映射 `/ai-native-intro/` ↔ `/slides/intro.html` 等；首页 `/`，联系 `/contact.html` | n/a | Epic 4/5/6 | 明确导航与模式切换，降低跳出 |
 | Performance | 图片 <200KB，WebP 优先，`loading="lazy"`；首屏 <2s，Lighthouse >90；移除未用插件 | n/a | Epic 6 | 保证体验与指标 |
 | SEO & Accessibility | 全局 meta/OG，sitemap + robots.txt，h1→h2→h3；alt 完整；键盘可导航 | n/a | Epic 6 | 提升曝光与无障碍 |
 | Theme/Styles | 主色 #1F6FEB，字体 Inter + Noto Sans SC（本地备选），断点 768/1024；PPT 主题浅色简洁 | n/a | Epic 4/5/6 | 统一视觉与响应式 |
@@ -215,7 +215,7 @@ AINative/
 │   │   ├── workflow-demonstration.md
 │   │   └── reference.md
 │   │
-│   ├── 5-transition-practice/             # 第5章：过渡性转化路程实践
+│   ├── 3-transition-practice/             # 第5章：过渡性转化路程实践
 │   │   ├── README.md
 │   │   ├── 5-1-organization-architecture/ # 5.1 组织架构转型
 │   │   │   ├── README.md
@@ -259,7 +259,7 @@ AINative/
 │   │   ├── path-2-specialist.md
 │   │   └── staying-relevant.md
 │   │
-│   ├── case-studies/                      # 案例库（独立章节）
+│   ├── 5-case-studies/                      # 案例库（独立章节）
 │   │   ├── README.md
 │   │   ├── success-companies/             # 成功公司案例
 │   │   │   ├── README.md
@@ -346,7 +346,7 @@ export default {
 
 - Doc ↔ PPT：章节首页提供“查看 PPT”按钮，PPT 左上角“返回文档”，路径映射：
   - `/ai-native-intro/` ↔ `/slides/intro.html`
-  - `/case-studies/` ↔ `/slides/cases.html`
+  - `/5-case-studies/` ↔ `/slides/cases.html`
   - `/transformation/` ↔ `/slides/transformation.html`
 - 按钮示例：
   ```md

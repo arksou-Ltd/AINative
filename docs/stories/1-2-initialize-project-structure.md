@@ -102,7 +102,7 @@ AINative/
 │   ├── README.md              # 首页（双入口按钮）
 │   ├── contact.md             # 联系页
 │   ├── ai-native-intro/       # AI Native简述章节
-│   ├── case-studies/          # 真实案例章节
+│   ├── 5-case-studies/          # 真实案例章节
 │   ├── transformation/        # 转化路程章节
 │   ├── slides/                # PPT模式内容
 │   └── .vuepress/

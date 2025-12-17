@@ -218,7 +218,7 @@
   epic-4: backlog
   4-1-integrate-revealjs-framework: backlog
   4-2-write-ppt-intro-content: backlog
-  4-3-write-ppt-case-studies: backlog
+  4-3-write-ppt-5-case-studies: backlog
   4-4-write-ppt-transformation: backlog
   4-5-implement-navigation-controls: backlog
   4-6-style-customization-and-responsive: backlog
@@ -292,10 +292,10 @@ Epic 3-B: 内容创作与填充
   3-b-5-write-chapter-5-1-organization-transformation: backlog
   3-b-6-write-chapter-5-2-core-practices: backlog
   3-b-7-write-chapter-6-outlook: backlog
-  3-b-8-write-case-studies: backlog
+  3-b-8-write-5-case-studies: backlog
   3-b-9-prepare-image-resources: backlog
   3-b-10-write-ppt-intro-content: backlog      # 从 Epic 4 移入
-  3-b-11-write-ppt-case-studies: backlog       # 从 Epic 4 移入
+  3-b-11-write-ppt-5-case-studies: backlog       # 从 Epic 4 移入
   3-b-12-write-ppt-transformation: backlog     # 从 Epic 4 移入
   3-b-13-integrate-content-to-doc-mode: backlog  # 从 Epic 5 移入
 ```

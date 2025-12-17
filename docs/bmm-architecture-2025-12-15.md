@@ -65,7 +65,7 @@
 | Framework/Build | VuePress 2 + Vite bundler + TypeScript | vuepress@2.0.0-rc.26（pnpm view 2025-12-15）；Node 18.x LTS | Epic 1/2/5/6 | Starter 贴合中文文档 + 静态站点，Vite 构建快，TS 降低回归 |
 | PPT Mode | `vuepress-plugin-md-enhance`（presentation/reveal），slides `docs/slides/*.md` → `/slides/*.html` | 2.0.0-rc.99（pnpm view 2025-12-15） | Epic 4/5 | 低成本集成 30-50 页 PPT，复用 Markdown |
 | Deployment | GitHub Pages `base: /AINative/`; CI: setup-node@v4 + `pnpm install --frozen-lockfile` + `pnpm run docs:build`; 发布 `docs/.vuepress/dist` → gh-pages | Node 18.x；pnpm 8.x | Epic 2/6 | 标准 Pages 流，锁版本降故障 |
-| Information Architecture | 3 级 sidebar：`ai-native-intro/*`, `case-studies/*`, `transformation/*`; Doc↔PPT 映射 `/ai-native-intro/` ↔ `/slides/intro.html` 等；首页 `/`，联系 `/contact.html` | n/a | Epic 4/5/6 | 明确导航与模式切换，降低跳出 |
+| Information Architecture | 3 级 sidebar：`ai-native-intro/*`, `5-case-studies/*`, `transformation/*`; Doc↔PPT 映射 `/ai-native-intro/` ↔ `/slides/intro.html` 等；首页 `/`，联系 `/contact.html` | n/a | Epic 4/5/6 | 明确导航与模式切换，降低跳出 |
 | Performance | 图片 <200KB，WebP 优先，`loading="lazy"`；首屏 <2s，Lighthouse >90；移除未用插件 | n/a | Epic 6 | 保证体验与指标 |
 | SEO & Accessibility | 全局 meta/OG，sitemap + robots.txt，h1→h2→h3；alt 完整；键盘可导航 | n/a | Epic 6 | 提升曝光与无障碍 |
 | Theme/Styles | 主色 #1F6FEB，字体 Inter + Noto Sans SC（本地备选），断点 768/1024；PPT 主题浅色简洁 | n/a | Epic 4/5/6 | 统一视觉与响应式 |
@@ -87,7 +87,7 @@ AINative/
 │   │   ├── core-analogy.md
 │   │   ├── 60-80-100-model.md
 │   │   └── why-now.md
-│   ├── case-studies/
+│   ├── 5-case-studies/
 │   │   ├── README.md
 │   │   ├── openai.md
 │   │   ├── cursor-ai.md
@@ -129,7 +129,7 @@ AINative/
 - Epic 6 发布与优化：SEO（meta/OG/sitemap/robots）、性能（lazy-load, WebP, <200KB）、可访问性（alt/对比度/键盘导航），README/CONTRIBUTING。
 
 ## FR Coverage Notes
-- FR-1 内容展示：3 章章节与图片路径在 Project Structure，slides 复用内容（行 ai-native-intro/case-studies/transformation + slides）。
+- FR-1 内容展示：3 章章节与图片路径在 Project Structure，slides 复用内容（行 ai-native-intro/5-case-studies/transformation + slides）。
 - FR-2 文档模式：3 级侧边栏、表格滚动、代码高亮、提示块（Implementation Patterns + IA）。
 - FR-3 PPT 模式：slides 目录 + reveal 支持，30-50 页要求在 IA/决策表中覆盖。
 - FR-4 首页/联系页：结构树包含 README（首页）与 contact.md。
@@ -168,7 +168,7 @@ export default {
 
 - Doc ↔ PPT：章节首页提供“查看 PPT”按钮，PPT 左上角“返回文档”，路径映射：
   - `/ai-native-intro/` ↔ `/slides/intro.html`
-  - `/case-studies/` ↔ `/slides/cases.html`
+  - `/5-case-studies/` ↔ `/slides/cases.html`
   - `/transformation/` ↔ `/slides/transformation.html`
 - 按钮示例：
   ```md
