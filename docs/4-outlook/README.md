@@ -1,4 +1,12 @@
-# 第六章：AI Native 的展望
+<!--
+ * @Description: TODO
+ * @Author: jett.gao jett@laien.io
+ * @Date: 2025-12-16 10:34:39
+ * @LastEditors: jett.gao jett@laien.io
+ * @LastEditTime: 2025-12-18 14:58:31
+ * Copyright (c) 2025 by laien.ltd. All Rights Reserved. 
+-->
+# 第四章：AI Native 的展望
 
 ## 如何在AI时代保持个人竞争力
 

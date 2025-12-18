@@ -32,7 +32,10 @@
       "Bash(wc:*)",
       "Bash(git mv:*)",
       "Bash(git checkout:*)",
-      "Bash(npm run docs:dev:*)"
+      "Bash(npm run docs:dev:*)",
+      "Bash(for file in /Users/apple/Develop/code/gitee/AINative/docs/1-introduction/*.md /Users/apple/Develop/code/gitee/AINative/docs/2-ai-native/*.md)",
+      "Bash(do wc -w \"$file\")",
+      "Bash(done)"
     ]
   }
 }
