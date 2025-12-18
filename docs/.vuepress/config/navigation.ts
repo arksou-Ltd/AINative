@@ -86,7 +86,7 @@ export const navigationStructure: NavItem[] = [
         link: '/3-transition-practice/why-now.html'
       },
       {
-        text: '组织架构转型',
+        text: '过渡性架构思考',
         icon: '',
         collapsible: false,
         link: '/3-transition-practice/3-1-organization-architecture/'
