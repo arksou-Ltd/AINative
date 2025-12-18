@@ -3,7 +3,7 @@ layout: Slide
 title: 第1章：介绍
 ---
 
-# 组织能力才是公司真正的壁垒
+# AI Native 分享
 
 ### 分享人：Jett Gao By Laien
 
