@@ -253,10 +253,14 @@ body {
 
   h1 {
     font-size: 3.5rem;
-    background: linear-gradient(135deg, #ffffff 30%, var(--c-brand) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 0 20px rgba(56, 189, 248, 0.2));
+    color: #ffffff !important;
+    background: none;
+    -webkit-text-fill-color: initial;
+    text-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+    
+    @media (max-width: 768px) {
+      font-size: 2.5rem;
+    }
   }
 
   h2 {

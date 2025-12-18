@@ -3,58 +3,80 @@ layout: Slide
 title: 第1章：介绍
 ---
 
-# 第1章：介绍
+# 组织能力才是公司真正的壁垒
 
-_演示模式：组织能力才是公司真正的壁垒_
+### 分享人：Jett Gao By Laien
 
----
-
-## Slide 1: 标题页
-
-### 组织能力才是公司真正的壁垒
-
-**副标题**：重新思考什么决定了组织的竞争力
-
----
-
-## Slide 2: 核心问题
-
-**什么决定了一个组织的竞争力？**
-
-- 技术？
-- 产品？
-- 资金？
-- **组织能力？** ✅
+<div style="font-size: 0.7em; text-align: left; margin-top: 2rem;">
+  <p><strong>致谢：</strong></p>
+  <ul>
+    <li><strong>@May</strong>：分享活动的组织和安排</li>
+    <li><strong>@Stella</strong>：分享内容的指导性建议</li>
+    <li><strong>@Leo</strong>：分享内容的交流与沟通</li>
+    <li><strong>@Lyq（林应权）</strong>：视频生成资源的提供</li>
+    <li><strong>@Lcl（刘承龙）</strong>：提供视频上传工具</li>
+    <li><strong>@zzh（庄子豪）</strong>：内容撰写期间，工作的支持和协助</li>
+    <li><strong>@Oppaya Team</strong>：提供的超级可爱的吉祥物“moonii”</li>
+  </ul>
+</div>
 
 ---
 
-## Slide 3: 组织能力的定义
+<video controls style="width: 100%; max-height: 75vh;">
+  <source src="https://nilou.7mfitness.com/internal/push/b76894e07b214959882df57e2c6ed8af.mp4" type="video/mp4">
+  您的浏览器不支持视频播放。
+</video>
 
-**组织能力** = 将资源（人、技术、资金）转化为价值的能力
-
-这是公司真正的护城河
-
----
-
-## Slide 4: 为什么组织能力重要
-
-传统视角：
-- 技术可以学习
-- 产品可以模仿
-- 资金可以融资
-
-**但组织能力很难复制**
+<div style="font-size: 24px; color: var(--c-brand-light); margin-top: 15px; font-weight: normal;">第一章 企业的持续成功=战略✖️组织能力</div>
 
 ---
 
-## Slide 5: 引发思考
+<video controls style="width: 100%; max-height: 75vh;">
+  <source src="https://nilou.7mfitness.com/internal/push/529a9024f57f4c28b5336d829cbbd01a.mp4" type="video/mp4">
+  您的浏览器不支持视频播放。
+</video>
 
-💡 **思考题**：
-
-你的组织的核心能力是什么？
-
-是否能够适应AI时代的变革？
+<div style="font-size: 24px; color: var(--c-brand-light); margin-top: 15px; font-weight: normal;">第二章 AI Native组织的探讨</div>
 
 ---
 
-_对应文档：[第1章：介绍](/1-introduction/)_
+<video controls style="width: 100%; max-height: 75vh;">
+  <source src="https://nilou.7mfitness.com/internal/push/7d644d0a0bfd40afba1df037e3215be8.mp4" type="video/mp4">
+  您的浏览器不支持视频播放。
+</video>
+
+<div style="font-size: 24px; color: var(--c-brand-light); margin-top: 15px; font-weight: normal;">第三章 转化路径思考</div>
+
+---
+
+# SSW(规范驱动工作) 实践
+
+
+
+---
+
+
+
+## 思考：如何在AI时代保持个人竞争力
+
+
+
+- 成为Builder
+
+
+
+- 成为领域专家
+
+
+
+- 保持足够的好奇心
+
+
+
+- 愿意为AI付费（不仅是金钱），即使它现在不那么完美
+- 相信AI
+
+---
+
+# 感谢聆听
+
