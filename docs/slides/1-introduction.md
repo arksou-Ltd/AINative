@@ -5,7 +5,10 @@ title: 第1章：介绍
 
 # AI Native 分享
 
-### 分享人：Jett Gao By Laien
+<div style="margin: 30px 0;">
+  <div style="font-size: 1.8rem; font-weight: bold; color: var(--c-brand);">Jett Gao</div>
+  <div style="font-size: 1.2rem; opacity: 0.8; margin-top: 5px;">Laien</div>
+</div>
 
 <div style="font-size: 0.7em; text-align: left; margin-top: 2rem;">
   <p><strong>致谢：</strong></p>
