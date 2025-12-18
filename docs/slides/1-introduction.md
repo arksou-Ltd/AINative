@@ -40,6 +40,10 @@ title: 第1章：介绍
 
 ---
 
+# AI Native 实践
+
+---
+
 <video controls style="width: 100%; max-height: 75vh;">
   <source src="https://nilou.7mfitness.com/internal/push/7d644d0a0bfd40afba1df037e3215be8.mp4" type="video/mp4">
   您的浏览器不支持视频播放。
