@@ -21,3 +21,13 @@ title: 幻灯片测试
 ```js
 console.log('Hello Presentation Mode');
 ```
+
+---
+
+# 视频测试
+
+<video controls width="800">
+  <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm" type="video/webm">
+  Your browser does not support the video tag.
+</video>
+
