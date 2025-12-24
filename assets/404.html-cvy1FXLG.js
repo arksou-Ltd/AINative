@@ -1,0 +1,1 @@
+import{_ as e,c as o,b as n,o as a}from"./app-TI2dsnHV.js";const l={};function r(s,t){return a(),o("div",null,[...t[0]||(t[0]=[n("p",null,"404 Not Found",-1)])])}const _=e(l,[["render",r]]),m=JSON.parse('{"path":"/404.html","title":"","lang":"zh-CN","frontmatter":{"layout":"NotFound"},"filePathRelative":null}');export{_ as comp,m as data};

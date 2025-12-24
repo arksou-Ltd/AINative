@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="generator" content="VuePress 2.0.0-rc.26" />
+    <style>
+      :root {
+        --c-bg: #fff;
+      }
+      html.dark {
+        --c-bg: #22272e;
+      }
+      html,
+      body {
+        background-color: var(--c-bg);
+      }
+    </style>
+    <script>
+      const userMode = localStorage.getItem('vuepress-color-scheme')
+      const systemDarkMode =
+        window.matchMedia &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches
+      if (userMode === 'dark' || (userMode !== 'light' && systemDarkMode)) {
+        document.documentElement.classList.toggle('dark', true)
+      }
+    </script>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0"><meta name="keywords" content="AI Native, AI转型, 企业数字化, 知识分享"><meta name="author" content="AINative Team"><link rel="icon" href="/AINative/favicon.ico"><title>Story 2.4: 文档化部署流程 | AI Native</title><meta name="description" content="理解并实践AI Native转型">
+    <link rel="preload" href="/AINative/assets/style-CefYys4z.css" as="style"><link rel="stylesheet" href="/AINative/assets/style-CefYys4z.css">
+    <link rel="modulepreload" href="/AINative/assets/app-TI2dsnHV.js"><link rel="modulepreload" href="/AINative/assets/2-4-document-deployment-process.html-D3LWcRu7.js">
+    <link rel="prefetch" href="/AINative/assets/PRD.html-gA7MDMzI.js" as="script"><link rel="prefetch" href="/AINative/assets/index.html-XeFXDaQy.js" as="script"><link rel="prefetch" href="/AINative/assets/architecture.html-D4tTH1Co.js" as="script"><link rel="prefetch" href="/AINative/assets/backlog.html-DBVmr1Xb.js" as="script"><link rel="prefetch" href="/AINative/assets/bmm-architecture-2025-12-15.html-CjFPGtq_.js" as="script"><link rel="prefetch" href="/AINative/assets/bmm-readiness-assessment-2025-12-15.html-C4HjyMZ-.js" as="script"><link rel="prefetch" href="/AINative/assets/bmm-research-market-2025-12-15.html-DDisLK10.js" as="script"><link rel="prefetch" href="/AINative/assets/brainstorming-session-results-2025-12-15.html-CpN0MtAH.js" as="script"><link rel="prefetch" href="/AINative/assets/dev-setup.html-CA_CjwME.js" as="script"><link rel="prefetch" href="/AINative/assets/epics.html-BR_u1zQE.js" as="script"><link rel="prefetch" href="/AINative/assets/information-architecture.html-DVy3X97D.js" as="script"><link rel="prefetch" href="/AINative/assets/product-brief-AINative-2025-12-15.html-BF7JhId6.js" as="script"><link rel="prefetch" href="/AINative/assets/sprint-change-proposal-2025-12-17.html-BY2RpJTr.js" as="script"><link rel="prefetch" href="/AINative/assets/story-context-demo.html-NVWtNbmf.js" as="script"><link rel="prefetch" href="/AINative/assets/tech-stack-decision.html-B_FOIr6B.js" as="script"><link rel="prefetch" href="/AINative/assets/ux-design-specification.html-DdhbL74x.js" as="script"><link rel="prefetch" href="/AINative/assets/validation-report-architecture.html-Ci1IzJcF.js" as="script"><link rel="prefetch" href="/AINative/assets/index.html-B73s-YX9.js" as="script"><link rel="prefetch" href="/AINative/assets/enterprise-success.html-BDWgIzN8.js" as="script"><link rel="prefetch" href="/AINative/assets/organizational-capability.html-E8kBq0i5.js" as="script"><link rel="prefetch" href="/AINative/assets/video_prompt.html-B4EcqlPP.js" as="script"><link rel="prefetch" href="/AINative/assets/index.html-fPPdpJzl.js" as="script"><link rel="prefetch" href="/AINative/assets/ai-native-brief.html-DyjgFySE.js" as="script"><link rel="prefetch" href="/AINative/assets/ai-native-organization.html-BM-iFnZs.js" as="script"><link rel="prefetch" href="/AINative/assets/organization-comparison.html-D1eFHVZq.js" as="script"><link rel="prefetch" href="/AINative/assets/practice-demo.html-CUV7fqEQ.js" as="script"><link rel="prefetch" href="/AINative/assets/video_prompt.html-CSYrzAep.js" as="script"><link rel="prefetch" href="/AINative/assets/index.html-BI75ggdu.js" as="script"><link rel="prefetch" href="/AINative/assets/practice-implementation.html-DYrKKNyv.js" as="script"><link rel="prefetch" href="/AINative/assets/tools-guide.html-rIuUmIWb.js" as="script"><link rel="prefetch" href="/AINative/assets/video_prompt.html-DXJP4TjJ.js" as="script"><link rel="prefetch" href="/AINative/assets/why-now.html-C25k2wF0.js" as="script"><link rel="prefetch" href="/AINative/assets/index.html-0cfyouSC.js" as="script"><link rel="prefetch" href="/AINative/assets/index.html-Bb0RKY76.js" as="script"><link rel="prefetch" href="/AINative/assets/1-1-tech-stack-research-and-decision.html-lK950EZo.js" as="script"><link rel="prefetch" href="/AINative/assets/1-2-initialize-project-structure.html-Bq-l9pMM.js" as="script"><link rel="prefetch" href="/AINative/assets/1-3-configure-dev-environment-and-preview.html-D-p1oa1z.js" as="script"><link rel="prefetch" href="/AINative/assets/1-4-create-responsive-layout-framework.html-fN9gcgRz.js" as="script"><link rel="prefetch" href="/AINative/assets/1-5-configure-build-process.html-C3OFXr7J.js" as="script"><link rel="prefetch" href="/AINative/assets/2-1-configure-github-repo-and-actions.html-C3mlnTuq.js" as="script"><link rel="prefetch" href="/AINative/assets/2-2-create-hello-world-page.html-v0WMj4GU.js" as="script"><link rel="prefetch" href="/AINative/assets/2-3-verify-deployment-and-access.html-BJx31RNA.js" as="script"><link rel="prefetch" href="/AINative/assets/3-a-3-homepage-and-layout-design.html-CnmC_1ve.js" as="script"><link rel="prefetch" href="/AINative/assets/3-a-4-ppt-mode-interaction-design.html-C2nPDulT.js" as="script"><link rel="prefetch" href="/AINative/assets/3-a-5-doc-mode-interaction-design.html-CJDsHnY0.js" as="script"><link rel="prefetch" href="/AINative/assets/1-introduction.html-BEgXG0zR.js" as="script"><link rel="prefetch" href="/AINative/assets/2-comparison.html-COwSI6ON.js" as="script"><link rel="prefetch" href="/AINative/assets/3-definition.html-DiByOzq1.js" as="script"><link rel="prefetch" href="/AINative/assets/4-practice.html-CL-I62zA.js" as="script"><link rel="prefetch" href="/AINative/assets/5-transition.html-COiM8FV7.js" as="script"><link rel="prefetch" href="/AINative/assets/6-outlook.html-CHvdFe0i.js" as="script"><link rel="prefetch" href="/AINative/assets/cases.html-BqFgJxr7.js" as="script"><link rel="prefetch" href="/AINative/assets/test.html-h6TdOO3x.js" as="script"><link rel="prefetch" href="/AINative/assets/index.html-Chmc0Ot0.js" as="script"><link rel="prefetch" href="/AINative/assets/index.html-BOk7fykC.js" as="script"><link rel="prefetch" href="/AINative/assets/index.html-caw9BwWP.js" as="script"><link rel="prefetch" href="/AINative/assets/index.html-BFIzurTa.js" as="script"><link rel="prefetch" href="/AINative/assets/index.html-Dwz8Lhh0.js" as="script"><link rel="prefetch" href="/AINative/assets/404.html-cvy1FXLG.js" as="script"><link rel="prefetch" href="/AINative/assets/reveal.esm-IL6PhzrQ.js" as="script"><link rel="prefetch" href="/AINative/assets/markdown.esm-CSCL3NJe.js" as="script"><link rel="prefetch" href="/AINative/assets/reveal.esm-IL6PhzrQ.js" as="script">
+  </head>
+  <body>
+    <div id="app"><!--[--><div class="layout-wrapper doc-mode"><aside class="custom-navigation" data-v-af969e26><div class="nav-wrapper" data-v-af969e26><nav class="nav-sections" data-v-af969e26><!--[--><div class="nav-section" data-v-af969e26><div class="expanded section-header" data-v-af969e26><div class="section-title" data-v-af969e26><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="section-icon" data-v-af969e26><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"></path></svg><span data-v-af969e26>第一章：企业持续成功</span></div><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="collapse-icon rotated" data-v-af969e26><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"></path></svg></div><ul class="section-children" data-v-af969e26><!--[--><li data-v-af969e26><a href="/1-introduction/" class="child-link" data-v-af969e26>企业持续成功</a></li><li data-v-af969e26><a href="/1-introduction/enterprise-success.html" class="child-link" data-v-af969e26>企业持续成功的本质</a></li><li data-v-af969e26><a href="/1-introduction/organizational-capability.html" class="child-link" data-v-af969e26>组织能力是壁垒</a></li><!--]--></ul></div><div class="nav-section" data-v-af969e26><div class="expanded section-header" data-v-af969e26><div class="section-title" data-v-af969e26><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="section-icon" data-v-af969e26><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 0 0 2.25-2.25V6.75a2.25 2.25 0 0 0-2.25-2.25H6.75A2.25 2.25 0 0 0 4.5 6.75v10.5a2.25 2.25 0 0 0 2.25 2.25Zm.75-12h9v9h-9v-9Z"></path></svg><span data-v-af969e26>第二章：AI Native</span></div><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="collapse-icon rotated" data-v-af969e26><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"></path></svg></div><ul class="section-children" data-v-af969e26><!--[--><li data-v-af969e26><a href="/2-ai-native/" class="child-link" data-v-af969e26>AI Native</a></li><li data-v-af969e26><a href="/2-ai-native/ai-native-organization.html" class="child-link" data-v-af969e26>AI Native 组织</a></li><li data-v-af969e26><a href="/2-ai-native/organization-comparison.html" class="child-link" data-v-af969e26>与传统组织对比</a></li><li data-v-af969e26><a href="/2-ai-native/practice-demo.html" class="child-link" data-v-af969e26>实践演示</a></li><!--]--></ul></div><div class="nav-section" data-v-af969e26><div class="expanded section-header" data-v-af969e26><div class="section-title" data-v-af969e26><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="section-icon" data-v-af969e26><path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498 4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 0 0-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0Z"></path></svg><span data-v-af969e26>第三章：转化路程</span></div><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="collapse-icon rotated" data-v-af969e26><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"></path></svg></div><ul class="section-children" data-v-af969e26><!--[--><li data-v-af969e26><a href="/3-transition-practice/" class="child-link" data-v-af969e26>转化路程</a></li><li data-v-af969e26><a href="/3-transition-practice/why-now.html" class="child-link" data-v-af969e26>为什么是现在？</a></li><li data-v-af969e26><a href="/3-transition-practice/3-1-organization-architecture/" class="child-link" data-v-af969e26>过渡性架构思考</a></li><li data-v-af969e26><a href="/3-transition-practice/tools-guide.html" class="child-link" data-v-af969e26>常用工具使用</a></li><li data-v-af969e26><a href="/3-transition-practice/practice-implementation.html" class="child-link" data-v-af969e26>实践演示</a></li><!--]--></ul></div><div class="nav-section" data-v-af969e26><div class="expanded section-header" data-v-af969e26><div class="section-title" data-v-af969e26><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="section-icon" data-v-af969e26><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z"></path></svg><span data-v-af969e26>第四章：展望</span></div><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="collapse-icon rotated" data-v-af969e26><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"></path></svg></div><ul class="section-children" data-v-af969e26><!--[--><li data-v-af969e26><a href="/4-outlook/" class="child-link" data-v-af969e26>展望</a></li><!--]--></ul></div><div class="nav-section" data-v-af969e26><div class="expanded section-header" data-v-af969e26><div class="section-title" data-v-af969e26><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="section-icon" data-v-af969e26><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 0 0 .75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 0 0-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0 1 12 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 0 1-.673-.38m0 0A2.18 2.18 0 0 1 3 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 0 1 3.413-.387m7.5 0V5.25A2.25 2.25 0 0 0 13.5 3h-3a2.25 2.25 0 0 0-2.25 2.25v.894m7.5 0a48.667 48.667 0 0 0-7.5 0M12 12.75h.008v.008H12v-.008Z"></path></svg><span data-v-af969e26>第五章：案例研究</span></div><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="collapse-icon rotated" data-v-af969e26><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"></path></svg></div><ul class="section-children" data-v-af969e26><!--[--><li data-v-af969e26><a href="/5-case-studies/" class="child-link" data-v-af969e26>案例概览</a></li><!--]--></ul></div><!--]--></nav></div></aside><div class="theme-container no-sidebar"><!--[--><header class="navbar"><div class="toggle-sidebar-button" title="toggle sidebar" aria-expanded="false" role="button" tabindex="0"><div class="icon" aria-hidden="true"><span></span><span></span><span></span></div></div><span><a class="route-link" href="/AINative/"><!----><span class="site-name" aria-hidden="true">AI Native</span></a></span><div class="navbar-items-wrapper" style=""><!--[--><!--]--><nav class="navbar-items can-hide" aria-label="site navigation"><!--[--><div class="navbar-item"><a class="route-link" href="/AINative/" aria-label="首页"><!--[--><!--[--><!--]--> 首页 <!--[--><!--]--><!--]--></a></div><div class="navbar-item"><a class="external-link" href="https://github.com/arksou-Ltd" rel="noopener noreferrer" target="_blank" aria-label="GitHub"><!--[--><!--[--><!--]--> GitHub <span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">open in new window</span></span><!--[--><!--]--><!--]--></a></div><!--]--></nav><!--[--><!--]--><button class="toggle-color-mode-button" title="toggle color mode"><svg class="icon" focusable="false" viewBox="0 0 32 32" style=""><path d="M16 12.005a4 4 0 1 1-4 4a4.005 4.005 0 0 1 4-4m0-2a6 6 0 1 0 6 6a6 6 0 0 0-6-6z" fill="currentColor"></path><path d="M5.394 6.813l1.414-1.415l3.506 3.506L8.9 10.318z" fill="currentColor"></path><path d="M2 15.005h5v2H2z" fill="currentColor"></path><path d="M5.394 25.197L8.9 21.691l1.414 1.415l-3.506 3.505z" fill="currentColor"></path><path d="M15 25.005h2v5h-2z" fill="currentColor"></path><path d="M21.687 23.106l1.414-1.415l3.506 3.506l-1.414 1.414z" fill="currentColor"></path><path d="M25 15.005h5v2h-5z" fill="currentColor"></path><path d="M21.687 8.904l3.506-3.506l1.414 1.415l-3.506 3.505z" fill="currentColor"></path><path d="M15 2.005h2v5h-2z" fill="currentColor"></path></svg><svg class="icon" focusable="false" viewBox="0 0 32 32" style="display:none;"><path d="M13.502 5.414a15.075 15.075 0 0 0 11.594 18.194a11.113 11.113 0 0 1-7.975 3.39c-.138 0-.278.005-.418 0a11.094 11.094 0 0 1-3.2-21.584M14.98 3a1.002 1.002 0 0 0-.175.016a13.096 13.096 0 0 0 1.825 25.981c.164.006.328 0 .49 0a13.072 13.072 0 0 0 10.703-5.555a1.01 1.01 0 0 0-.783-1.565A13.08 13.08 0 0 1 15.89 4.38A1.015 1.015 0 0 0 14.98 3z" fill="currentColor"></path></svg></button><!----></div></header><!--]--><div class="sidebar-mask"></div><!--[--><aside class="sidebar"><nav class="navbar-items" aria-label="site navigation"><!--[--><div class="navbar-item"><a class="route-link" href="/AINative/" aria-label="首页"><!--[--><!--[--><!--]--> 首页 <!--[--><!--]--><!--]--></a></div><div class="navbar-item"><a class="external-link" href="https://github.com/arksou-Ltd" rel="noopener noreferrer" target="_blank" aria-label="GitHub"><!--[--><!--[--><!--]--> GitHub <span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">open in new window</span></span><!--[--><!--]--><!--]--></a></div><!--]--></nav><!--[--><!--]--><!----><!--[--><!--]--></aside><!--]--><!--[--><main class="page"><!--[--><!--]--><div class="theme-default-content"><!--[--><!--[--><nav class="breadcrumb" data-v-214a0b52><a href="/AINative/" class="crumb-link" data-v-214a0b52>Home</a><span class="separator" data-v-214a0b52>/</span><span class="current" data-v-214a0b52>Story 2.4: 文档化部署流程</span></nav><!--]--><!--]--><div><h1 id="story-2-4-文档化部署流程" tabindex="-1"><a class="header-anchor" href="#story-2-4-文档化部署流程"><span>Story 2.4: 文档化部署流程</span></a></h1><p>Status: done</p><h2 id="story" tabindex="-1"><a class="header-anchor" href="#story"><span>Story</span></a></h2><p>作为 开发者, 我想 将部署流程文档化, 以便 团队成员和贡献者了解如何部署。</p><h2 id="acceptance-criteria" tabindex="-1"><a class="header-anchor" href="#acceptance-criteria"><span>Acceptance Criteria</span></a></h2><p><strong>Given</strong> 部署流程已验证成功(Story 2.3 完成)</p><p><strong>When</strong> 我编写部署文档</p><p><strong>Then</strong> 应该:</p><ol><li>✅ 更新<code>README.md</code>,添加&quot;部署&quot;章节,包含: <ul><li>自动部署说明(推送到main分支触发)</li><li>GitHub Actions自动构建流程</li><li>访问URL和预期时间(5-10分钟)</li><li>本地构建测试命令</li><li>访问本地构建结果的URL</li></ul></li><li>✅ 文档包含故障排查指南(常见问题和解决方案)</li><li>✅ 提交文档更新到仓库</li></ol><h2 id="tasks-subtasks" tabindex="-1"><a class="header-anchor" href="#tasks-subtasks"><span>Tasks / Subtasks</span></a></h2><ul><li><p>[x] Task 1: 更��README.md添加部署章节 (AC: #1)</p><ul><li>[x] 1.1 打开项目根目录的<code>README.md</code>文件</li><li>[x] 1.2 添加&quot;## 部署&quot;章节(如果不存在)</li><li>[x] 1.3 编写&quot;自动部署&quot;小节: <ul><li>说明推送到main分支自动触发GitHub Actions</li><li>说明Actions自动构建并部署到gh-pages分支</li><li>提供访问URL: <code>https://arksou-ltd.github.io/AINative/</code></li><li>注明CDN刷新时间: 5-10分钟</li></ul></li><li>[x] 1.4 编写&quot;本地构建测试&quot;小节: <ul><li>提供构建命令: <code>pnpm run docs:build</code></li><li>提供预览命令: <code>npx serve docs/.vuepress/dist</code></li><li>注明本地访问URL: <code>http://localhost:3000</code></li></ul></li><li>[x] 1.5 保持语言为中文,技术术语使用英文</li></ul></li><li><p>[x] Task 2: 添加故障排查指南 (AC: #2)</p><ul><li>[x] 2.1 在部署章节添加&quot;### 常见问题&quot;小节</li><li>[x] 2.2 文档化常见问题1: &quot;Actions运行成功但网站404&quot; <ul><li>原因: GitHub Pages设置或base路径配置错误</li><li>解决方案: 检查Pages设置、base配置、gh-pages分支</li></ul></li><li>[x] 2.3 文档化常见问题2: &quot;页面显示但样式/图片404&quot; <ul><li>原因: 资源路径错误</li><li>解决方案: 检查Network面板、确认base路径</li></ul></li><li>[x] 2.4 文档化常见问题3: &quot;修改后页面不更新&quot; <ul><li>原因: CDN缓存</li><li>解决方案: 强制刷新、等待缓存过期</li></ul></li><li>[x] 2.5 文档化常见问题4: &quot;HTTPS证书错误&quot; <ul><li>原因: Pages HTTPS未启用</li><li>解决方案: 检查Settings → Pages → Enforce HTTPS</li></ul></li><li>[x] 2.6 每个问题包含: 症状、原因、解决步骤</li></ul></li><li><p>[x] Task 3: 添加部署状态badge (可选,AC: #1 扩展)</p><ul><li>[x] 3.1 获取GitHub Actions badge URL</li><li>[x] 3.2 在README.md顶部添加badge:<pre><code class="language-markdown"><span class="token url"><span class="token operator">!</span>[<span class="token content">Deploy Status</span>](<span class="token url">https://github.com/&lt;username&gt;/AINative/workflows/Deploy%20to%20GitHub%20Pages/badge.svg</span>)</span>
+</code></pre></li><li>[x] 3.3 验证badge显示正确</li></ul></li><li><p>[x] Task 4: 验证文档准确性 (质量保证)</p><ul><li>[x] 4.1 检查所有命令是否正确(拼写、参数)</li><li>[x] 4.2 验证所有URL是否正确</li><li>[x] 4.3 确认文档语言符合项目规范(中文为主,技术术语英文)</li><li>[x] 4.4 检查Markdown格式是否正确(标题层级、代码块、链接)</li><li>[x] 4.5 确保文档简洁易懂,避免冗余</li></ul></li><li><p>[x] Task 5: 提交文档更新 (AC: #3)</p><ul><li>[x] 5.1 暂存更改: <code>git add README.md</code></li><li>[x] 5.2 提交更改: <code>git commit -m &quot;docs(deploy): document deployment process and troubleshooting&quot;</code></li><li>[x] 5.3 推送到远程: <code>git push origin main</code></li><li>[x] 5.4 确认推送成功(无错误提示)</li></ul></li><li><p>[x] Task 6: 验证文档可用性 (最终验证)</p><ul><li>[x] 6.1 访问GitHub仓库页面,查看README.md渲染效果</li><li>[x] 6.2 验证所有Markdown格式正确显示</li><li>[x] 6.3 验证代码块语法高���正确</li><li>[x] 6.4 验证badge显示正确(如果添加)</li><li>[x] 6.5 让团队成员(或自己)按文档操作一遍,确认可行性</li></ul></li></ul><h2 id="dev-notes" tabindex="-1"><a class="header-anchor" href="#dev-notes"><span>Dev Notes</span></a></h2><h3 id="文档结构设计" tabindex="-1"><a class="header-anchor" href="#文档结构设计"><span>文档结构设计</span></a></h3><p><strong>README.md部署章节结构:</strong></p><pre><code class="language-markdown"><span class="token title important"><span class="token punctuation">##</span> 部署</span>
+
+本项目使用GitHub Pages自动部署。
+
+<span class="token title important"><span class="token punctuation">###</span> 自动部署</span>
+
+<span class="token list punctuation">-</span> <span class="token bold"><span class="token punctuation">**</span><span class="token content">触发条件</span><span class="token punctuation">**</span></span>: 推送到<span class="token code-snippet code keyword">`main`</span>分支
+<span class="token list punctuation">-</span> <span class="token bold"><span class="token punctuation">**</span><span class="token content">构建流程</span><span class="token punctuation">**</span></span>: GitHub Actions自动执行以下步骤:
+  <span class="token list punctuation">1.</span> 检出代码
+  <span class="token list punctuation">2.</span> 设置Node.js 20环境
+  <span class="token list punctuation">3.</span> 安装依赖 (<span class="token code-snippet code keyword">`pnpm install --frozen-lockfile`</span>)
+  <span class="token list punctuation">4.</span> 构建站点 (<span class="token code-snippet code keyword">`pnpm run docs:build`</span>)
+  <span class="token list punctuation">5.</span> 部署到<span class="token code-snippet code keyword">`gh-pages`</span>分支
+<span class="token list punctuation">-</span> <span class="token bold"><span class="token punctuation">**</span><span class="token content">访问地址</span><span class="token punctuation">**</span></span>: https://arksou-ltd.github.io/AINative/
+<span class="token list punctuation">-</span> <span class="token bold"><span class="token punctuation">**</span><span class="token content">生效时间</span><span class="token punctuation">**</span></span>: 推送后5-10分钟(CDN缓存刷新)
+
+<span class="token title important"><span class="token punctuation">###</span> 本地构建测试</span>
+
+在推送前,建议本地测试构建:
+
+```bash
+<span class="token title important"><span class="token punctuation">#</span> 构建站点</span>
+pnpm run docs:build
+
+<span class="token title important"><span class="token punctuation">#</span> 预览构建结果</span>
+npx serve docs/.vuepress/dist
+</code></pre><p>构建成功后访问: http://localhost:3000</p><p><strong>注意</strong>: 本地预览时URL路径为根路径,与生产环境的<code>/AINative/</code>路径不同。</p><h3 id="常见问题" tabindex="-1"><a class="header-anchor" href="#常见问题"><span>常见问题</span></a></h3><h4 id="_1-actions运行成功但网站显示404" tabindex="-1"><a class="header-anchor" href="#_1-actions运行成功但网站显示404"><span>1. Actions运行成功但网站显示404</span></a></h4><p><strong>原因</strong>: GitHub Pages设置未启用或base路径配置错误</p><p><strong>解决方案</strong>:</p><ul><li>检查 Settings → Pages → Source 是否选择<code>gh-pages</code>分支</li><li>确认<code>docs/.vuepress/config.ts</code>中<code>base: &#39;/AINative/&#39;</code>配置正确</li><li>验证gh-pages分支存在且有内容</li></ul><h4 id="_2-页面显示但样式-图片404" tabindex="-1"><a class="header-anchor" href="#_2-页面显示但样式-图片404"><span>2. 页面显示但样式/图片404</span></a></h4><p><strong>原因</strong>: 资源路径错误(缺少base前缀)</p><p><strong>解决方案</strong>:</p><ul><li>打开浏览器DevTools → Network面板,查看404资源路径</li><li>确认资源路径包含<code>/AINative/</code>前缀</li><li>检查构建产物<code>docs/.vuepress/dist/</code>是否包含资源文件</li></ul><h4 id="_3-修改后页面不更新" tabindex="-1"><a class="header-anchor" href="#_3-修改后页面不更新"><span>3. 修改后页面不更新</span></a></h4><p><strong>原因</strong>: CDN缓存(最常见)</p><p><strong>解决方案</strong>:</p><ul><li>强制刷新: Ctrl+Shift+R (Windows) / Cmd+Shift+R (Mac)</li><li>使用浏览器隐私模式访问</li><li>等待5-10分钟CDN缓存过期</li><li>验证gh-pages分支是否已更新</li></ul><h4 id="_4-https证书错误" tabindex="-1"><a class="header-anchor" href="#_4-https证书错误"><span>4. HTTPS证书错误</span></a></h4><p><strong>原因</strong>: GitHub Pages HTTPS未自动启用</p><p><strong>解决方案</strong>:</p><ul><li>检查 Settings → Pages → Enforce HTTPS 是否已勾选</li><li>等待证书生成(首次可能需要24小时)</li><li>对于<code>&lt;username&gt;.github.io</code>域名,HTTPS应自动启用</li></ul><h3 id="参考资源" tabindex="-1"><a class="header-anchor" href="#参考资源"><span>参考资源</span></a></h3><ul><li><a href="https://docs.github.com/pages" target="_blank" rel="noopener noreferrer">GitHub Pages文档<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">open in new window</span></span></a></li><li><a href="https://vuepress.vuejs.org/guide/deployment.html" target="_blank" rel="noopener noreferrer">VuePress部署指南<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">open in new window</span></span></a></li><li><a href="https://docs.github.com/actions" target="_blank" rel="noopener noreferrer">GitHub Actions文档<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">open in new window</span></span></a></li></ul><pre><code>
+### 文档编写原则
+
+**语言规范(来自CLAUDE.md):**
+- ✅ 主要内容使用中文
+- ✅ 技术术语保留英文(GitHub Pages, Actions, VuePress, etc.)
+- ✅ 代码块、命令、配置使用英文
+- ✅ URL、路径使用英文
+
+**文档质量标准:**
+- 简洁明了: 避免冗长描述,直击重点
+- ��构清晰: 使用标题层级、列表、代码块
+- 可操作性: 提供具体命令和步骤,可直接复制执行
+- 完整性: 覆盖正常流程和常见问题
+- 准确性: 所有命令和配置经过验证
+
+### Project Structure Notes
+
+**涉及的关键文件:**
+
+</code></pre><p>AINative/ ├── README.md # 项目说明文档(本Story修改) ├── .github/workflows/ │ └── deploy.yml # GitHub Actions工作流(引用) ├── docs/ │ └── .vuepress/ │ ├── config.ts # VuePress配置(引用base路径) │ └── dist/ # 构建产物(本地测试用) └── package.json # 包含构建脚本(引用)</p><pre><code>
+**不创建新文件,仅修改README.md。**
+
+### 架构约束
+
+**来自 architecture.md:**
+
+**部署配置关键点:**
+- base路径: `/AINative/` (必须匹配仓库名)
+- 构建命令: `pnpm run docs:build`
+- 预览命令: `npx serve docs/.vuepress/dist`
+- 部署分支: `gh-pages`
+- Node版本: 18 LTS (构建环境)
+- 包管理器: pnpm
+
+**来自 PRD.md:**
+
+**文档要求:**
+- 使用中文编写
+- 包含常见问题解答
+- 简洁易懂,面向开发者和贡献者
+- 提供可操作的步骤和命令
+
+### Learnings from Previous Story
+
+**From Story 2-3-verify-deployment-and-access (Status: ready-for-dev)**
+
+**部���流程已全面验证:**
+- ✅ Actions → gh-pages → Pages 全链路工作正常
+- ✅ 增量部署验证通过
+- ✅ HTTPS正常工作
+- ✅ 资源加载无404错误
+- ✅ 控制台无错误
+- ✅ CDN缓存机制已理解(5-10分钟)
+
+**关键经验和知识:**
+- 完整的部署管线流程图
+- 所有关键配置参数(base路径、发布目录、目标分支)
+- 时间预期表(推送到生效的各阶段时间)
+- 5类常见问题及详细解决方案
+- 故障排查方法和工具
+
+**本Story继承:**
+&gt; Story 2.3 深入验证了部署流程的每个环节并记录了详细的故障排查指南
+&gt; **Story 2.4 将这些知识整理为团队可用的文档**
+&gt; 关键: 从验证记录 → 提炼经验 → 编写文档 → 服务团队
+
+**可直接复用的内容:**
+- Story 2.3的部署架构回顾(流程图和配置参数)
+- Story 2.3的常见问题与故障排查(5个详细问题)
+- Story 2.3的时间预期表
+- Story 2.1的部署管线配置经验
+
+[Source: docs/stories/2-3-verify-deployment-and-access.md]
+
+**无pending action items或技术债。**
+
+### 文档编写清单
+
+**部署章节必须包含:**
+- [x] 自动部署触发条件
+- [x] GitHub Actions构建流程简述
+- [x] 访问URL和生效时间
+- [x] 本地构建测试命令
+- [x] 本地访问URL
+
+**故障排查指南必须包含:**
+- [x] ���题1: Actions成功但网站404
+- [x] 问题2: 页面显示但资源404
+- [x] 问题3: 修改后页面不更新
+- [x] 问题4: HTTPS证书错误
+- [x] 每个问题包含: 症状描述、原因分析、解决步骤
+
+**可选内容:**
+- [x] GitHub Actions状态badge
+- [x] 参考资源链接
+- [x] 贡献指南链接(如果存在)
+
+### 验证方法
+
+**文档质量验证:**
+1. 自查: 检查语法、格式、命令准确性
+2. 渲染测试: 在GitHub上查看Markdown渲染效果
+3. 可行性测试: 按文档操作一遍,确认步骤可行
+4. 同行评审: 让其他开发者阅读并提供反馈(可选)
+
+**成功标准:**
+- 文档结构清晰,易于导航
+- 所有命令可直接复制执行
+- 故障排查指南覆盖常见问题
+- 符合项目语言规范(中文主体,技术术语英文)
+- GitHub渲染正确,无格式错误
+
+### References
+
+- [Source: docs/epics.md - Epic 2, Story 2.4: 文档化部署流程]
+- [Source: docs/architecture.md - Deployment Architecture]
+- [Source: docs/PRD.md - 文档要求]
+- [Source: docs/stories/2-1-configure-github-repo-and-actions.md - 部署管线配置]
+- [Source: docs/stories/2-3-verify-deployment-and-access.md - 部署验证和故障排查]
+- [Source: CLAUDE.md - 语言规范]
+
+## Dev Agent Record
+
+### Context Reference
+
+- [Story Context XML](./2-4-document-deployment-process.context.xml)
+
+### Agent Model Used
+
+gemini-2.0-flash-exp
+
+### Debug Log References
+
+&lt;!-- 开发agent在此记录调试日志路径 --&gt;
+
+### Completion Notes List
+
+- ✅ 更新 README.md，添加了详细的部署章节。
+- ✅ 包含了自动部署流程、本地构建指南和常见故障排查。
+- ✅ 添加了 GitHub Actions 部署状态 Badge。
+- ✅ 验证了文档的构建命令。
+
+### File List
+
+- README.md
+- docs/sprint-status.yaml
+
+## Change Log
+
+- 2025-12-15: Senior Developer Review notes appended.
+
+## Senior Developer Review (AI)
+
+- **Reviewer**: Amelia (AI Senior Dev)
+- **Date**: 2025-12-15
+- **Outcome**: **APPROVE**
+
+### Summary
+The documentation for the deployment process has been comprehensively implemented in `README.md`. It covers the automatic deployment workflow, local build instructions, and a detailed troubleshooting guide for common issues. The content follows the project&#39;s language guidelines (Chinese for content, English for technical terms) and accurately reflects the architecture and configuration.
+
+### Key Findings
+
+- **High Severity**: None.
+- **Medium Severity**: None.
+- **Low Severity**: None.
+
+### Acceptance Criteria Coverage
+
+| AC# | Description | Status | Evidence |
+| :--- | :--- | :--- | :--- |
+| 1 | 更新README.md,添加&quot;部署&quot;章节,包含自动部署说明、构建流程、URL等 | **IMPLEMENTED** | `README.md` lines 50-75 (Deployment section) |
+| 2 | 文档包含故障排查指南,覆盖4个常见问题 | **IMPLEMENTED** | `README.md` lines 77-113 (Troubleshooting section) |
+| 3 | 提交文档更新到仓库 | **IMPLEMENTED** | Commit `docs(root): document deployment process and troubleshooting` |
+
+**Summary**: 3 of 3 acceptance criteria fully implemented.
+
+### Task Completion Validation
+
+| Task | Description | Marked As | Verified As | Evidence |
+| :--- | :--- | :--- | :--- | :--- |
+| 1 | 更新README.md添加部署章节 | [x] | **VERIFIED** | `README.md` updated with &quot;## 部署&quot; |
+| 2 | 添加故障排查指南 | [x] | **VERIFIED** | `README.md` updated with &quot;### 常见问题&quot; |
+| 3 | 添加部署状态badge | [x] | **VERIFIED** | `README.md` header badge added |
+| 4 | 验证文档准确性 | [x] | **VERIFIED** | Content reviewed for accuracy |
+| 5 | 提交文档更新 | [x] | **VERIFIED** | Git log confirms commit |
+| 6 | 验证文档可用性 | [x] | **VERIFIED** | Self-verified by dev agent |
+
+**Summary**: 6 of 6 completed tasks verified.
+
+### Test Coverage and Gaps
+- **Coverage**: N/A (Documentation story). Verification was manual inspection of rendered Markdown and command execution.
+- **Gaps**: None.
+
+### Architectural Alignment
+- **Tech Spec**: Aligned with Epic 2 requirements for documenting the validated deployment process.
+- **Constraints**: Follows `CLAUDE.md` language rules and `architecture.md` deployment configuration (base path, pnpm, etc.).
+
+### Security Notes
+- No sensitive information (secrets, keys) exposed in documentation.
+- URLs are correctly pointing to public GitHub Pages and repo.
+
+### Best-Practices and References
+- [VuePress Deployment Guide](https://v2.vuepress.vuejs.org/guide/deployment.html)
+
+### Action Items
+**Code Changes Required:**
+*(None)*
+
+**Advisory Notes:**
+*(None)*
+</code></pre></div><!--[--><!--]--></div><footer class="vp-page-meta"><!----><div class="vp-meta-item git-info"><!----><!----></div></footer><!----><!--[--><!--]--></main><!--]--></div><aside class="right-toc" data-v-bcef453d><div class="toc-wrapper" data-v-bcef453d><div class="toc-header" data-v-bcef453d>On this page</div><div class="toc-track" data-v-bcef453d><div class="toc-empty" data-v-bcef453d> No headers found </div></div><div class="toc-actions" data-v-bcef453d><!----></div></div></aside></div><!--[--><!----><!--]--><!--]--></div>
+    <script type="module" src="/AINative/assets/app-TI2dsnHV.js" defer></script>
+  </body>
+</html>
